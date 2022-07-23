@@ -28,7 +28,10 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        clearsSelectionOnViewWillAppear = false
+        if let split = splitViewController {
+            split.preferredDisplayMode = .secondaryOnly
+        }
         super.viewWillAppear(animated)
     }
 
