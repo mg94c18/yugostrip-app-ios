@@ -17,6 +17,10 @@ class OnePageController : UIViewController {
     // TODO: izgleda da je i ovde suviše kasno, treba učitavanje da krene još unapred
     override func viewDidLoad() {
         super.viewDidLoad()
+        if page.0 == -1 {
+            // TODO: nešto zanimljivije od prazne strane?
+            return
+        }
         let url = URL(string: page.1)!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
