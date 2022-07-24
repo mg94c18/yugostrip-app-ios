@@ -13,14 +13,23 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var pageView: UIView!
 
     var color: UIColor?
+    var pageController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        // Update the user interface for the detail item.
-        if let color = color {
-            pageView.backgroundColor = color
+        pageView.backgroundColor = .black
+        
+        if let onePageController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
+            onePageController.color = color
+            // TODO: treba da ima samo jedan child, tako da ne "add"
+            self.addChildViewController(onePageController)
+            self.pageView.addSubview(onePageController.view)
+            onePageController.view.frame = pageView.bounds
+            onePageController.didMove(toParentViewController: self)
+            
+            pageController = onePageController
         }
     }
 

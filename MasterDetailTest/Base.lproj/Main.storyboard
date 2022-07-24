@@ -90,7 +90,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="47.5"/>
+                                            <rect key="frame" x="8" y="0.0" width="398" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" systemColor="darkTextColor"/>
@@ -131,6 +131,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
+        </scene>
+        <!--One Page Controller-->
+        <scene sceneID="3Kh-81-cnF">
+            <objects>
+                <viewController storyboardIdentifier="OnePageController" id="6yu-Ik-G4q" customClass="OnePageController" customModule="MasterDetailTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8D8-Lh-gIA"/>
+                        <viewControllerLayoutGuide type="bottom" id="JNV-8u-dwI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U8d-Cz-Jmk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LBN-eS-Dii">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="LBN-eS-Dii" secondAttribute="bottom" id="KWG-I0-jos"/>
+                            <constraint firstItem="LBN-eS-Dii" firstAttribute="leading" secondItem="U8d-Cz-Jmk" secondAttribute="leading" id="hUQ-5V-YfX"/>
+                            <constraint firstItem="LBN-eS-Dii" firstAttribute="top" secondItem="U8d-Cz-Jmk" secondAttribute="top" id="x3y-kQ-m2X"/>
+                            <constraint firstAttribute="trailing" secondItem="LBN-eS-Dii" secondAttribute="trailing" id="zfT-Vm-qEw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="LBN-eS-Dii" id="ryJ-6w-Y9Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isi-lA-48G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1362.3188405797102" y="128.57142857142856"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
