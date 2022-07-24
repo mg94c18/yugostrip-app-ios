@@ -9,16 +9,15 @@ import Foundation
 import UIKit
 
 class OnePageController : UIViewController {
-    //var page: (Int, String) = (-1, "")
-    var color: UIColor?
-    //static var lastLoadedIndex: Int = 0
+    var page: (Int, String) = (-1, "")
+    static var lastLoadedIndex: Int = 0
 
     @IBOutlet weak var imageView: UIImageView!
     
     // TODO: izgleda da je i ovde suviše kasno, treba učitavanje da krene još unapred
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let url = URL(string: page.1)!
+        let url = URL(string: page.1)!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 // self.handleClientError(error)
@@ -37,10 +36,11 @@ class OnePageController : UIViewController {
                 }
             }
         }
-        task.resume()*/
-        if let color = color {
-            imageView.backgroundColor = color
-        }
+        task.resume()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        OnePageController.lastLoadedIndex = page.0
+    }
 }
