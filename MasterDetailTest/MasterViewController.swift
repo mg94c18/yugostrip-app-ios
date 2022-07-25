@@ -58,12 +58,7 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                switch indexPath.row {
-                case 0: controller.color = .red
-                case 1: controller.color = .green
-                case 2: controller.color = .blue
-                default: break
-                }
+                controller.episodeId = indexPath.row
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 
@@ -81,18 +76,12 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return Assets.titles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        switch indexPath.row {
-        case 0: cell.textLabel!.text = "Prvi"
-        case 1: cell.textLabel!.text = "Drugi"
-        case 2: cell.textLabel!.text = "Treći"
-        default: break
-        }
+        cell.textLabel!.text = "\(Assets.numbers[indexPath.row]). \(Assets.titles[indexPath.row])"
         return cell
     }
 

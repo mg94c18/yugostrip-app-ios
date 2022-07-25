@@ -73,9 +73,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
 
     @IBOutlet weak var pageView: UIView!
 
-    var color: UIColor?
     var pageController: UIViewController?
-    
     var pages: [String] = []
     var episodeId: Int = -1
 
@@ -85,23 +83,10 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
 
         pageView.backgroundColor = .black
         
-        if let onePageController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController,
-           let color = color {
+        if episodeId != -1,
+           let onePageController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
             let pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
-            switch color {
-                case .red:
-                    onePageController.page = (0, "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_006.jpg")
-                    episodeId = 1
-                case .green:
-                    onePageController.page = (0, "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_010.jpg")
-                    episodeId = 2
-                case .blue:
-                    onePageController.page = (0, "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_021.jpg")
-                    episodeId = 3
-                default: return
-            }
-
-            pages = getPages(forEpisode: "\(episodeId)")
+            pages = Assets.pages(forEpisode: Assets.numbers[episodeId])
             pageViewController.dataSource = self
             pageViewController.delegate = self
             let firstController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
@@ -122,62 +107,6 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UserDefaults.standard.set(OnePageController.lastLoadedIndex, forKey: "lastPageIndex")
-    }
-
-    func getPages(forEpisode: String) -> [String] {
-        // TODO: read assets for this episode
-        switch forEpisode {
-        case "1": return [
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_005.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_006.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_007.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_008.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_009.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_010.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_011.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_012.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_013.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_014.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_015.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_016.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_017.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_018.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_019.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_020.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_021.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_022.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_023.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/1/1_024.jpg",
-        ]
-        case "2": return [
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_007.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_008.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_009.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_010.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_018.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_019.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_020.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_021.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_022.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_023.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_024.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_025.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_026.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_027.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_028.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_029.jpg",
-        ]
-        case "3": return [
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_011.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_012.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_013.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_014.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_015.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_016.jpg",
-            "https://yugostripalanford.fra1.digitaloceanspaces.com/2/2_017.jpg",
-        ]
-        default: return []
-        }
     }
 
     override func didReceiveMemoryWarning() {
