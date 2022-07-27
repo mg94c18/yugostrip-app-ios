@@ -21,6 +21,7 @@ extension UISplitViewController {
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
+    var initialPageIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +39,24 @@ class MasterViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
 
-        // Ovo izgleda nekad radi, nekad ne
-        //performSegue(withIdentifier: "showDetail", sender: self)
+        if DetailViewController.lastLoadedEpisode == -1 {
+            let episodeId = UserDefaults.standard.integer(forKey: "lastEpisodeId")
+            initialPageIndex = UserDefaults.standard.integer(forKey: "lastPageIndex")
+            tableView.selectRow(at: IndexPath(indexes: [0, episodeId]), animated: false, scrollPosition: .middle)
+            performSegue(withIdentifier: "showDetail", sender: navigationController)
+        } else {
+            tableView.selectRow(at: IndexPath(indexes: [0, DetailViewController.lastLoadedEpisode]), animated: false, scrollPosition: .middle)
+            if let split = splitViewController {
+                split.toggleMasterView()
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = false
         super.viewWillAppear(animated)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,8 +72,18 @@ class MasterViewController: UITableViewController {
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 
-                if let split = splitViewController {
-                    split.toggleMasterView()
+                if let initialPageIndex = initialPageIndex {
+                    controller.initialPageIndex = initialPageIndex
+                    self.initialPageIndex = nil
+                } else {
+                    if controller.episodeId == DetailViewController.lastLoadedEpisode {
+                        controller.initialPageIndex = OnePageController.lastLoadedIndex
+                    } else {
+                        controller.initialPageIndex = 0
+                    }
+                    if let split = splitViewController {
+                        split.toggleMasterView()
+                    }
                 }
             }
         }

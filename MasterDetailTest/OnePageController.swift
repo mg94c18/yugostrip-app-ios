@@ -10,7 +10,7 @@ import UIKit
 
 class OnePageController : UIViewController {
     var page: (Int, String) = (-1, "")
-    static var lastLoadedIndex: Int = 0
+    static var lastLoadedIndex: Int = -1
 
     @IBOutlet weak var imageView: UIImageView!
     

@@ -76,13 +76,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     var pageController: UIViewController?
     var pages: [String] = []
     var episodeId: Int = -1
+    var initialPageIndex: Int = 0
+    static var lastLoadedEpisode: Int = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        pageView.backgroundColor = .black
-        
         if episodeId != -1,
            let onePageController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
             let pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
@@ -90,7 +89,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             pageViewController.dataSource = self
             pageViewController.delegate = self
             let firstController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
-            firstController.page = (0, pages[0])
+
+            if initialPageIndex >= pages.count {
+                initialPageIndex = 0
+            }
+
+            firstController.page = (initialPageIndex, pages[initialPageIndex])
             pageViewController.setViewControllers([firstController], direction: .forward, animated: true)
 
             //pageController = onePageController
@@ -101,12 +105,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             self.pageView.addSubview(pageController!.view)
             pageController!.view.frame = pageView.bounds
             pageController!.didMove(toParentViewController: self)
+            
+            DetailViewController.lastLoadedEpisode = episodeId
         }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        UserDefaults.standard.set(OnePageController.lastLoadedIndex, forKey: "lastPageIndex")
     }
 
     override func didReceiveMemoryWarning() {
