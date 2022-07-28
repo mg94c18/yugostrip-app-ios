@@ -82,8 +82,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if episodeId != -1,
-           let onePageController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
+        if episodeId == -1 {
+            episodeId = UserDefaults.standard.integer(forKey: "lastEpisodeId")
+            initialPageIndex = UserDefaults.standard.integer(forKey: "lastPageIndex")
+        }
+
+        if let onePageController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
             let pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
             pages = Assets.pages(forEpisode: Assets.numbers[episodeId])
             pageViewController.dataSource = self
@@ -107,6 +111,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             pageController!.didMove(toParentViewController: self)
             
             DetailViewController.lastLoadedEpisode = episodeId
+            self.title = Assets.titles[episodeId]
         }
     }
 

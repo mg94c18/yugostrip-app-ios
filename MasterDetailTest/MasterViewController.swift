@@ -25,6 +25,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = ""
         if let split = splitViewController {
             // na starom iPad radi polovično: ugasi otvaranje, ali ne ugasi zatvaranje
             // kad je side panel otvoren a probam da mrdam po slici, ima crash
