@@ -10,34 +10,43 @@ import UIKit
 
 class DetailViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     // [TableView] Warning once only: UITableView was told to layout its visible cells and other contents without being in the view hierarchy (the table view or one of its superviews has not been added to a window). This may cause bugs by forcing views inside the table view to load and perform layout without accurate information (e.g. table view bounds, trait collection, layout margins, safe area insets, etc), and will also cause unnecessary performance overhead due to extra layout passes. Make a symbolic breakpoint at UITableViewAlertForLayoutOutsideViewHierarchy to catch this in the debugger and see what caused this to occur, so you can avoid this action altogether if possible, or defer it until the table view has been added to a window.
-    
-    var fwdQ: [OnePageController:OnePageController] = [:]
-    var bkwQ: [OnePageController:OnePageController] = [:]
 
+    var controllerCache: [OnePageController] = []
+    let controllerCacheCapacity: Int = 6
+    
     // MARK: - UIPageViewControllerDataSource
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let onePageController = viewController as? OnePageController else {
             return nil
         }
-        if let p1 = bkwQ.removeValue(forKey: onePageController) {
-            if let p2 = bkwQ[p1] {
-                bkwQ[p2] = myPageViewController(pageViewController, viewControllerBefore: p2)
+        var pos: Int
+        if let existingPos = controllerCache.firstIndex(of: onePageController) {
+            pos = existingPos
+        } else {
+            for c in controllerCache {
+                c.cancel()
             }
-            return p1
+            controllerCache.removeAll()
+            controllerCache.insert(onePageController, at: 0)
+            pos = 0
         }
-        for c in bkwQ {
-            c.value.cancel()
-        }
-        bkwQ.removeAll()
-
-        guard let ret = myPageViewController(pageViewController, viewControllerBefore: onePageController) else {
-            return nil
-        }
-        if let p1 = myPageViewController(pageViewController, viewControllerBefore: ret) {
-            if let p2 = myPageViewController(pageViewController, viewControllerBefore: p1) {
-                bkwQ[p1] = p2
+        let ret: OnePageController?
+        if pos > 0 {
+            ret = controllerCache[pos - 1]
+        } else {
+            ret = myPageViewController(pageViewController, viewControllerBefore: onePageController)
+            if let ret = ret {
+                controllerCache.insert(ret, at: 0)
+                pos += 1
             }
-            bkwQ[ret] = p1
+        }
+        while pos < 3 {
+            expandCacheLeft(pageViewController)
+            pos += 1
+        }
+        while controllerCache.count > controllerCacheCapacity {
+            controllerCache.last!.cancel()
+            controllerCache.removeLast()
         }
         return ret
     }
@@ -46,25 +55,34 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         guard let onePageController = viewController as? OnePageController else {
             return nil
         }
-        if let p1 = fwdQ.removeValue(forKey: onePageController) {
-            if let p2 = fwdQ[p1] {
-                fwdQ[p2] = myPageViewController(pageViewController, viewControllerAfter: p2)
+        var pos: Int
+        if let existingPos = controllerCache.firstIndex(of: onePageController) {
+            pos = existingPos
+        } else {
+            for c in controllerCache {
+                c.cancel()
             }
-            return p1
+            controllerCache.removeAll()
+            controllerCache.insert(onePageController, at: 0)
+            pos = 0
         }
-        for c in fwdQ {
-            c.value.cancel()
-        }
-        fwdQ.removeAll()
-
-        guard let ret = myPageViewController(pageViewController, viewControllerAfter: onePageController) else {
-            return nil
-        }
-        if let p1 = myPageViewController(pageViewController, viewControllerAfter: ret) {
-            if let p2 = myPageViewController(pageViewController, viewControllerAfter: p1) {
-                fwdQ[p1] = p2
+        let ret: OnePageController?
+        if pos + 1 < controllerCache.count {
+            ret = controllerCache[pos + 1]
+        } else {
+            ret = myPageViewController(pageViewController, viewControllerAfter: onePageController)
+            if let ret = ret {
+                controllerCache.append(ret)
             }
-            fwdQ[ret] = p1
+        }
+        var newCount = controllerCache.count
+        while pos + 3 >= newCount {
+            expandCacheRight(pageViewController)
+            newCount += 1
+        }
+        while controllerCache.count > controllerCacheCapacity {
+            controllerCache.first!.cancel()
+            controllerCache.removeFirst()
         }
         return ret
     }
@@ -120,9 +138,6 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             let previousViewController = self.pageViewController(pageViewController, viewControllerBefore: currentViewController)
             viewControllers = [previousViewController!, currentViewController]
         }
-        // Preload two ahead and two before
-        self.pageViewController(pageViewController, viewControllerAfter: viewControllers[1])
-        self.pageViewController(pageViewController, viewControllerBefore: viewControllers[0])
         pageViewController.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in })
         return .mid
     }
@@ -130,7 +145,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
 
     @IBOutlet weak var pageView: UIView!
 
-    var pageController: UIViewController?
+    var pageController: UIPageViewController?
     var pages: [String] = []
     var episodeId: Int = -1
     var initialPageIndex: Int = 0
@@ -150,18 +165,24 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             pageViewController.dataSource = self
             pageViewController.delegate = self
             let firstController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
-
+            
             if initialPageIndex >= pages.count {
                 initialPageIndex = 0
             }
-
             firstController.page = (initialPageIndex, pages[initialPageIndex])
-            // Preload two ahead and two before
-            self.pageViewController(pageViewController, viewControllerAfter: firstController)
-            self.pageViewController(pageViewController, viewControllerBefore: firstController)
+
+            for c in controllerCache {
+                c.cancel()
+            }
+            controllerCache.removeAll()
+            controllerCache.append(firstController)
+            while controllerCache.count < controllerCacheCapacity {
+                expandCacheRight(pageViewController)
+                expandCacheLeft(pageViewController)
+            }
+
             pageViewController.setViewControllers([firstController], direction: .forward, animated: true)
 
-            //pageController = onePageController
             pageController = pageViewController
 
             // TODO: treba da ima samo jedan child, tako da ne "add"
@@ -175,9 +196,22 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
 
+    func expandCacheLeft(_ pageViewController: UIPageViewController) {
+        if let prev = myPageViewController(pageViewController, viewControllerBefore: controllerCache.first!) {
+            controllerCache.insert(prev, at: 0)
+        }
+    }
+    
+    func expandCacheRight(_ pageViewController: UIPageViewController) {
+        if let next = myPageViewController(pageViewController, viewControllerAfter: controllerCache.last!) {
+            controllerCache.append(next)
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        // TODO: clear queues
     }
 
 }

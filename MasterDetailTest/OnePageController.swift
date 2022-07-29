@@ -36,6 +36,9 @@ class OnePageController : UIViewController {
     }
     
     func preload() {
+        if page.0 == -1 {
+            return
+        }
         let url = URL(string: page.1)!
         task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
