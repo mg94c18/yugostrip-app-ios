@@ -9,8 +9,16 @@ import Foundation
 import UIKit
 
 class OnePageController : UIViewController {
-    var page: (Int, String) = (-1, "")
+    var page: (Int, String) = (-1, "") {
+        didSet {
+            preload()
+        }
+    }
+
     static var lastLoadedIndex: Int = -1
+    var task: URLSessionTask?
+    var image: UIImage?
+    var didLoad: Bool = false // možda je ovo isto kao isViewLoaded a možda i nije, pa za svaki slučaj
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -21,8 +29,15 @@ class OnePageController : UIViewController {
             // TODO: nešto zanimljivije od prazne strane?
             return
         }
+        didLoad = true
+        if let image = image {
+            self.imageView.image = image
+        }
+    }
+    
+    func preload() {
         let url = URL(string: page.1)!
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 // self.handleClientError(error)
                 return
@@ -36,15 +51,23 @@ class OnePageController : UIViewController {
                 let data = data,
                 let image = UIImage(data: data) {
                 DispatchQueue.main.async {
-                    self.imageView.image = image
+                    if self.didLoad {
+                        self.imageView.image = image
+                    } else {
+                        self.image = image
+                    }
                 }
             }
         }
-        task.resume()
+        task!.resume()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         OnePageController.lastLoadedIndex = page.0
+    }
+    
+    func cancel() {
+        task?.cancel()
     }
 }

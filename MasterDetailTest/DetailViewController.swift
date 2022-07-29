@@ -11,10 +11,66 @@ import UIKit
 class DetailViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     // [TableView] Warning once only: UITableView was told to layout its visible cells and other contents without being in the view hierarchy (the table view or one of its superviews has not been added to a window). This may cause bugs by forcing views inside the table view to load and perform layout without accurate information (e.g. table view bounds, trait collection, layout margins, safe area insets, etc), and will also cause unnecessary performance overhead due to extra layout passes. Make a symbolic breakpoint at UITableViewAlertForLayoutOutsideViewHierarchy to catch this in the debugger and see what caused this to occur, so you can avoid this action altogether if possible, or defer it until the table view has been added to a window.
     
+    var fwdQ: [OnePageController:OnePageController] = [:]
+    var bkwQ: [OnePageController:OnePageController] = [:]
+
     // MARK: - UIPageViewControllerDataSource
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let onePageController = viewController as? OnePageController,
-           onePageController.page.0 > 0,
+        guard let onePageController = viewController as? OnePageController else {
+            return nil
+        }
+        if let p1 = bkwQ.removeValue(forKey: onePageController) {
+            if let p2 = bkwQ[p1] {
+                bkwQ[p2] = myPageViewController(pageViewController, viewControllerBefore: p2)
+            }
+            return p1
+        }
+        for c in bkwQ {
+            c.value.cancel()
+        }
+        bkwQ.removeAll()
+
+        guard let ret = myPageViewController(pageViewController, viewControllerBefore: onePageController) else {
+            return nil
+        }
+        if let p1 = myPageViewController(pageViewController, viewControllerBefore: ret) {
+            if let p2 = myPageViewController(pageViewController, viewControllerBefore: p1) {
+                bkwQ[p1] = p2
+            }
+            bkwQ[ret] = p1
+        }
+        return ret
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let onePageController = viewController as? OnePageController else {
+            return nil
+        }
+        if let p1 = fwdQ.removeValue(forKey: onePageController) {
+            if let p2 = fwdQ[p1] {
+                fwdQ[p2] = myPageViewController(pageViewController, viewControllerAfter: p2)
+            }
+            return p1
+        }
+        for c in fwdQ {
+            c.value.cancel()
+        }
+        fwdQ.removeAll()
+
+        guard let ret = myPageViewController(pageViewController, viewControllerAfter: onePageController) else {
+            return nil
+        }
+        if let p1 = myPageViewController(pageViewController, viewControllerAfter: ret) {
+            if let p2 = myPageViewController(pageViewController, viewControllerAfter: p1) {
+                fwdQ[p1] = p2
+            }
+            fwdQ[ret] = p1
+        }
+        return ret
+    }
+    
+    func myPageViewController(_ pageViewController: UIPageViewController, viewControllerBefore onePageController: OnePageController) -> OnePageController? {
+        if onePageController.page.0 > 0,
            let neighbor = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
             let index = onePageController.page.0 - 1
             neighbor.page = (index, pages[index])
@@ -23,8 +79,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         return nil
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let onePageController = viewController as! OnePageController
+    func myPageViewController(_ pageViewController: UIPageViewController, viewControllerAfter onePageController: OnePageController) -> OnePageController? {
         if onePageController.page.0 == -1 {
             return nil
         }
@@ -49,8 +104,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         if (orientation == .portrait) || (orientation == .portraitUpsideDown) || (UIDevice.current.userInterfaceIdiom == .phone) {
             // In portrait orientation or on iPhone: Set the spine position to "min" and the page view controller's view controllers array to contain just one view controller. Setting the spine position to 'UIPageViewControllerSpineLocationMid' in landscape orientation sets the doubleSided property to true, so set it to false here.
             let currentViewController = pageViewController.viewControllers![0]
-            let viewControllers = [currentViewController]
-            pageViewController.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in })
+            pageViewController.setViewControllers([currentViewController], direction: .forward, animated: true, completion: {done in })
             pageViewController.isDoubleSided = false
             return .min
         }
@@ -66,6 +120,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             let previousViewController = self.pageViewController(pageViewController, viewControllerBefore: currentViewController)
             viewControllers = [previousViewController!, currentViewController]
         }
+        // Preload two ahead and two before
+        self.pageViewController(pageViewController, viewControllerAfter: viewControllers[1])
+        self.pageViewController(pageViewController, viewControllerBefore: viewControllers[0])
         pageViewController.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in })
         return .mid
     }
@@ -99,6 +156,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             }
 
             firstController.page = (initialPageIndex, pages[initialPageIndex])
+            // Preload two ahead and two before
+            self.pageViewController(pageViewController, viewControllerAfter: firstController)
+            self.pageViewController(pageViewController, viewControllerBefore: firstController)
             pageViewController.setViewControllers([firstController], direction: .forward, animated: true)
 
             //pageController = onePageController
