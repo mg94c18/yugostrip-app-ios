@@ -1,0 +1,5 @@
+Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno)
+Da prikaže nešto pametno kada nema interneta, na primer da se upali signal gore desno jer strip neće raditi
+Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)
+Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
+Full screen? prefersStatusBarHidden+setNeedsStatusBarAppearanceUpdate() ne radi, a ni .modalPresentationStyle=.fullScreen

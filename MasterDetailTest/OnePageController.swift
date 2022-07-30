@@ -22,11 +22,9 @@ class OnePageController : UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    // TODO: izgleda da je i ovde suviše kasno, treba učitavanje da krene još unapred
     override func viewDidLoad() {
         super.viewDidLoad()
         if page.0 == -1 {
-            // TODO: nešto zanimljivije od prazne strane?
             return
         }
         didLoad = true

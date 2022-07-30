@@ -22,7 +22,32 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var initialPageIndex: Int?
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchText: String = "" {
+        didSet {
+            if searchText.isEmpty {
+                episodeMatches.removeAll()
+                return
+            }
+            findEpisodeMatches()
+        }
+    }
+    
+    var episodeMatches: [Int] = []
+    
+    func findEpisodeMatches() {
+        episodeMatches.removeAll()
+        let searchFor = [searchText.lowercased()]
+        for i in 0..<Assets.titles.count {
+            for j in searchFor {
+                if Assets.titles[i].lowercased().contains(j) || Assets.numbers[i].contains(j) || Assets.dates[i].contains(j) {
+                    episodeMatches.append(i)
+                    break
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = ""
@@ -51,6 +76,12 @@ class MasterViewController: UITableViewController {
                 split.toggleMasterView()
             }
         }
+        searchBar.delegate = self
+        searchBar.autocapitalizationType = .none
+        searchBar.autocorrectionType = .no
+        navigationItem.leftBarButtonItem = nil // UIBarButtonItem(customView: searchBar)
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.titleView = searchBar
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +100,11 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.episodeId = indexPath.row
+                if searchText.isEmpty {
+                    controller.episodeId = indexPath.row
+                } else {
+                    controller.episodeId = episodeMatches[indexPath.row]
+                }
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 
@@ -97,14 +132,53 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Assets.titles.count
+        if searchText.isEmpty {
+            return Assets.titles.count
+        } else {
+            return episodeMatches.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel!.text = "\(Assets.numbers[indexPath.row]). \(Assets.titles[indexPath.row])"
+        
+        if searchText.isEmpty {
+            cell.textLabel!.text = "\(Assets.numbers[indexPath.row]). \(Assets.titles[indexPath.row])"
+        } else {
+            cell.textLabel!.text = "\(Assets.numbers[episodeMatches[indexPath.row]]). \(Assets.titles[episodeMatches[indexPath.row]])"
+        }
+        
         return cell
     }
 
 }
 
+extension MasterViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText
+        tableView.reloadData()
+        updateRowSelection(self.searchText.isEmpty ? .middle : .none)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchText = ""
+        tableView.reloadData()
+        updateRowSelection(.middle)
+    }
+    
+    func updateRowSelection(_ position: UITableView.ScrollPosition) {
+        guard DetailViewController.lastLoadedEpisode != -1 else {
+            return
+        }
+        let selectedId = DetailViewController.lastLoadedEpisode
+        if searchText == "" {
+            tableView.selectRow(at: IndexPath(indexes: [0, selectedId]), animated: true, scrollPosition: position)
+        } else {
+            for i in 0..<episodeMatches.count {
+                if episodeMatches[i] == selectedId {
+                    tableView.selectRow(at: IndexPath(indexes: [0, i]), animated: true, scrollPosition: position)
+                }
+            }
+        }
+    }
+}

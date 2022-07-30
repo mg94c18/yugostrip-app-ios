@@ -9,8 +9,6 @@
 import UIKit
 
 class DetailViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    // [TableView] Warning once only: UITableView was told to layout its visible cells and other contents without being in the view hierarchy (the table view or one of its superviews has not been added to a window). This may cause bugs by forcing views inside the table view to load and perform layout without accurate information (e.g. table view bounds, trait collection, layout margins, safe area insets, etc), and will also cause unnecessary performance overhead due to extra layout passes. Make a symbolic breakpoint at UITableViewAlertForLayoutOutsideViewHierarchy to catch this in the debugger and see what caused this to occur, so you can avoid this action altogether if possible, or defer it until the table view has been added to a window.
-
     var controllerCache: [OnePageController] = []
     let controllerCacheCapacity: Int = 6
     
@@ -120,7 +118,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     // MARK: - UIPageViewControllerDelegate
     func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
         let currentViewController = pageViewController.viewControllers![0] as! OnePageController
-        clearCache(except: currentViewController)
+        clearCache(exceptFor: currentViewController)
         expandCacheLeft(pageViewController)
         expandCacheRight(pageViewController)
 
@@ -161,34 +159,32 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             initialPageIndex = UserDefaults.standard.integer(forKey: "lastPageIndex")
         }
 
-        if let onePageController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
-            let pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
-            pages = Assets.pages(forEpisode: Assets.numbers[episodeId])
-            pageViewController.dataSource = self
-            pageViewController.delegate = self
-            let firstController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
-            
-            if initialPageIndex >= pages.count {
-                initialPageIndex = 0
-            }
-            firstController.page = (initialPageIndex, pages[initialPageIndex])
-
-            clearCache(except: firstController)
-            pageViewController.setViewControllers([firstController], direction: .forward, animated: true)
-
-            pageController = pageViewController
-
-            // TODO: treba da ima samo jedan child, tako da ne "add"
-            self.addChildViewController(pageController!)
-            self.pageView.addSubview(pageController!.view)
-            pageController!.view.frame = pageView.bounds
-            pageController!.didMove(toParentViewController: self)
-            
-            DetailViewController.lastLoadedEpisode = episodeId
-            self.title = Assets.titles[episodeId]
+        let pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
+        pages = Assets.pages(forEpisode: Assets.numbers[episodeId])
+        pageViewController.dataSource = self
+        pageViewController.delegate = self
+        let firstController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
+        
+        if initialPageIndex >= pages.count {
+            initialPageIndex = 0
         }
-    }
+        firstController.page = (initialPageIndex, pages[initialPageIndex])
 
+        clearCache(exceptFor: firstController)
+        pageViewController.setViewControllers([firstController], direction: .forward, animated: true)
+
+        pageController = pageViewController
+
+        // TODO: treba da ima samo jedan child, tako da ne "add"
+        self.addChildViewController(pageController!)
+        self.pageView.addSubview(pageController!.view)
+        pageController!.view.frame = pageView.bounds
+        pageController!.didMove(toParentViewController: self)
+        
+        DetailViewController.lastLoadedEpisode = episodeId
+        self.title = Assets.titles[episodeId]
+    }
+    
     func expandCacheLeft(_ pageViewController: UIPageViewController) {
         if let prev = myPageViewController(pageViewController, viewControllerBefore: controllerCache.first!) {
             controllerCache.insert(prev, at: 0)
@@ -203,7 +199,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
     
-    func clearCache(except viewController: OnePageController) {
+    func clearCache(exceptFor viewController: OnePageController) {
         for c in controllerCache {
             if c != viewController {
                 c.cancel()
