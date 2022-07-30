@@ -35,7 +35,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             ret = controllerCache[pos - 1]
         } else {
             ret = myPageViewController(pageViewController, viewControllerBefore: onePageController)
-            if let ret = ret {
+            if let ret = ret, ret.page.0 != -1 {
                 controllerCache.insert(ret, at: 0)
                 pos += 1
             }
@@ -119,18 +119,20 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
 
     // MARK: - UIPageViewControllerDelegate
     func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
+        let currentViewController = pageViewController.viewControllers![0] as! OnePageController
+        clearCache(except: currentViewController)
+        expandCacheLeft(pageViewController)
+        expandCacheRight(pageViewController)
+
         if (orientation == .portrait) || (orientation == .portraitUpsideDown) || (UIDevice.current.userInterfaceIdiom == .phone) {
             // In portrait orientation or on iPhone: Set the spine position to "min" and the page view controller's view controllers array to contain just one view controller. Setting the spine position to 'UIPageViewControllerSpineLocationMid' in landscape orientation sets the doubleSided property to true, so set it to false here.
-            let currentViewController = pageViewController.viewControllers![0]
             pageViewController.setViewControllers([currentViewController], direction: .forward, animated: true, completion: {done in })
             pageViewController.isDoubleSided = false
             return .min
         }
 
         // In landscape orientation: Set set the spine location to "mid" and the page view controller's view controllers array to contain two view controllers. If the current page is even, set it to contain the current and next view controllers; if it is odd, set the array to contain the previous and current view controllers.
-        let currentViewController = pageViewController.viewControllers![0] as! OnePageController
         var viewControllers: [UIViewController]
-
         if (currentViewController.page.0 % 2 == 0) {
             let nextViewController = self.pageViewController(pageViewController, viewControllerAfter: currentViewController)
             viewControllers = [currentViewController, nextViewController!]
@@ -171,16 +173,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             }
             firstController.page = (initialPageIndex, pages[initialPageIndex])
 
-            for c in controllerCache {
-                c.cancel()
-            }
-            controllerCache.removeAll()
-            controllerCache.append(firstController)
-            while controllerCache.count < controllerCacheCapacity {
-                expandCacheRight(pageViewController)
-                expandCacheLeft(pageViewController)
-            }
-
+            clearCache(except: firstController)
             pageViewController.setViewControllers([firstController], direction: .forward, animated: true)
 
             pageController = pageViewController
@@ -204,8 +197,19 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     
     func expandCacheRight(_ pageViewController: UIPageViewController) {
         if let next = myPageViewController(pageViewController, viewControllerAfter: controllerCache.last!) {
-            controllerCache.append(next)
+            if next.page.0 != -1 {
+                controllerCache.append(next)
+            }
         }
+    }
+    
+    func clearCache(except viewController: OnePageController) {
+        for c in controllerCache {
+            if c != viewController {
+                c.cancel()
+            }
+        }
+        controllerCache = [viewController]
     }
 
     override func didReceiveMemoryWarning() {
