@@ -17,6 +17,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         guard let onePageController = viewController as? OnePageController else {
             return nil
         }
+        learnNavigationBarPreference()
         var pos: Int
         if let existingPos = controllerCache.firstIndex(of: onePageController) {
             pos = existingPos
@@ -53,6 +54,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         guard let onePageController = viewController as? OnePageController else {
             return nil
         }
+        learnNavigationBarPreference()
         var pos: Int
         if let existingPos = controllerCache.firstIndex(of: onePageController) {
             pos = existingPos
@@ -142,6 +144,28 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         return .mid
     }
 
+    var sameBarPreferenceCount: Int = -1
+    var isNavigationBarHidden: Bool = false {
+        didSet {
+            sameBarPreferenceCount = -1
+        }
+    }
+    let sameBarPreferenceLimit: Int = 10
+    func learnNavigationBarPreference() {
+        // TODO: if turned page 10 times with bar not hidden, then default is not hidden
+        guard let navigationController = navigationController else {
+            return
+        }
+        if navigationController.isNavigationBarHidden != isNavigationBarHidden {
+            isNavigationBarHidden = navigationController.isNavigationBarHidden
+            return
+        }
+        
+        sameBarPreferenceCount += 1
+        if sameBarPreferenceCount > sameBarPreferenceLimit {
+            UserDefaults.standard.set(isNavigationBarHidden, forKey: "isNavigationBarHidden")
+        }
+    }
 
     @IBOutlet weak var pageView: UIView!
 
@@ -183,6 +207,19 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         
         DetailViewController.lastLoadedEpisode = episodeId
         self.title = Assets.titles[episodeId]
+        isNavigationBarHidden = UserDefaults.standard.bool(forKey: "isNavigationBarHidden")
+        navigationController?.isNavigationBarHidden = isNavigationBarHidden
+
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        self.view.addGestureRecognizer(doubleTap)
+    }
+    
+    @objc func doubleTap() {
+        guard let navigationController = navigationController else {
+            return
+        }
+        navigationController.isNavigationBarHidden = !navigationController.isNavigationBarHidden
     }
     
     func expandCacheLeft(_ pageViewController: UIPageViewController) {
