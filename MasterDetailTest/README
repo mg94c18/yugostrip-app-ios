@@ -2,4 +2,7 @@ Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na
 Da prikaže nešto pametno kada nema interneta, na primer da se upali signal gore desno jer strip neće raditi
 Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)
 Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
-Full screen? prefersStatusBarHidden+setNeedsStatusBarAppearanceUpdate() ne radi, a ni .modalPresentationStyle=.fullScreen
+Čitam pa Home pa opet startujem (bez da ugasim aplikaciju), slike nisu kako treba (ne zavisi od skorašnje promene za stretch)
+Na emulatoru se Safari "javi" kad ugasim aplikaciju: zašto?
+Neki put ne pozove odmah da sačuva state kad se zatvori
+Debug-ovanje na iPad-u bi pomoglo, jer trenutno na primer ne znam zašto cache ne radi

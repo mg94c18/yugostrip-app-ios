@@ -16,9 +16,17 @@ class OnePageController : UIViewController {
     }
 
     static var lastLoadedIndex: Int = -1
-    var task: URLSessionTask?
+    var task: URLSessionDataTask?
     var image: UIImage?
     var didLoad: Bool = false // možda je ovo isto kao isViewLoaded a možda i nije, pa za svaki slučaj
+
+    static let urlSession: URLSession = {
+        // let fileManagerUrl = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: .none, create: true)
+        let config = URLSessionConfiguration.default
+        config.urlCache = URLCache(memoryCapacity: 6*1024*1024, diskCapacity: 100*1024*1024, diskPath: "pages")
+        config.requestCachePolicy = .returnCacheDataElseLoad
+        return URLSession(configuration: config)
+    }()
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -37,8 +45,8 @@ class OnePageController : UIViewController {
         if page.0 == -1 {
             return
         }
-        let url = URL(string: page.1)!
-        task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let urlRequest = URLRequest(url: URL(string: page.1)!, cachePolicy: .returnCacheDataElseLoad)
+        task = OnePageController.urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
                 // self.handleClientError(error)
                 return
@@ -48,9 +56,13 @@ class OnePageController : UIViewController {
                 // self.handleServerError(response)
                 return
             }
-            if let mimeType = httpResponse.mimeType, mimeType.hasPrefix("image/"),
-                let data = data,
-                let image = UIImage(data: data) {
+            if let response = response,
+               let data = data,
+               let image = UIImage(data: data) {
+                if let urlCache = OnePageController.urlSession.configuration.urlCache,
+                   urlCache.cachedResponse(for: urlRequest) == nil {
+                    urlCache.storeCachedResponse(CachedURLResponse(response: response, data: data, storagePolicy: .allowed), for: urlRequest)
+                }
                 DispatchQueue.main.async {
                     if self.didLoad {
                         self.imageView.image = image

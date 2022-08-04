@@ -134,8 +134,17 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         // In landscape orientation: Set set the spine location to "mid" and the page view controller's view controllers array to contain two view controllers. If the current page is even, set it to contain the current and next view controllers; if it is odd, set the array to contain the previous and current view controllers.
         var viewControllers: [UIViewController]
         if (currentViewController.page.0 % 2 == 0) {
-            let nextViewController = self.pageViewController(pageViewController, viewControllerAfter: currentViewController)
-            viewControllers = [currentViewController, nextViewController!]
+            let nextViewController: UIViewController
+            if let next = self.pageViewController(pageViewController, viewControllerAfter: currentViewController) {
+                nextViewController = next
+            } else {
+                // Above will return nil when started for the very first time (because spine location is not yet set)
+                // But we know we want to set to .mid so let's make sure page is valid
+                let next = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
+                next.page = (-1, "")
+                nextViewController = next
+            }
+            viewControllers = [currentViewController, nextViewController]
         } else {
             let previousViewController = self.pageViewController(pageViewController, viewControllerBefore: currentViewController)
             viewControllers = [previousViewController!, currentViewController]
@@ -187,6 +196,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         pages = Assets.pages(forEpisode: Assets.numbers[episodeId])
         pageViewController.dataSource = self
         pageViewController.delegate = self
+        
         let firstController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
         
         if initialPageIndex >= pages.count {
