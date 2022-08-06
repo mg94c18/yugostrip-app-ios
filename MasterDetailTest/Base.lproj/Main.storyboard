@@ -152,19 +152,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bEH-5Y-DOp">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LBN-eS-Dii">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bEH-5Y-DOp" firstAttribute="centerX" secondItem="LBN-eS-Dii" secondAttribute="centerX" id="Imy-d5-8U2"/>
                             <constraint firstAttribute="bottom" secondItem="LBN-eS-Dii" secondAttribute="bottom" id="KWG-I0-jos"/>
+                            <constraint firstItem="bEH-5Y-DOp" firstAttribute="centerY" secondItem="LBN-eS-Dii" secondAttribute="centerY" id="McN-vR-pRo"/>
                             <constraint firstItem="LBN-eS-Dii" firstAttribute="leading" secondItem="U8d-Cz-Jmk" secondAttribute="leading" id="hUQ-5V-YfX"/>
                             <constraint firstItem="LBN-eS-Dii" firstAttribute="top" secondItem="U8d-Cz-Jmk" secondAttribute="top" id="x3y-kQ-m2X"/>
                             <constraint firstAttribute="trailing" secondItem="LBN-eS-Dii" secondAttribute="trailing" id="zfT-Vm-qEw"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="bEH-5Y-DOp" id="Cua-qM-mIb"/>
                         <outlet property="imageView" destination="LBN-eS-Dii" id="ryJ-6w-Y9Y"/>
                     </connections>
                 </viewController>
