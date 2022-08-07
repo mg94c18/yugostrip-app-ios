@@ -17,7 +17,6 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         guard let onePageController = viewController as? OnePageController else {
             return nil
         }
-        learnNavigationBarPreference()
         var pos: Int
         if let existingPos = controllerCache.firstIndex(of: onePageController) {
             pos = existingPos
@@ -30,6 +29,11 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             pos = 0
         }
         let ret: OnePageController?
+        defer {
+            if ret != nil {
+                learnNavigationBarPreference()
+            }
+        }
         if pos > 0 {
             ret = controllerCache[pos - 1]
         } else {
@@ -54,7 +58,6 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         guard let onePageController = viewController as? OnePageController else {
             return nil
         }
-        learnNavigationBarPreference()
         var pos: Int
         if let existingPos = controllerCache.firstIndex(of: onePageController) {
             pos = existingPos
@@ -67,6 +70,11 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             pos = 0
         }
         let ret: OnePageController?
+        defer {
+            if ret != nil {
+                learnNavigationBarPreference()
+            }
+        }
         if pos + 1 < controllerCache.count {
             ret = controllerCache[pos + 1]
         } else {
@@ -119,6 +127,10 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
 
     // MARK: - UIPageViewControllerDelegate
     func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
+        if AppDelegate.inBackground {
+            return pageViewController.spineLocation
+        }
+
         let currentViewController = pageViewController.viewControllers![0] as! OnePageController
         clearCache(exceptFor: currentViewController)
         expandCacheLeft(pageViewController)
