@@ -1,14 +1,17 @@
-Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno)
-Da prikaže nešto pametno kada nema interneta, na primer da se upali signal gore desno jer strip neće raditi
-Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)
-Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
-Na emulatoru se Safari "javi" kad ugasim aplikaciju: zašto?
-Neki put ne pozove odmah da sačuva state kad se zatvori
-Debug-ovanje na iPad-u bi pomoglo
-Potencijalno da izbacim viewController cache
+Neki put ne pozove odmah da sačuva state kad se zatvori, pa se onda ne vrati na tu stranu posle swipe-out
+    - verovatno zbog viewDidAppear() koji ne radi kako ja mislim
 Da keš na disku ne raste previše
+App icon
+Retry kad se slika ne učita iz prvog
+
+isNavigationBarHidden se prečesto pamti
+Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)
+Na emulatoru se Safari "javi" kad ugasim aplikaciju: zašto?
+Debug-ovanje na iPad-u bi pomoglo
 Download unapred: ako su svi viewControllers zadovoljeni a korisnik i dalje čita, prosto download-ovati sledeće strane unapred i sačuvati na disk
 Zoom-in ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
-Da na iPhone zahteva portrait
-isNavigationBarHidden se prečesto pamti
-App icon
+Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno)
+Da prikaže nešto pametno kada nema interneta, na primer da se upali signal gore desno jer strip neće raditi
+Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
+Potencijalno da izbacim viewController cache
+hiddenAssets za Android aplikaciju
