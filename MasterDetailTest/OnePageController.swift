@@ -126,11 +126,6 @@ class OnePageController : UIViewController {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        OnePageController.lastLoadedIndex = page.0
-    }
-    
     func cancel() {
         task?.cancel()
     }

@@ -30,9 +30,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
         let ret: OnePageController?
         defer {
-            if ret != nil {
-                learnNavigationBarPreference()
-            }
+            controllerPageReturned(ret)
         }
         if pos > 0 {
             ret = controllerCache[pos - 1]
@@ -71,9 +69,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
         let ret: OnePageController?
         defer {
-            if ret != nil {
-                learnNavigationBarPreference()
-            }
+            controllerPageReturned(ret)
         }
         if pos + 1 < controllerCache.count {
             ret = controllerCache[pos + 1]
@@ -94,7 +90,17 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
         return ret
     }
-    
+
+    func controllerPageReturned(_ ret: OnePageController?) {
+        guard let ret = ret else {
+            return
+        }
+        learnNavigationBarPreference()
+        if ret.page.0 != -1 {
+            OnePageController.lastLoadedIndex = ret.page.0
+        }
+    }
+
     func myPageViewController(_ pageViewController: UIPageViewController, viewControllerBefore onePageController: OnePageController) -> OnePageController? {
         if onePageController.page.0 > 0,
            let neighbor = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {

@@ -1,8 +1,10 @@
-Neki put ne pozove odmah da sačuva state kad se zatvori, pa se onda ne vrati na tu stranu posle swipe-out
-    - verovatno zbog viewDidAppear() koji ne radi kako ja mislim
 Da keš na disku ne raste previše
 App icon
+    - male (tipa 20x20) izgledaju bezveze, treba pogledati svg ponovo
 Retry kad se slika ne učita iz prvog
+Ako je navigationBar OK mesto da stavljam još funkcija (jer inače će ljudi da ga sklone pa se ne vidi stalno), onda:
+    - Download dugme u navigationBar desno
+    - Indikator kad nema interneta
 
 isNavigationBarHidden se prečesto pamti
 Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)
