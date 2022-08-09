@@ -241,8 +241,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
         doubleTap.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(doubleTap)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dugme", style: .plain, target: self, action: #selector(dugme))
     }
     
+    @objc func dugme() {
+    }
+
     @objc func doubleTap() {
         guard let navigationController = navigationController else {
             return

@@ -85,16 +85,20 @@ class OnePageController : UIViewController {
         task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
                 // self.handleClientError(error)
-                if self.didLoad {
-                    self.activityIndicator.stopAnimating()
+                DispatchQueue.main.async {
+                    if self.didLoad {
+                        self.activityIndicator.stopAnimating()
+                    }
                 }
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse,
                 (200...299).contains(httpResponse.statusCode) else {
                 // self.handleServerError(response)
-                if self.didLoad {
-                    self.activityIndicator.stopAnimating()
+                DispatchQueue.main.async {
+                    if self.didLoad {
+                        self.activityIndicator.stopAnimating()
+                    }
                 }
                 return
             }

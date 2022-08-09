@@ -1,19 +1,26 @@
 Da keš na disku ne raste previše
+    - takođe da ne bude sve u jednom istom folderu
+
 App icon
     - male (tipa 20x20) izgledaju bezveze, treba pogledati svg ponovo
+    - Xcode prihvata sve ikonice kreirane skriptom
+    - izgleda da ove male i tako neće da se koriste (na primer jer nemam notifications) pa nema potrebe za poboljšanjima
+
 Retry kad se slika ne učita iz prvog
-Ako je navigationBar OK mesto da stavljam još funkcija (jer inače će ljudi da ga sklone pa se ne vidi stalno), onda:
-    - Download dugme u navigationBar desno
-    - Indikator kad nema interneta
+hiddenAssets za Android aplikaciju
+
+Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi da ga sklone pa se ne vidi stalno), onda:
+    - Ako ima interneta i nije download-ovan broj, onda download dugme
+    - Ako ima interneta i već je download-ovan, onda dugme da ode na Appstore
+    - Ako nema interneta i nije download-ovan, onda indikator da nema interneta
+    - Ako nema interneta a već je download-ovan, onda ništa
 
 isNavigationBarHidden se prečesto pamti
-Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)
+Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)?  Mada onda mi treba i setting da to upalim/ugasim jer neće svima da se sviđa zvuk.
 Na emulatoru se Safari "javi" kad ugasim aplikaciju: zašto?
 Debug-ovanje na iPad-u bi pomoglo
 Download unapred: ako su svi viewControllers zadovoljeni a korisnik i dalje čita, prosto download-ovati sledeće strane unapred i sačuvati na disk
 Zoom-in ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
 Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno)
-Da prikaže nešto pametno kada nema interneta, na primer da se upali signal gore desno jer strip neće raditi
 Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
 Potencijalno da izbacim viewController cache
-hiddenAssets za Android aplikaciju
