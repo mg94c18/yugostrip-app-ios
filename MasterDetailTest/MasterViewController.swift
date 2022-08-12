@@ -142,11 +142,18 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
+        let episodeId: Int
         if searchText.isEmpty {
-            cell.textLabel!.text = "\(Assets.numbers[indexPath.row]). \(Assets.titles[indexPath.row])"
+            episodeId = indexPath.row
         } else {
-            cell.textLabel!.text = "\(Assets.numbers[episodeMatches[indexPath.row]]). \(Assets.titles[episodeMatches[indexPath.row]])"
+            episodeId = episodeMatches[indexPath.row]
         }
+        var title = "\(Assets.numbers[episodeId]). \(Assets.titles[episodeId])"
+        let progress = AppDelegate.episodeDownloader.progress(forEpisode: episodeId)
+        if progress != -1 {
+            title += " (\(progress)%)"
+        }
+        cell.textLabel!.text = title
         
         return cell
     }

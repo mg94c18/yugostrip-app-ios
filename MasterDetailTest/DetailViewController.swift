@@ -200,6 +200,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     var pages: [String] = []
     var episodeId: Int = -1
     var initialPageIndex: Int = 0
+    var titleOnly: String = ""
+    var progress: Int = -1 {
+        didSet {
+            title = titleOnly + (progress != -1 ? " (\(progress)%)" : "")
+        }
+    }
     static var lastLoadedEpisode: Int = -1
 
     override func viewDidLoad() {
@@ -234,17 +240,19 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         pageController!.didMove(toParentViewController: self)
         
         DetailViewController.lastLoadedEpisode = episodeId
-        self.title = Assets.titles[episodeId]
+        titleOnly = Assets.titles[episodeId]
+        progress = AppDelegate.episodeDownloader.progress(forEpisode: episodeId)
         isNavigationBarHidden = UserDefaults.standard.bool(forKey: "isNavigationBarHidden")
         navigationController?.isNavigationBarHidden = isNavigationBarHidden
 
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
         doubleTap.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(doubleTap)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dugme", style: .plain, target: self, action: #selector(dugme))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(dugme))
     }
     
     @objc func dugme() {
+        AppDelegate.episodeDownloader.startDownloading(episode: episodeId)
     }
 
     @objc func doubleTap() {

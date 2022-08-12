@@ -6,14 +6,38 @@ App icon
     - Xcode prihvata sve ikonice kreirane skriptom
     - izgleda da ove male i tako neće da se koriste (na primer jer nemam notifications) pa nema potrebe za poboljšanjima
 
+Zašto se DetailViewController učitava dvaput?
+    - na primer u landscape na iPad, viewDidLoad se zove dvaput
+    
+Progress da udpate-uje i tableView
+Ima neki crash negde prilikom download
 Retry kad se slika ne učita iz prvog
 hiddenAssets za Android aplikaciju
+preferredPrimaryColumnWidthFraction? ne radi
+
+MasterViewController.viewDidLoad se javlja na iPad portrait kad se ugasi aplikacija.  Zašto?
+
+Cloud updates:
+    - slike bez margina
+    - CBR & HR
 
 Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi da ga sklone pa se ne vidi stalno), onda:
     - Ako ima interneta i nije download-ovan broj, onda download dugme
     - Ako ima interneta i već je download-ovan, onda dugme da ode na Appstore
     - Ako nema interneta i nije download-ovan, onda indikator da nema interneta
     - Ako nema interneta a već je download-ovan, onda ništa
+    - Download dugme da se pojavi malo kasnije tokom FTUE
+    - Ako je epizoda download-ovana davno, ponuditi da se obriše možda
+    - neki put se javlja progress od 100% bez da se skloni
+
+Ikonice za navigationBar dugme
+    - "square.and.arrow.down" iz "SF Symbols" za download
+    - "wifi.slash" kad nema interneta
+    - "rectangle.and.pencil.and.ellipsis" za Appstore (jer može da se piše autoru ili da se napiše review)
+    - ili prosto "square.and.pencil"
+    - ? https://stackoverflow.com/questions/56449218/how-to-use-sf-symbols-in-ios-12-and-below
+    
+Kada odem na drugi strip ("samo da pogledam nešto"), pa se vratim, treba da me vrati gde sam stao ali da ne pamti na disk
 
 isNavigationBarHidden se prečesto pamti
 Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)?  Mada onda mi treba i setting da to upalim/ugasim jer neće svima da se sviđa zvuk.

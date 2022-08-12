@@ -9,10 +9,47 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, EpisodeDownloaderDelegate {
+    func progress(forEpisode: Int, changedTo: Int) {
+        let splitViewController = self.window!.rootViewController as! UISplitViewController
+        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        if let detail = navigationController.topViewController as? DetailViewController {
+            if detail.episodeId == forEpisode {
+                detail.progress = changedTo
+            }
+        }
+        if let masterNav = splitViewController.viewControllers[0] as? UINavigationController {
+            if let master = masterNav.topViewController as? MasterViewController {
+                master.tableView.reloadData()
+            }
+        }
+    }
+    
+    func downloadComplete(forEpisode episode: Int) {
+        let downloadedEpisodesOpt = UserDefaults.standard.array(forKey: "downloadedEpisodes") as? [Int]
+        var downloadedEpisodes: [Int]
+        if downloadedEpisodesOpt == nil {
+            downloadedEpisodes = []
+            UserDefaults.standard.set(downloadedEpisodes, forKey: "downloadedEpisodes")
+        } else {
+            downloadedEpisodes = downloadedEpisodesOpt!
+        }
+        if downloadedEpisodes.contains(episode) {
+            // TODO: Log.wtf()
+        } else {
+            downloadedEpisodes.append(episode)
+        }
+        UserDefaults.standard.set(downloadedEpisodes, forKey: "downloadedEpisodes")
+        progress(forEpisode: episode, changedTo: -1)
+    }
+    
+    func downloadFailed(forEpisode e: Int) {
+        progress(forEpisode: e, changedTo: -1)
+    }
 
     var window: UIWindow?
     static var inBackground = false
+    static var episodeDownloader = EpisodeDownloader()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+        AppDelegate.episodeDownloader.delegate = self
         return true
     }
 
@@ -38,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if DetailViewController.lastLoadedEpisode != -1 {
             UserDefaults.standard.set(DetailViewController.lastLoadedEpisode, forKey: "lastEpisodeId")
         }
+        AppDelegate.episodeDownloader.cancelAllDownloads()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

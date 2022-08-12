@@ -8,6 +8,31 @@
 import Foundation
 import UIKit
 
+extension OnePageController: ImageDownloaderDelegate {
+    func imageDownloadFailed(sender: ImageDownloader, error: Error) {
+        handleError()
+    }
+    
+    func httpConnectionFailed(sender: ImageDownloader, statusCode: Int?) {
+        handleError()
+    }
+    
+    func cantSaveFile(sender: ImageDownloader) {
+    }
+    
+    func invalidImageData(sender: ImageDownloader) {
+        handleError()
+    }
+    
+    func dataSuccess(sender: ImageDownloader, image: UIImage) {
+        updateView(with: image)
+    }
+    
+    func storageSuccess(sender: ImageDownloader) {
+    }
+    
+}
+
 class OnePageController : UIViewController {
     var page: (Int, String) = (-1, "") {
         didSet {
@@ -42,7 +67,7 @@ class OnePageController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if page.0 == -1 {
-            self.activityIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             return
         }
         didLoad = true
@@ -52,6 +77,15 @@ class OnePageController : UIViewController {
         }
     }
     
+    func handleError() {
+        DispatchQueue.main.async {
+            if self.didLoad {
+                self.activityIndicator.hidesWhenStopped = false
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
+
     func preload() {
         if page.0 == -1 {
             return
@@ -60,13 +94,13 @@ class OnePageController : UIViewController {
             return
         }
         guard let cacheDir = OnePageController.cacheDir else {
-            startDownloading()
+            startDownloading("")
             return
         }
 
         let file = cacheDir.path + fileNameSuffix
         if !FileManager.default.fileExists(atPath: file) {
-            startDownloading()
+            startDownloading(file)
             return
         }
         DispatchQueue.global(qos: .userInitiated).async {
@@ -74,48 +108,15 @@ class OnePageController : UIViewController {
                 self.updateView(with: image)
             } else {
                 // Should never happen
-                self.startDownloading()
+                self.startDownloading(file)
                 try? FileManager.default.removeItem(atPath: file)
             }
         }
     }
     
-    func startDownloading() {
-        let urlRequest = URLRequest(url: URL(string: page.1)!)
-        task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
-                // self.handleClientError(error)
-                DispatchQueue.main.async {
-                    if self.didLoad {
-                        self.activityIndicator.stopAnimating()
-                    }
-                }
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else {
-                // self.handleServerError(response)
-                DispatchQueue.main.async {
-                    if self.didLoad {
-                        self.activityIndicator.stopAnimating()
-                    }
-                }
-                return
-            }
-            if let data = data,
-               let image = UIImage(data: data) {
-                self.updateView(with: image)
-                if let cacheDir = OnePageController.cacheDir {
-                    let file = cacheDir.path + self.fileNameSuffix
-                    let tmpFile = file + ".tmp"
-                    DispatchQueue.global(qos: .utility).async {
-                        if FileManager.default.createFile(atPath: tmpFile, contents: data) {
-                            try? FileManager.default.moveItem(atPath: tmpFile, toPath: file)
-                        }
-                    }
-                }
-            }
-        }
+    func startDownloading(_ file: String) {
+        let downloader = ImageDownloader(id: page.0, url: page.1, fileName: file, delegate: self, tmpSuffix: ".tmp.ui")
+        task = downloader.createTask()
         task!.resume()
     }
 
