@@ -203,7 +203,16 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     var titleOnly: String = ""
     var progress: Int = -1 {
         didSet {
+            if oldValue == -1 && progress != -1 && progress != 100 {
+                showCancelDownload()
+            }
+            if progress == 100 {
+                progress = -1
+            }
             title = titleOnly + (progress != -1 ? " (\(progress)%)" : "")
+            if progress == -1 {
+                navigationItem.rightBarButtonItem = nil
+            }
         }
     }
     static var lastLoadedEpisode: Int = -1
@@ -248,11 +257,75 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
         doubleTap.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(doubleTap)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(dugme))
+        
+        initDownloadButton()
     }
     
-    @objc func dugme() {
-        AppDelegate.episodeDownloader.startDownloading(episode: episodeId)
+    func initDownloadButton() {
+        let alreadyDownloaded: Bool
+        if let downloadedEpisodes = UserDefaults.standard.array(forKey: "downloadedEpisodes") as? [Int] {
+            alreadyDownloaded = downloadedEpisodes.contains(episodeId)
+        } else {
+            alreadyDownloaded = false
+        }
+        if alreadyDownloaded {
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            if progress == -1 {
+                showDownload()
+            } else {
+                showCancelDownload()
+            }
+        }
+    }
+    
+    @objc func startDownload() {
+        guard let cacheDir = OnePageController.cacheDir,
+           let attrs = try? FileManager.default.attributesOfFileSystem(forPath: cacheDir.path),
+           let freeSize = attrs[.systemFreeSize] as? NSNumber else {
+            // TODO: ovo treba da se proveri pre nego što se pokaže download dugme
+            return
+        }
+        if freeSize.int64Value / (1<<20) < Assets.averageEpisodeSizeMB + 350 {
+            guard var downloadedEpisodes = UserDefaults.standard.array(forKey: "downloadedEpisodes") as? [Int], downloadedEpisodes.count > 0 else {
+                // TODO: ovo treba da se proveri pre nego što se pokaže download dugme
+                return
+            }
+            let sacrifice = downloadedEpisodes.removeFirst()
+            let confirmation = UIAlertController(title: "Upozorenje", message: "Trenutno image oko \(freeSize.int64Value / (1<<20))MB slobodno, a strip zauzima oko \(Assets.averageEpisodeSizeMB)MB.  Da bi download radio, morate da obrišete staru epizodu '\(Assets.titles[sacrifice])'", preferredStyle: .alert)
+            confirmation.addAction(UIAlertAction(title: "Obriši", style: .destructive, handler: { _ in
+                AppDelegate.episodeDownloader.removeDownload(forEpisode: sacrifice)
+                UserDefaults.standard.set(downloadedEpisodes, forKey: "downloadedEpisodes")
+                if AppDelegate.episodeDownloader.startDownloading(episode: self.episodeId) {
+                    self.navigationItem.rightBarButtonItem = nil
+                }
+            }))
+            confirmation.addAction(UIAlertAction(title: "Ne hvala", style: .default))
+            self.present(confirmation, animated: true, completion: nil)
+        } else if AppDelegate.episodeDownloader.startDownloading(episode: episodeId) {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+
+    @objc func cancelDownload() {
+        AppDelegate.episodeDownloader.cancelDownload(forEpisode: episodeId)
+        showDownload()
+    }
+
+    func showDownload() {
+        if #available(iOS 13.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownload))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownload))
+        }
+    }
+    
+    func showCancelDownload() {
+        if #available(iOS 13.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "x.square"), style: .plain, target: self, action: #selector(cancelDownload))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Otkaži", style: .plain, target: self, action: #selector(cancelDownload))
+        }
     }
 
     @objc func doubleTap() {

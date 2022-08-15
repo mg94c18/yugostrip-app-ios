@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         if let masterNav = splitViewController.viewControllers[0] as? UINavigationController {
             if let master = masterNav.topViewController as? MasterViewController {
+                let selection = master.tableView.indexPathForSelectedRow
                 master.tableView.reloadData()
+                master.tableView.selectRow(at: selection, animated: false, scrollPosition: .none)
             }
         }
     }
@@ -50,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
     static var inBackground = false
     static var episodeDownloader = EpisodeDownloader()
+    static var canceledEpisodes: [Int] = []
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -76,12 +79,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if DetailViewController.lastLoadedEpisode != -1 {
             UserDefaults.standard.set(DetailViewController.lastLoadedEpisode, forKey: "lastEpisodeId")
         }
-        AppDelegate.episodeDownloader.cancelAllDownloads()
+        AppDelegate.canceledEpisodes = AppDelegate.episodeDownloader.cancelAllDownloads()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         AppDelegate.inBackground = false
+        for e in AppDelegate.canceledEpisodes {
+            AppDelegate.episodeDownloader.startDownloading(episode: e)
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

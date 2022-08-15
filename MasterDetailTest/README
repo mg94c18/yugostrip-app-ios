@@ -6,16 +6,13 @@ App icon
     - Xcode prihvata sve ikonice kreirane skriptom
     - izgleda da ove male i tako neće da se koriste (na primer jer nemam notifications) pa nema potrebe za poboljšanjima
 
-Zašto se DetailViewController učitava dvaput?
-    - na primer u landscape na iPad, viewDidLoad se zove dvaput
-    
-Progress da udpate-uje i tableView
-Ima neki crash negde prilikom download
-Retry kad se slika ne učita iz prvog
-hiddenAssets za Android aplikaciju
-preferredPrimaryColumnWidthFraction? ne radi
+View magic/weirdness:
+    - MasterViewController.viewDidLoad se javlja na iPad portrait kad se ugasi aplikacija.  Zašto?
+    - Zašto se DetailViewController učitava dvaput?  Na primer u landscape na iPad, viewDidLoad se zove dvaput
+    - Ako otvorim novu epizodu bez interneta, prve dve strane spinner stoji, a na ostalima se vrti, pa kad odem malo napred pa se vratim, onda se i na prvim stranama vrti.  Zašto prestane da se vrti prilikom otvaranja novog stripa?
 
-MasterViewController.viewDidLoad se javlja na iPad portrait kad se ugasi aplikacija.  Zašto?
+Retry kad se slika ne učita iz prvog?
+hiddenAssets za Android aplikaciju
 
 Cloud updates:
     - slike bez margina
@@ -26,9 +23,11 @@ Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi 
     - Ako ima interneta i već je download-ovan, onda dugme da ode na Appstore
     - Ako nema interneta i nije download-ovan, onda indikator da nema interneta
     - Ako nema interneta a već je download-ovan, onda ništa
-    - Download dugme da se pojavi malo kasnije tokom FTUE
+    - Download dugme da se pojavi malo kasnije, posle FTUE
+    - Download dugme da ima dodatnu proveru za storage, i OK za potvrdu
     - Ako je epizoda download-ovana davno, ponuditi da se obriše možda
-    - neki put se javlja progress od 100% bez da se skloni
+        * Na primer: ako se u search stavi "%", onda da pokaže one koji su 100% i one koji su polovično, a ako se kroz to dođe do epizode, onda da ponudi da se obriše (a onda da brisanje ide dramatično tako što se procenat smanjuje od 100% do 0% :)
+        * Ili možda da traži da obriše staru kad se download-uje nova, ako nema mesta
 
 Ikonice za navigationBar dugme
     - "square.and.arrow.down" iz "SF Symbols" za download
@@ -48,3 +47,4 @@ Zoom-in ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče auto
 Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno)
 Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
 Potencijalno da izbacim viewController cache
+preferredPrimaryColumnWidthFraction? ne radi

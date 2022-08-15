@@ -29,6 +29,8 @@ class Assets {
         + (1..<pageCount[episode]!).map{"https://yugostripalanford.fra1.digitaloceanspaces.com/\(episode)/\(episode)_\(String(format: "%03d", $0)).\(commonExtension)"}
     }
     
+    static var averageEpisodeSizeMB = 67
+    
     static func coverPageExtension(forEpisode: String) -> String {
         if forEpisode.count != 2 {
             return "jpg"

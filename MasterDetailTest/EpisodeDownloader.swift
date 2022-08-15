@@ -109,16 +109,28 @@ class EpisodeDownloader {
                 tasksNotStarted += 1
             }
         }
-        if tasksStarted == 0 && tasksNotStarted != 0 {
-            self.delegate?.progress(forEpisode: episode, changedTo: (totalPages[episode]! - tasksNotStarted) * 100 / totalPages[episode]!)
+        if tasksNotStarted != 0 {
+            DispatchQueue.main.async {
+                self.delegate?.progress(forEpisode: episode, changedTo: (self.totalPages[episode]! - tasksNotStarted) * 100 / self.totalPages[episode]!)
+            }
+        }
+        if tasksStarted == 0 && tasksNotStarted == 0 {
+            tasks[episode] = nil
+            totalPages[episode] = nil
+            DispatchQueue.main.async {
+                self.delegate?.downloadComplete(forEpisode: episode)
+            }
         }
         return true
     }
     
-    func cancelAllDownloads() {
+    func cancelAllDownloads() -> [Int] {
+        var canceledEpisodes: [Int] = []
         for e in tasks {
+            canceledEpisodes.append(e.key)
             cancelDownload(forEpisode: e.key)
         }
+        return canceledEpisodes
     }
 
     func cancelDownload(forEpisode e: Int) {
@@ -139,5 +151,19 @@ class EpisodeDownloader {
             return -1
         }
         return (total - tasks.count) * 100 / total
+    }
+    
+    func removeDownload(forEpisode episode: Int) {
+        let pages = Assets.pages(forEpisode: Assets.numbers[episode])
+        guard let cacheDir = OnePageController.cacheDir else {
+            return
+        }
+        for i in 0..<pages.count {
+            let fileName = OnePageController.lastChunk(from: pages[i], startingWith: "/")
+            guard !fileName.isEmpty else {
+                return
+            }
+            try? FileManager.default.removeItem(atPath: cacheDir.path + fileName)
+        }
     }
 }
