@@ -216,6 +216,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
     static var lastLoadedEpisode: Int = -1
+    static var previouslyLoaded: (Int, Int)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -248,6 +249,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         pageController!.view.frame = pageView.bounds
         pageController!.didMove(toParentViewController: self)
         
+        if DetailViewController.lastLoadedEpisode != -1 && OnePageController.lastLoadedIndex != -1 {
+            DetailViewController.previouslyLoaded = (DetailViewController.lastLoadedEpisode, OnePageController.lastLoadedIndex)
+        }
         DetailViewController.lastLoadedEpisode = episodeId
         titleOnly = Assets.titles[episodeId]
         progress = AppDelegate.episodeDownloader.progress(forEpisode: episodeId)
@@ -312,10 +316,14 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         showDownload()
     }
 
+    // "square.and.arrow.down" iz "SF Symbols" za download
+    // "wifi.slash" kad nema interneta
+    // "rectangle.and.pencil.and.ellipsis" ili prosto "square.and.pencil" za Appstore (jer može da se piše autoru ili da se napiše review)
     func showDownload() {
         if #available(iOS 13.0, *) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownload))
         } else {
+            // Ikonice za navigationBar dugme: bilo bi lepo, ali je proces komplikovan, a izgleda OK da iOS 12 i raniji imaju samo tekst.
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownload))
         }
     }

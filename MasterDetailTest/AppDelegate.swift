@@ -80,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             UserDefaults.standard.set(DetailViewController.lastLoadedEpisode, forKey: "lastEpisodeId")
         }
         AppDelegate.canceledEpisodes = AppDelegate.episodeDownloader.cancelAllDownloads()
+        DetailViewController.previouslyLoaded = nil
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

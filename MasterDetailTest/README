@@ -29,14 +29,10 @@ Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi 
         * Na primer: ako se u search stavi "%", onda da pokaže one koji su 100% i one koji su polovično, a ako se kroz to dođe do epizode, onda da ponudi da se obriše (a onda da brisanje ide dramatično tako što se procenat smanjuje od 100% do 0% :)
         * Ili možda da traži da obriše staru kad se download-uje nova, ako nema mesta
 
-Ikonice za navigationBar dugme
-    - "square.and.arrow.down" iz "SF Symbols" za download
-    - "wifi.slash" kad nema interneta
-    - "rectangle.and.pencil.and.ellipsis" za Appstore (jer može da se piše autoru ili da se napiše review)
-    - ili prosto "square.and.pencil"
-    - ? https://stackoverflow.com/questions/56449218/how-to-use-sf-symbols-in-ios-12-and-below
-    
-Kada odem na drugi strip ("samo da pogledam nešto"), pa se vratim, treba da me vrati gde sam stao ali da ne pamti na disk
+Dark mode:
+    - trenutno ne radi, na primer ime stripa nestane kad postavim Dark Mode; ovo ne radi ni kad ugasim pa startujem aplikaciju ponovo
+    - https://developer.apple.com/documentation/uikit/appearance_customization/supporting_dark_mode_in_your_interface
+    - "If you make appearance-sensitive changes outside of these methods, your app may not draw its content correctly for the current environment. The solution is to move your code into these methods."
 
 isNavigationBarHidden se prečesto pamti
 Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)?  Mada onda mi treba i setting da to upalim/ugasim jer neće svima da se sviđa zvuk.

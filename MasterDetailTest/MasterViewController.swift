@@ -114,6 +114,9 @@ class MasterViewController: UITableViewController {
                 } else {
                     if controller.episodeId == DetailViewController.lastLoadedEpisode {
                         controller.initialPageIndex = OnePageController.lastLoadedIndex
+                    } else if let previouslyLoaded = DetailViewController.previouslyLoaded,
+                              controller.episodeId == previouslyLoaded.0 {
+                        controller.initialPageIndex = previouslyLoaded.1
                     } else {
                         controller.initialPageIndex = 0
                     }
