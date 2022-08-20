@@ -258,9 +258,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         isNavigationBarHidden = UserDefaults.standard.bool(forKey: "isNavigationBarHidden")
         navigationController?.isNavigationBarHidden = isNavigationBarHidden
 
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
-        doubleTap.numberOfTapsRequired = 2
-        self.view.addGestureRecognizer(doubleTap)
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
+        recognizer.numberOfTapsRequired = 2
+        self.view.addGestureRecognizer(recognizer)
         
         initDownloadButton()
     }
@@ -321,7 +321,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     // "rectangle.and.pencil.and.ellipsis" ili prosto "square.and.pencil" za Appstore (jer može da se piše autoru ili da se napiše review)
     func showDownload() {
         if #available(iOS 13.0, *) {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownload))
+            //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownload))
         } else {
             // Ikonice za navigationBar dugme: bilo bi lepo, ali je proces komplikovan, a izgleda OK da iOS 12 i raniji imaju samo tekst.
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownload))
@@ -330,7 +330,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     
     func showCancelDownload() {
         if #available(iOS 13.0, *) {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "x.square"), style: .plain, target: self, action: #selector(cancelDownload))
+            //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "x.square"), style: .plain, target: self, action: #selector(cancelDownload))
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Otkaži", style: .plain, target: self, action: #selector(cancelDownload))
         }

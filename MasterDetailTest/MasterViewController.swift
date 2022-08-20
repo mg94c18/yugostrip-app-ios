@@ -59,7 +59,7 @@ class MasterViewController: UITableViewController {
             // https://stackoverflow.com/questions/13715250/uisplitviewcontroller-presentswithgesture-not-working
             // navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
-            split.preferredDisplayMode = .secondaryOnly
+            split.preferredDisplayMode = .primaryHidden
 
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
