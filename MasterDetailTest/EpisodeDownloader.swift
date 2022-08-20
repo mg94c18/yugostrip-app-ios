@@ -75,10 +75,23 @@ class EpisodeDownloader {
             }
         }
     }
+    
+    func getOrCreateDownloadDir(episode: Int, fallback: Bool) -> URL? {
+        guard let cacheDir = OnePageController.cacheDir else {
+            return nil
+        }
+        let myDir = cacheDir.appendingPathComponent(Assets.numbers[episode], isDirectory: true)
+        if !FileManager.default.fileExists(atPath: myDir.path) {
+            guard let _ = try? FileManager.default.createDirectory(at: myDir, withIntermediateDirectories: true) else {
+                return fallback ? cacheDir : nil
+            }
+        }
+        return myDir
+    }
 
     func startDownloading(episode: Int) -> Bool {
         let pages = Assets.pages(forEpisode: Assets.numbers[episode])
-        guard let cacheDir = OnePageController.cacheDir else {
+        guard let cacheDir = getOrCreateDownloadDir(episode: episode, fallback: false) else {
             return false
         }
         cancelDownload(forEpisode: episode)

@@ -262,9 +262,15 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         recognizer.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(recognizer)
         
-        initDownloadButton()
+        postInitDownloadButton()
     }
-    
+
+    func postInitDownloadButton() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.initDownloadButton()
+        }
+    }
+
     func initDownloadButton() {
         let alreadyDownloaded: Bool
         if let downloadedEpisodes = UserDefaults.standard.array(forKey: "downloadedEpisodes") as? [Int] {
@@ -275,25 +281,44 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         if alreadyDownloaded {
             navigationItem.rightBarButtonItem = nil
         } else {
-            if progress == -1 {
-                showDownload()
-            } else {
-                showCancelDownload()
+            if progress == -1 && canDownload() {
+                DispatchQueue.main.async {
+                    self.showDownload()
+                }
+            } else if progress != -1 {
+                DispatchQueue.main.async {
+                    self.showCancelDownload()
+                }
             }
         }
     }
     
-    @objc func startDownload() {
+    func canDownload() -> Bool {
+        return startDownload(dryRun: true)
+    }
+    
+    @objc func startDownloading() {
+        if startDownload(dryRun: false) {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+
+    func startDownload(dryRun: Bool) -> Bool {
+        guard let _ = AppDelegate.episodeDownloader.getOrCreateDownloadDir(episode: episodeId, fallback: false) else {
+            return false
+        }
         guard let cacheDir = OnePageController.cacheDir,
            let attrs = try? FileManager.default.attributesOfFileSystem(forPath: cacheDir.path),
            let freeSize = attrs[.systemFreeSize] as? NSNumber else {
-            // TODO: ovo treba da se proveri pre nego što se pokaže download dugme
-            return
+            return false
         }
-        if freeSize.int64Value / (1<<20) < Assets.averageEpisodeSizeMB + 350 {
+        let buffer = (dryRun ? 350 : 350)
+        if freeSize.int64Value / (1<<20) < Assets.averageEpisodeSizeMB + buffer {
             guard var downloadedEpisodes = UserDefaults.standard.array(forKey: "downloadedEpisodes") as? [Int], downloadedEpisodes.count > 0 else {
-                // TODO: ovo treba da se proveri pre nego što se pokaže download dugme
-                return
+                return false
+            }
+            if dryRun {
+                return true
             }
             let sacrifice = downloadedEpisodes.removeFirst()
             let confirmation = UIAlertController(title: "Upozorenje", message: "Trenutno image oko \(freeSize.int64Value / (1<<20))MB slobodno, a strip zauzima oko \(Assets.averageEpisodeSizeMB)MB.  Da bi download radio, morate da obrišete staru epizodu '\(Assets.titles[sacrifice])'", preferredStyle: .alert)
@@ -306,14 +331,17 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             }))
             confirmation.addAction(UIAlertAction(title: "Ne hvala", style: .default))
             self.present(confirmation, animated: true, completion: nil)
-        } else if AppDelegate.episodeDownloader.startDownloading(episode: episodeId) {
-            navigationItem.rightBarButtonItem = nil
+            return false
+        } else if dryRun {
+            return true
+        } else {
+            return AppDelegate.episodeDownloader.startDownloading(episode: episodeId)
         }
     }
 
     @objc func cancelDownload() {
         AppDelegate.episodeDownloader.cancelDownload(forEpisode: episodeId)
-        showDownload()
+        postInitDownloadButton()
     }
 
     // "square.and.arrow.down" iz "SF Symbols" za download
@@ -324,7 +352,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownload))
         } else {
             // Ikonice za navigationBar dugme: bilo bi lepo, ali je proces komplikovan, a izgleda OK da iOS 12 i raniji imaju samo tekst.
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownload))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownloading))
         }
     }
     
