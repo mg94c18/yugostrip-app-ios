@@ -1,10 +1,16 @@
 Da keš na disku ne raste previše
-    - takođe da ne bude sve u jednom istom folderu
+    - evidencija o visited vs. downloaded episodes, pa stare obrisati
+    - da obriše .tmp.ui i .tmp.dl iz downloaded episodes
 
 Download se nekad zaglavi (ne pomera se %), a onda ako pritisnem Home pa opet aplikaciju, onda nastavi.
+    - kao da ne inicira download preostalih tasks
 
 Da se download ne pojavljuje dok se ne učita bar jedna strana
-Da se cache deli sa cacheDir/episodeId folderom
+Da ne dozvoljava više od 10 downloads u isto vreme
+
+Imao crash u downloader-u, tasks[episode]! ja naišao na nil
+    - verovatno kad nije bilo interneta
+    - potencijalno async tasks treba da imaju weak pointer
 
 App icon
     - male (tipa 20x20) izgledaju bezveze, treba pogledati svg ponovo
@@ -19,6 +25,8 @@ View magic/weirdness:
 Retry kad se slika ne učita iz prvog?
 hiddenAssets za iOS i takođe za Android
 
+Da koristi numbers[episodeId] umesto episodeId direktno, da bi podržao ubacivanje ili izbacivanje epizoda preko app updates
+
 Cloud updates:
     - slike bez margina
     - CBR & HR
@@ -29,10 +37,8 @@ Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi 
     - Ako nema interneta i nije download-ovan, onda indikator da nema interneta
     - Ako nema interneta a već je download-ovan, onda ništa
     - Download dugme da se pojavi malo kasnije, posle FTUE
-    - Download dugme da ima dodatnu proveru za storage, i OK za potvrdu
     - Ako je epizoda download-ovana davno, ponuditi da se obriše možda
         * Na primer: ako se u search stavi "%", onda da pokaže one koji su 100% i one koji su polovično, a ako se kroz to dođe do epizode, onda da ponudi da se obriše (a onda da brisanje ide dramatično tako što se procenat smanjuje od 100% do 0% :)
-        * Ili možda da traži da obriše staru kad se download-uje nova, ako nema mesta
 
 Dark mode:
     - trenutno ne radi, na primer ime stripa nestane kad postavim Dark Mode; ovo ne radi ni kad ugasim pa startujem aplikaciju ponovo

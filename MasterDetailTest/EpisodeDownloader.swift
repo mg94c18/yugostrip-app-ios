@@ -76,14 +76,22 @@ class EpisodeDownloader {
         }
     }
     
-    func getOrCreateDownloadDir(episode: Int, fallback: Bool) -> URL? {
-        guard let cacheDir = OnePageController.cacheDir else {
+    static let cacheDir: URL? = {
+        let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        if dir != nil && !FileManager.default.fileExists(atPath: dir!.path) {
+            try? FileManager.default.createDirectory(at: dir!, withIntermediateDirectories: true)
+        }
+        return dir
+    }()
+    
+    static func getOrCreateDownloadDir(episode: Int) -> URL? {
+        guard let cacheDir = EpisodeDownloader.cacheDir else {
             return nil
         }
         let myDir = cacheDir.appendingPathComponent(Assets.numbers[episode], isDirectory: true)
         if !FileManager.default.fileExists(atPath: myDir.path) {
             guard let _ = try? FileManager.default.createDirectory(at: myDir, withIntermediateDirectories: true) else {
-                return fallback ? cacheDir : nil
+                return nil
             }
         }
         return myDir
@@ -91,7 +99,7 @@ class EpisodeDownloader {
 
     func startDownloading(episode: Int) -> Bool {
         let pages = Assets.pages(forEpisode: Assets.numbers[episode])
-        guard let cacheDir = getOrCreateDownloadDir(episode: episode, fallback: false) else {
+        guard let cacheDir = EpisodeDownloader.getOrCreateDownloadDir(episode: episode) else {
             return false
         }
         cancelDownload(forEpisode: episode)
@@ -166,9 +174,9 @@ class EpisodeDownloader {
         return (total - tasks.count) * 100 / total
     }
     
-    func removeDownload(forEpisode episode: Int) {
+    static func removeDownload(forEpisode episode: Int) {
         let pages = Assets.pages(forEpisode: Assets.numbers[episode])
-        guard let cacheDir = OnePageController.cacheDir else {
+        guard let cacheDir = EpisodeDownloader.getOrCreateDownloadDir(episode: episode) else {
             return
         }
         for i in 0..<pages.count {

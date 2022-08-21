@@ -44,15 +44,9 @@ class OnePageController : UIViewController {
     static var lastLoadedIndex: Int = -1
     var task: URLSessionDataTask?
     var image: UIImage?
+    var downloadDir: URL?
     var fileNameSuffix: String = ""
     var didLoad: Bool = false // možda je ovo isto kao isViewLoaded a možda i nije, pa za svaki slučaj
-    static let cacheDir: URL? = {
-        let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        if dir != nil && !FileManager.default.fileExists(atPath: dir!.path) {
-            try? FileManager.default.createDirectory(at: dir!, withIntermediateDirectories: true)
-        }
-        return dir
-    }()
 
     static func lastChunk(from s: String, startingWith c: Character) -> String {
         guard let pos = s.lastIndex(of: c) else {
@@ -93,7 +87,7 @@ class OnePageController : UIViewController {
         guard !fileNameSuffix.isEmpty else {
             return
         }
-        guard let cacheDir = OnePageController.cacheDir else {
+        guard let cacheDir = downloadDir else {
             startDownloading("")
             return
         }

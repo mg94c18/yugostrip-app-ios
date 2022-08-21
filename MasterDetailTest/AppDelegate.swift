@@ -28,19 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     func downloadComplete(forEpisode episode: Int) {
-        let downloadedEpisodesOpt = UserDefaults.standard.array(forKey: "downloadedEpisodes") as? [Int]
-        var downloadedEpisodes: [Int]
-        if downloadedEpisodesOpt == nil {
-            downloadedEpisodes = []
-            UserDefaults.standard.set(downloadedEpisodes, forKey: "downloadedEpisodes")
-        } else {
-            downloadedEpisodes = downloadedEpisodesOpt!
-        }
-        if downloadedEpisodes.contains(episode) {
+        var downloadedEpisodes = DetailViewController.loadStoredArray("downloadedEpisodes")
+        if let index = downloadedEpisodes.firstIndex(of: episode) {
             // TODO: Log.wtf()
-        } else {
-            downloadedEpisodes.append(episode)
+            downloadedEpisodes.remove(at: index)
         }
+        downloadedEpisodes.append(episode)
         UserDefaults.standard.set(downloadedEpisodes, forKey: "downloadedEpisodes")
         progress(forEpisode: episode, changedTo: -1)
     }
@@ -81,15 +74,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         AppDelegate.canceledEpisodes = AppDelegate.episodeDownloader.cancelAllDownloads()
         DetailViewController.previouslyLoaded = nil
+        DispatchQueue.global(qos: .utility).async {
+            AppDelegate.cleanupStorage()
+        }
+    }
+    
+    static func cleanupStorage() {
+        var visited = DetailViewController.loadStoredArray("visitedEpisodes")
+        let downloaded = DetailViewController.loadStoredArray("downloadedEpisodes")
+        
+        var vnd: [Int] = [] // visited, not downloaded
+        for v in visited {
+            if !downloaded.contains(v) {
+                vnd.append(v)
+            }
+        }
+        if vnd.count <= 5 {
+            return
+        }
+        for i in 0..<vnd.count - 5 {
+            let e = vnd[i]
+            guard let index = visited.firstIndex(of: e), let dir = EpisodeDownloader.getOrCreateDownloadDir(episode: e) else {
+                // TODO: Log.wtf()
+                continue
+            }
+            try? FileManager.default.removeItem(at: dir)
+            visited.remove(at: index)
+        }
+        UserDefaults.standard.set(visited, forKey: "visitedEpisodes")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         AppDelegate.inBackground = false
         for e in AppDelegate.canceledEpisodes {
-            // TODO: jedan po jedan
-            AppDelegate.episodeDownloader.startDownloading(episode: e)
+            DispatchQueue.main.async {
+                AppDelegate.episodeDownloader.startDownloading(episode: e)
+            }
         }
+        AppDelegate.canceledEpisodes.removeAll()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

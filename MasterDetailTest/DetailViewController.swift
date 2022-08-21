@@ -106,6 +106,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
            let neighbor = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
             let index = onePageController.page.0 - 1
             neighbor.page = (index, pages[index])
+            neighbor.downloadDir = downloadDir
             return neighbor
         }
         return nil
@@ -119,6 +120,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             return nil
         }
         if let neighbor = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
+            neighbor.downloadDir = downloadDir
             if onePageController.page.0 + 1 < pages.count {
                 let index = onePageController.page.0 + 1
                 neighbor.page = (index, pages[index])
@@ -160,6 +162,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
                 // But we know we want to set to .mid so let's make sure page is valid
                 let next = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
                 next.page = (-1, "")
+                next.downloadDir = downloadDir
                 nextViewController = next
             }
             viewControllers = [currentViewController, nextViewController]
@@ -217,6 +220,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
     static var lastLoadedEpisode: Int = -1
     static var previouslyLoaded: (Int, Int)?
+    var downloadDir: URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -231,8 +235,10 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         pageViewController.dataSource = self
         pageViewController.delegate = self
         
+        downloadDir = EpisodeDownloader.getOrCreateDownloadDir(episode: episodeId)
         let firstController = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
-        
+        firstController.downloadDir = downloadDir
+
         if initialPageIndex >= pages.count {
             initialPageIndex = 0
         }
@@ -263,11 +269,29 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         self.view.addGestureRecognizer(recognizer)
         
         postInitDownloadButton()
+        DetailViewController.updateVisitedEpisodes(byAdding: episodeId)
     }
 
     func postInitDownloadButton() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.initDownloadButton()
+        }
+    }
+    
+    static func updateVisitedEpisodes(byAdding episodeId: Int) {
+        var visitedEpisodes = DetailViewController.loadStoredArray("visitedEpisodes")
+        if let index = visitedEpisodes.firstIndex(of: episodeId) {
+            visitedEpisodes.remove(at: index)
+        }
+        visitedEpisodes.append(episodeId)
+        UserDefaults.standard.set(visitedEpisodes, forKey: "visitedEpisodes")
+    }
+    
+    static func loadStoredArray(_ key: String) -> [Int] {
+        if let stored = UserDefaults.standard.array(forKey: key) as? [Int] {
+            return stored
+        } else {
+            return []
         }
     }
 
@@ -304,11 +328,10 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
 
     func startDownload(dryRun: Bool) -> Bool {
-        guard let _ = AppDelegate.episodeDownloader.getOrCreateDownloadDir(episode: episodeId, fallback: false) else {
+        guard let downloadDir = downloadDir else {
             return false
         }
-        guard let cacheDir = OnePageController.cacheDir,
-           let attrs = try? FileManager.default.attributesOfFileSystem(forPath: cacheDir.path),
+        guard let attrs = try? FileManager.default.attributesOfFileSystem(forPath: downloadDir.path),
            let freeSize = attrs[.systemFreeSize] as? NSNumber else {
             return false
         }
@@ -323,7 +346,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             let sacrifice = downloadedEpisodes.removeFirst()
             let confirmation = UIAlertController(title: "Upozorenje", message: "Trenutno image oko \(freeSize.int64Value / (1<<20))MB slobodno, a strip zauzima oko \(Assets.averageEpisodeSizeMB)MB.  Da bi download radio, morate da obrišete staru epizodu '\(Assets.titles[sacrifice])'", preferredStyle: .alert)
             confirmation.addAction(UIAlertAction(title: "Obriši", style: .destructive, handler: { _ in
-                AppDelegate.episodeDownloader.removeDownload(forEpisode: sacrifice)
+                EpisodeDownloader.removeDownload(forEpisode: sacrifice)
                 UserDefaults.standard.set(downloadedEpisodes, forKey: "downloadedEpisodes")
                 if AppDelegate.episodeDownloader.startDownloading(episode: self.episodeId) {
                     self.navigationItem.rightBarButtonItem = nil
