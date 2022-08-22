@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     func downloadComplete(forEpisode episode: Int) {
-        var downloadedEpisodes = DetailViewController.loadStoredArray("downloadedEpisodes")
+        var downloadedEpisodes = DetailViewController.downloadedEpisodes()
         if let index = downloadedEpisodes.firstIndex(of: episode) {
             // TODO: Log.wtf()
             downloadedEpisodes.remove(at: index)
@@ -81,11 +81,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     static func cleanupStorage() {
         var visited = DetailViewController.loadStoredArray("visitedEpisodes")
-        let downloaded = DetailViewController.loadStoredArray("downloadedEpisodes")
+        let downloaded = DetailViewController.downloadedEpisodes()
+        let paused = AppDelegate.canceledEpisodes
         
-        var vnd: [Int] = [] // visited, not downloaded
+        var vnd: [Int] = [] // visited, not downloaded/downloading
         for v in visited {
-            if !downloaded.contains(v) {
+            if !downloaded.contains(v) && !paused.contains(v) {
                 vnd.append(v)
             }
         }

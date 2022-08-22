@@ -32,11 +32,19 @@ class MasterViewController: UITableViewController {
             findEpisodeMatches()
         }
     }
-    
     var episodeMatches: [Int] = []
     
+    func searchedForDownloadedOnes() -> Bool {
+        return searchText == "%"
+    }
+
     func findEpisodeMatches() {
         episodeMatches.removeAll()
+
+        if searchedForDownloadedOnes() {
+            episodeMatches = DetailViewController.downloadedEpisodes()
+        }
+
         let searchFor = [searchText.lowercased()]
         for i in 0..<Assets.titles.count {
             for j in searchFor {
@@ -107,6 +115,9 @@ class MasterViewController: UITableViewController {
                 }
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
+                if searchedForDownloadedOnes() {
+                    controller.offerDeleteDownloaded = true
+                }
                 
                 if let initialPageIndex = initialPageIndex {
                     controller.initialPageIndex = initialPageIndex

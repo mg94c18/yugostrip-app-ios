@@ -39,6 +39,8 @@ extension EpisodeDownloader: ImageDownloaderDelegate {
         DispatchQueue.main.async {
             self.tasks[sender.id]?.removeValue(forKey: sender.url)
             guard let tasks = self.tasks[sender.id] else {
+                // Can happen if we canceled at the time of storage success (more likely to happen with lots of concurrent downloads)
+                self.dispatchNextTask()
                 return
             }
             if tasks.isEmpty {
@@ -49,12 +51,7 @@ extension EpisodeDownloader: ImageDownloaderDelegate {
                 let completed = self.totalPages[sender.id]! - tasks.count
                 self.delegate?.progress(forEpisode: sender.id, changedTo: completed * 100 / self.totalPages[sender.id]!)
             }
-            //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int.random(in: 0..<15))) {
-            DispatchQueue.main.async {
-                if !self.notStartedTasks.isEmpty {
-                    self.notStartedTasks.removeFirst().resume()
-                }
-            }
+            self.dispatchNextTask()
         }
     }
 }
@@ -66,9 +63,14 @@ class EpisodeDownloader {
     var delegate: EpisodeDownloaderDelegate?
 
     func handleError(forEpisode e: Int) {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
             self.cancelDownload(forEpisode: e)
         }
+        self.dispatchNextTask()
+    }
+    
+    func dispatchNextTask() {
+        //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int.random(in: 0..<15))) {
         DispatchQueue.main.async {
             if !self.notStartedTasks.isEmpty {
                 self.notStartedTasks.removeFirst().resume()

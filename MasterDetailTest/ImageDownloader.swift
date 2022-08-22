@@ -64,11 +64,18 @@ class ImageDownloader {
                     self.delegate.cantSaveFile(sender: self)
                     return
                 }
+                var removeTemp = true
+                defer {
+                    if removeTemp {
+                        try? FileManager.default.removeItem(atPath: tmpFile)
+                    }
+                }
                 do {
                     try FileManager.default.moveItem(atPath: tmpFile, toPath: self.fileName)
+                    removeTemp = false
                 } catch let error as NSError {
                     if error.code == NSFileWriteFileExistsError {
-                        // Proceed since this is success    
+                        // Proceed since this is success
                     } else {
                         self.delegate.cantSaveFile(sender: self)
                         return

@@ -105,8 +105,8 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         if onePageController.page.0 > 0,
            let neighbor = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as? OnePageController {
             let index = onePageController.page.0 - 1
-            neighbor.page = (index, pages[index])
             neighbor.downloadDir = downloadDir
+            neighbor.page = (index, pages[index])
             return neighbor
         }
         return nil
@@ -161,8 +161,8 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
                 // Above will return nil when started for the very first time (because spine location is not yet set)
                 // But we know we want to set to .mid so let's make sure page is valid
                 let next = storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
-                next.page = (-1, "")
                 next.downloadDir = downloadDir
+                next.page = (-1, "")
                 nextViewController = next
             }
             viewControllers = [currentViewController, nextViewController]
@@ -221,6 +221,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     static var lastLoadedEpisode: Int = -1
     static var previouslyLoaded: (Int, Int)?
     var downloadDir: URL?
+    var offerDeleteDownloaded: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -278,6 +279,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
     
+    func postInitDownloadButton(at: DispatchTime) {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: at) {
+            self.initDownloadButton()
+        }
+    }
+
     static func updateVisitedEpisodes(byAdding episodeId: Int) {
         var visitedEpisodes = DetailViewController.loadStoredArray("visitedEpisodes")
         if let index = visitedEpisodes.firstIndex(of: episodeId) {
@@ -294,6 +301,10 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             return []
         }
     }
+    
+    static func downloadedEpisodes() -> [Int] {
+        return loadStoredArray("downloadedEpisodes")
+    }
 
     func initDownloadButton() {
         let alreadyDownloaded: Bool
@@ -303,7 +314,13 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             alreadyDownloaded = false
         }
         if alreadyDownloaded {
-            navigationItem.rightBarButtonItem = nil
+            DispatchQueue.main.async {
+                if self.offerDeleteDownloaded {
+                    self.showDeleteDownload()
+                } else {
+                    self.navigationItem.rightBarButtonItem = nil
+                }
+            }
         } else {
             if progress == -1 && canDownload() {
                 DispatchQueue.main.async {
@@ -367,6 +384,20 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         postInitDownloadButton()
     }
 
+    @objc func deleteDownload() {
+        var downloaded = DetailViewController.downloadedEpisodes()
+        guard let index = downloaded.firstIndex(of: episodeId) else {
+            // TODO: Log.wtf()
+            return
+        }
+        EpisodeDownloader.removeDownload(forEpisode: episodeId)
+        clearCache(exceptFor: nil)
+        downloaded.remove(at: index)
+        UserDefaults.standard.set(downloaded, forKey: "downloadedEpisodes")
+        navigationItem.rightBarButtonItem = nil
+        postInitDownloadButton(at: .now() + .seconds(3))
+    }
+
     // "square.and.arrow.down" iz "SF Symbols" za download
     // "wifi.slash" kad nema interneta
     // "rectangle.and.pencil.and.ellipsis" ili prosto "square.and.pencil" za Appstore (jer može da se piše autoru ili da se napiše review)
@@ -374,7 +405,6 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         if #available(iOS 13.0, *) {
             //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownload))
         } else {
-            // Ikonice za navigationBar dugme: bilo bi lepo, ali je proces komplikovan, a izgleda OK da iOS 12 i raniji imaju samo tekst.
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownloading))
         }
     }
@@ -384,6 +414,14 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "x.square"), style: .plain, target: self, action: #selector(cancelDownload))
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Otkaži", style: .plain, target: self, action: #selector(cancelDownload))
+        }
+    }
+
+    func showDeleteDownload() {
+        if #available(iOS 13.0, *) {
+            //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(startDownload))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Obriši", style: .plain, target: self, action: #selector(deleteDownload))
         }
     }
 
@@ -408,13 +446,16 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
     
-    func clearCache(exceptFor viewController: OnePageController) {
+    func clearCache(exceptFor viewController: OnePageController?) {
         for c in controllerCache {
             if c != viewController {
                 c.cancel()
             }
         }
-        controllerCache = [viewController]
+        controllerCache.removeAll()
+        if let survivor = viewController {
+            controllerCache.append(survivor)
+        }
     }
 
     override func didReceiveMemoryWarning() {
