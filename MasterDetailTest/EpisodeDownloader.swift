@@ -37,6 +37,7 @@ extension EpisodeDownloader: ImageDownloaderDelegate {
     
     func storageSuccess(sender: ImageDownloader) {
         DispatchQueue.main.async {
+            self.lastActivity = Date().timeIntervalSince1970
             self.tasks[sender.id]?.removeValue(forKey: sender.url)
             guard let tasks = self.tasks[sender.id] else {
                 // Can happen if we canceled at the time of storage success (more likely to happen with lots of concurrent downloads)
@@ -99,7 +100,25 @@ class EpisodeDownloader {
         return myDir
     }
 
+    let idleTimerCheck: Int = 30
+    var lastActivity: TimeInterval = 0
+    func resetIdleTimerIfNoActivity() {
+        if Date().timeIntervalSince1970 - lastActivity > TimeInterval(idleTimerCheck) {
+            UIApplication.shared.isIdleTimerDisabled = false
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(idleTimerCheck)) {
+                self.resetIdleTimerIfNoActivity()
+            }
+        }
+    }
+
     func startDownloading(episode: Int) -> Bool {
+        if !UIApplication.shared.isIdleTimerDisabled {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(idleTimerCheck)) {
+                self.resetIdleTimerIfNoActivity()
+            }
+        }
+        UIApplication.shared.isIdleTimerDisabled = true
         let pages = Assets.pages(forEpisode: Assets.numbers[episode])
         guard let cacheDir = EpisodeDownloader.getOrCreateDownloadDir(episode: episode) else {
             return false

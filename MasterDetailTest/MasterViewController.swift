@@ -42,7 +42,7 @@ class MasterViewController: UITableViewController {
         episodeMatches.removeAll()
 
         if searchedForDownloadedOnes() {
-            episodeMatches = DetailViewController.downloadedEpisodes()
+            episodeMatches = DetailViewController.downloadedEpisodes().sorted()
         }
 
         let searchFor = [searchText.lowercased()]
