@@ -303,7 +303,7 @@
 				DEVELOPMENT_TEAM = MD6XE24BAC;
 				INFOPLIST_FILE = MasterDetailTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.mg94c18.MasterDetailTest;
+				PRODUCT_BUNDLE_IDENTIFIER = org.mg94c18.alanford;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -320,7 +320,7 @@
 				DEVELOPMENT_TEAM = MD6XE24BAC;
 				INFOPLIST_FILE = MasterDetailTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.mg94c18.MasterDetailTest;
+				PRODUCT_BUNDLE_IDENTIFIER = org.mg94c18.alanford;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

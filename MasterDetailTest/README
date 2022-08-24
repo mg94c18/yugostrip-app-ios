@@ -1,21 +1,9 @@
-Da keš na disku ne raste previše
-    - evidencija o visited vs. downloaded episodes, pa stare obrisati
-    - da obriše .tmp.ui i .tmp.dl iz downloaded episodes
-
-Download se nekad zaglavi (ne pomera se %), a onda ako pritisnem Home pa opet aplikaciju, onda nastavi.
-    - kao da ne inicira download preostalih tasks
-
-Da se download ne pojavljuje dok se ne učita bar jedna strana
 Da ne dozvoljava više od 10 downloads u isto vreme
 
 Imao crash u downloader-u, tasks[episode]! ja naišao na nil
     - verovatno kad nije bilo interneta
     - potencijalno async tasks treba da imaju weak pointer
-
-App icon
-    - male (tipa 20x20) izgledaju bezveze, treba pogledati svg ponovo
-    - Xcode prihvata sve ikonice kreirane skriptom
-    - izgleda da ove male i tako neće da se koriste (na primer jer nemam notifications) pa nema potrebe za poboljšanjima
+    - crash kada ima interneta, startujem download, ugasim hotspot, vratim se na aplikaciju, pa otvorim sidebar
 
 View magic/weirdness:
     - MasterViewController.viewDidLoad se javlja na iPad portrait kad se ugasi aplikacija.  Zašto?
@@ -32,25 +20,20 @@ Cloud updates:
     - CBR & HR
 
 Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi da ga sklone pa se ne vidi stalno), onda:
-    - Ako ima interneta i nije download-ovan broj, onda download dugme
     - Ako ima interneta i već je download-ovan, onda dugme da ode na Appstore
-    - Ako nema interneta i nije download-ovan, onda indikator da nema interneta
-    - Ako nema interneta a već je download-ovan, onda ništa
-    - Download dugme da se pojavi malo kasnije, posle FTUE
-    - Ako je epizoda download-ovana davno, ponuditi da se obriše možda
-        * Na primer: ako se u search stavi "%", onda da pokaže one koji su 100% i one koji su polovično, a ako se kroz to dođe do epizode, onda da ponudi da se obriše (a onda da brisanje ide dramatično tako što se procenat smanjuje od 100% do 0% :)
 
 Dark mode:
     - trenutno ne radi, na primer ime stripa nestane kad postavim Dark Mode; ovo ne radi ni kad ugasim pa startujem aplikaciju ponovo
     - https://developer.apple.com/documentation/uikit/appearance_customization/supporting_dark_mode_in_your_interface
     - "If you make appearance-sensitive changes outside of these methods, your app may not draw its content correctly for the current environment. The solution is to move your code into these methods."
 
+Zoom-in? ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
+
 isNavigationBarHidden se prečesto pamti
 Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)?  Mada onda mi treba i setting da to upalim/ugasim jer neće svima da se sviđa zvuk.
 Na emulatoru se Safari "javi" kad ugasim aplikaciju: zašto?
 Debug-ovanje na iPad-u bi pomoglo
 Download unapred: ako su svi viewControllers zadovoljeni a korisnik i dalje čita, prosto download-ovati sledeće strane unapred i sačuvati na disk
-Zoom-in ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
 Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno)
 Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
 Potencijalno da izbacim viewController cache

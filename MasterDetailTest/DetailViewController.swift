@@ -269,7 +269,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         recognizer.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(recognizer)
         
-        postInitDownloadButton()
+        if DetailViewController.loadStoredArray("visitedEpisodes").count > 4 {
+            postInitDownloadButton()
+        }
         DetailViewController.updateVisitedEpisodes(byAdding: episodeId)
     }
 
@@ -381,7 +383,8 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
 
     @objc func cancelDownload() {
         AppDelegate.episodeDownloader.cancelDownload(forEpisode: episodeId)
-        postInitDownloadButton()
+        navigationItem.rightBarButtonItem = nil
+        postInitDownloadButton(at: .now() + .seconds(3))
     }
 
     @objc func deleteDownload() {
