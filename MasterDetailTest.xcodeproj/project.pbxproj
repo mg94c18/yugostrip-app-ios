@@ -18,6 +18,18 @@
 		7C9DCF4D28A4BAEA00EC6F9D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DCF4C28A4BAEA00EC6F9D /* ImageDownloader.swift */; };
 		7CB86835288F528A00FB799D /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB86834288F528A00FB799D /* Assets.swift */; };
 		7CC1D0C228A22A5E0035107F /* EpisodeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1D0C128A22A5E0035107F /* EpisodeDownloader.swift */; };
+		E210F08A28B6DBAD009A0958 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23B8E521F831C000CABDD6 /* DetailViewController.swift */; };
+		E210F08B28B6DBAD009A0958 /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DA5C8288C849F0019D7DD /* OnePageController.swift */; };
+		E210F08C28B6DBAD009A0958 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DCF4C28A4BAEA00EC6F9D /* ImageDownloader.swift */; };
+		E210F08D28B6DBAD009A0958 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23B8E321F831C000CABDD6 /* MasterViewController.swift */; };
+		E210F08F28B6DBAD009A0958 /* EpisodeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1D0C128A22A5E0035107F /* EpisodeDownloader.swift */; };
+		E210F09028B6DBAD009A0958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23B8E121F831C000CABDD6 /* AppDelegate.swift */; };
+		E210F09328B6DBAD009A0958 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 7C484A132898B54400C0C126 /* README */; };
+		E210F09428B6DBAD009A0958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C23B8EC21F831C000CABDD6 /* LaunchScreen.storyboard */; };
+		E210F09528B6DBAD009A0958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C23B8EA21F831C000CABDD6 /* Assets.xcassets */; };
+		E210F09628B6DBAD009A0958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C23B8E721F831C000CABDD6 /* Main.storyboard */; };
+		E210F09D28B6DCE9009A0958 /* AssetsMM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E210F09C28B6DCE9009A0958 /* AssetsMM.swift */; };
+		E210F09F28B6E43D009A0958 /* Flavors in Resources */ = {isa = PBXBuildFile; fileRef = E210F09E28B6E43D009A0958 /* Flavors */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,10 +46,21 @@
 		7C9DCF4C28A4BAEA00EC6F9D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		7CB86834288F528A00FB799D /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		7CC1D0C128A22A5E0035107F /* EpisodeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDownloader.swift; sourceTree = "<group>"; };
+		E210F09A28B6DBAD009A0958 /* MartiMisterija.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MartiMisterija.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E210F09B28B6DBAD009A0958 /* MartiMisterija.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = MartiMisterija.plist; path = /Users/korisnik/Documents/MasterDetailTest/MartiMisterija.plist; sourceTree = "<absolute>"; };
+		E210F09C28B6DCE9009A0958 /* AssetsMM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsMM.swift; sourceTree = "<group>"; };
+		E210F09E28B6E43D009A0958 /* Flavors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Flavors; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7C23B8DB21F831C000CABDD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E210F09128B6DBAD009A0958 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +73,7 @@
 		7C23B8D521F831C000CABDD6 = {
 			isa = PBXGroup;
 			children = (
+				E210F0A028B6E47A009A0958 /* MartiMisterija */,
 				7C23B8E021F831C000CABDD6 /* MasterDetailTest */,
 				7C23B8DF21F831C000CABDD6 /* Products */,
 			);
@@ -59,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				7C23B8DE21F831C000CABDD6 /* MasterDetailTest.app */,
+				E210F09A28B6DBAD009A0958 /* MartiMisterija.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,8 +103,18 @@
 				7C484A132898B54400C0C126 /* README */,
 				7CC1D0C128A22A5E0035107F /* EpisodeDownloader.swift */,
 				7C9DCF4C28A4BAEA00EC6F9D /* ImageDownloader.swift */,
+				E210F09E28B6E43D009A0958 /* Flavors */,
 			);
 			path = MasterDetailTest;
+			sourceTree = "<group>";
+		};
+		E210F0A028B6E47A009A0958 /* MartiMisterija */ = {
+			isa = PBXGroup;
+			children = (
+				E210F09B28B6DBAD009A0958 /* MartiMisterija.plist */,
+				E210F09C28B6DCE9009A0958 /* AssetsMM.swift */,
+			);
+			path = MartiMisterija;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +137,23 @@
 			productReference = 7C23B8DE21F831C000CABDD6 /* MasterDetailTest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E210F08828B6DBAD009A0958 /* MartiMisterija */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E210F09728B6DBAD009A0958 /* Build configuration list for PBXNativeTarget "MartiMisterija" */;
+			buildPhases = (
+				E210F08928B6DBAD009A0958 /* Sources */,
+				E210F09128B6DBAD009A0958 /* Frameworks */,
+				E210F09228B6DBAD009A0958 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MartiMisterija;
+			productName = MasterDetailTest;
+			productReference = E210F09A28B6DBAD009A0958 /* MartiMisterija.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -114,6 +166,9 @@
 				TargetAttributes = {
 					7C23B8DD21F831C000CABDD6 = {
 						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					E210F08828B6DBAD009A0958 = {
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +187,7 @@
 			projectRoot = "";
 			targets = (
 				7C23B8DD21F831C000CABDD6 /* MasterDetailTest */,
+				E210F08828B6DBAD009A0958 /* MartiMisterija */,
 			);
 		};
 /* End PBXProject section */
@@ -142,9 +198,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C484A142898B54400C0C126 /* README in Resources */,
+				E210F09F28B6E43D009A0958 /* Flavors in Resources */,
 				7C23B8EE21F831C000CABDD6 /* LaunchScreen.storyboard in Resources */,
 				7C23B8EB21F831C000CABDD6 /* Assets.xcassets in Resources */,
 				7C23B8E921F831C000CABDD6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E210F09228B6DBAD009A0958 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E210F09328B6DBAD009A0958 /* README in Resources */,
+				E210F09428B6DBAD009A0958 /* LaunchScreen.storyboard in Resources */,
+				E210F09528B6DBAD009A0958 /* Assets.xcassets in Resources */,
+				E210F09628B6DBAD009A0958 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +230,20 @@
 				7CB86835288F528A00FB799D /* Assets.swift in Sources */,
 				7CC1D0C228A22A5E0035107F /* EpisodeDownloader.swift in Sources */,
 				7C23B8E221F831C000CABDD6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E210F08928B6DBAD009A0958 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E210F09D28B6DCE9009A0958 /* AssetsMM.swift in Sources */,
+				E210F08A28B6DBAD009A0958 /* DetailViewController.swift in Sources */,
+				E210F08B28B6DBAD009A0958 /* OnePageController.swift in Sources */,
+				E210F08C28B6DBAD009A0958 /* ImageDownloader.swift in Sources */,
+				E210F08D28B6DBAD009A0958 /* MasterViewController.swift in Sources */,
+				E210F08F28B6DBAD009A0958 /* EpisodeDownloader.swift in Sources */,
+				E210F09028B6DBAD009A0958 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +410,40 @@
 			};
 			name = Release;
 		};
+		E210F09828B6DBAD009A0958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMM;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MD6XE24BAC;
+				INFOPLIST_FILE = "$(SRCROOT)/MartiMisterija.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.mg94c18.martimisterija;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E210F09928B6DBAD009A0958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMM;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MD6XE24BAC;
+				INFOPLIST_FILE = "$(SRCROOT)/MartiMisterija.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.mg94c18.martimisterija;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -345,6 +461,15 @@
 			buildConfigurations = (
 				7C23B8F321F831C000CABDD6 /* Debug */,
 				7C23B8F421F831C000CABDD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E210F09728B6DBAD009A0958 /* Build configuration list for PBXNativeTarget "MartiMisterija" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E210F09828B6DBAD009A0958 /* Debug */,
+				E210F09928B6DBAD009A0958 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
