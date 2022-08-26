@@ -32,6 +32,16 @@ class MasterViewController: UITableViewController {
             findEpisodeMatches()
         }
     }
+    static let searchReplacements: [(String, String)] = [
+        ("c", "ć"),
+        ("s", "š"),
+        ("c", "č"),
+        ("z", "ž"),
+        ("dj", "đ"),
+        ("e", "je"),
+        ("e", "ije"),
+        ("je", "e"),
+        ("ije", "e")]
     var episodeMatches: [Int] = []
     
     func searchedForDownloadedOnes() -> Bool {
@@ -45,7 +55,10 @@ class MasterViewController: UITableViewController {
             episodeMatches = DetailViewController.downloadedEpisodes().sorted()
         }
 
-        let searchFor = [searchText.lowercased()]
+        var searchFor = [searchText.lowercased()]
+        for r in MasterViewController.searchReplacements {
+            searchFor.append(searchFor[0].replacingOccurrences(of: r.0, with: r.1))
+        }
         for i in 0..<Assets.titles.count {
             for j in searchFor {
                 if Assets.titles[i].lowercased().contains(j) || Assets.numbers[i].contains(j) || Assets.dates[i].contains(j) {
@@ -96,7 +109,7 @@ class MasterViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = false
         super.viewWillAppear(animated)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

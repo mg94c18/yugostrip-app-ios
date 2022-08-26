@@ -16,8 +16,8 @@ hiddenAssets za iOS i takođe za Android
 Da koristi numbers[episodeId] umesto episodeId direktno, da bi podržao ubacivanje ili izbacivanje epizoda preko app updates
 
 Cloud updates:
-    - slike bez margina
-    - CBR & HR
+    - slike bez margina?
+    - CBR & HR?
 
 Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi da ga sklone pa se ne vidi stalno), onda:
     - Ako ima interneta i već je download-ovan, onda dugme da ode na Appstore
@@ -26,8 +26,10 @@ Dark mode:
     - trenutno ne radi, na primer ime stripa nestane kad postavim Dark Mode; ovo ne radi ni kad ugasim pa startujem aplikaciju ponovo
     - https://developer.apple.com/documentation/uikit/appearance_customization/supporting_dark_mode_in_your_interface
     - "If you make appearance-sensitive changes outside of these methods, your app may not draw its content correctly for the current environment. The solution is to move your code into these methods."
+    - mada sad ne mogu ni da proverim jer bi mi trebao novi uređaj (što nemam) ili novi emulator (što takođe nemam)
 
 Zoom-in? ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
+    - probao ali je malo messy
 
 isNavigationBarHidden se prečesto pamti
 Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)?  Mada onda mi treba i setting da to upalim/ugasim jer neće svima da se sviđa zvuk.
