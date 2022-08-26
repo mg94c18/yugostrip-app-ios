@@ -39,7 +39,8 @@ extension EpisodeDownloader: ImageDownloaderDelegate {
         DispatchQueue.main.async {
             self.lastActivity = Date().timeIntervalSince1970
             self.tasks[sender.id]?.removeValue(forKey: sender.url)
-            guard let tasks = self.tasks[sender.id] else {
+            guard let tasks = self.tasks[sender.id],
+                let totalPages = self.totalPages[sender.id] else {
                 // Can happen if we canceled at the time of storage success (more likely to happen with lots of concurrent downloads)
                 self.dispatchNextTask()
                 return
@@ -49,8 +50,8 @@ extension EpisodeDownloader: ImageDownloaderDelegate {
                 self.totalPages.removeValue(forKey: sender.id)
                 self.delegate?.downloadComplete(forEpisode: sender.id)
             } else {
-                let completed = self.totalPages[sender.id]! - tasks.count
-                self.delegate?.progress(forEpisode: sender.id, changedTo: completed * 100 / self.totalPages[sender.id]!)
+                let completed = totalPages - tasks.count
+                self.delegate?.progress(forEpisode: sender.id, changedTo: completed * 100 / totalPages)
             }
             self.dispatchNextTask()
         }
@@ -77,6 +78,10 @@ class EpisodeDownloader {
                 self.notStartedTasks.removeFirst().resume()
             }
         }
+    }
+    
+    func downloadCount() -> Int {
+        return tasks.count
     }
     
     static let cacheDir: URL? = {
@@ -151,9 +156,10 @@ class EpisodeDownloader {
                 tasksNotStarted += 1
             }
         }
-        if tasksNotStarted != 0 {
+        if tasksNotStarted != 0,
+            let totalPages = totalPages[episode] {
             DispatchQueue.main.async {
-                self.delegate?.progress(forEpisode: episode, changedTo: (self.totalPages[episode]! - tasksNotStarted) * 100 / self.totalPages[episode]!)
+                self.delegate?.progress(forEpisode: episode, changedTo: (totalPages - tasksNotStarted) * 100 / totalPages)
             }
         }
         if tasksStarted == 0 && tasksNotStarted == 0 {

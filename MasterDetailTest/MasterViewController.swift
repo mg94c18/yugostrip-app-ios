@@ -107,6 +107,11 @@ class MasterViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = false
+
+        let selection = tableView.indexPathForSelectedRow
+        tableView.reloadData()
+        tableView.selectRow(at: selection, animated: false, scrollPosition: .none)
+
         super.viewWillAppear(animated)
     }
 
@@ -136,7 +141,7 @@ class MasterViewController: UITableViewController {
                     controller.initialPageIndex = initialPageIndex
                     self.initialPageIndex = nil
                 } else {
-                    if controller.episodeId == DetailViewController.lastLoadedEpisode {
+                    if controller.episodeId == DetailViewController.lastLoadedEpisode && OnePageController.lastLoadedIndex != -1 {
                         controller.initialPageIndex = OnePageController.lastLoadedIndex
                     } else if let previouslyLoaded = DetailViewController.previouslyLoaded,
                               controller.episodeId == previouslyLoaded.0 {

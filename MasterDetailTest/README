@@ -1,5 +1,3 @@
-Da ne dozvoljava više od 10 downloads u isto vreme
-
 Imao crash u downloader-u, tasks[episode]! ja naišao na nil
     - verovatno kad nije bilo interneta
     - potencijalno async tasks treba da imaju weak pointer
@@ -9,6 +7,7 @@ View magic/weirdness:
     - MasterViewController.viewDidLoad se javlja na iPad portrait kad se ugasi aplikacija.  Zašto?
     - Zašto se DetailViewController učitava dvaput?  Na primer u landscape na iPad, viewDidLoad se zove dvaput
     - Ako otvorim novu epizodu bez interneta, prve dve strane spinner stoji, a na ostalima se vrti, pa kad odem malo napred pa se vratim, onda se i na prvim stranama vrti.  Zašto prestane da se vrti prilikom otvaranja novog stripa?
+    - nekad je master/detail u topViewController a nekad u visibleViewController
 
 Retry kad se slika ne učita iz prvog?
 hiddenAssets za iOS i takođe za Android
@@ -16,8 +15,8 @@ hiddenAssets za iOS i takođe za Android
 Da koristi numbers[episodeId] umesto episodeId direktno, da bi podržao ubacivanje ili izbacivanje epizoda preko app updates
 
 Cloud updates:
-    - slike bez margina?
-    - CBR & HR?
+    - slike bez margina
+    - CBR & HR
 
 Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi da ga sklone pa se ne vidi stalno), onda:
     - Ako ima interneta i već je download-ovan, onda dugme da ode na Appstore
@@ -27,6 +26,7 @@ Dark mode:
     - https://developer.apple.com/documentation/uikit/appearance_customization/supporting_dark_mode_in_your_interface
     - "If you make appearance-sensitive changes outside of these methods, your app may not draw its content correctly for the current environment. The solution is to move your code into these methods."
     - mada sad ne mogu ni da proverim jer bi mi trebao novi uređaj (što nemam) ili novi emulator (što takođe nemam)
+    - izgleda da može XCode 11, treba probati
 
 Zoom-in? ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
     - probao ali je malo messy

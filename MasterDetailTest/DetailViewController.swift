@@ -410,6 +410,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownloading))
         }
+        if AppDelegate.episodeDownloader.downloadCount() >= 10 {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
     
     func showCancelDownload() {

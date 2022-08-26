@@ -12,14 +12,32 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, EpisodeDownloaderDelegate {
     func progress(forEpisode: Int, changedTo: Int) {
         let splitViewController = self.window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        if let detail = navigationController.topViewController as? DetailViewController {
+        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count - 1] as! UINavigationController
+        
+        var detail: DetailViewController?
+        if let top = navigationController.topViewController as? DetailViewController {
+            detail = top
+        }
+        if let visible = navigationController.visibleViewController as? DetailViewController {
+            detail = visible
+        }
+        if let detail = detail {
             if detail.episodeId == forEpisode {
                 detail.progress = changedTo
+            } else if changedTo == -1 {
+                detail.postInitDownloadButton()
             }
         }
+
         if let masterNav = splitViewController.viewControllers[0] as? UINavigationController {
-            if let master = masterNav.topViewController as? MasterViewController {
+            var master: MasterViewController?
+            if let top = masterNav.topViewController as? MasterViewController {
+                master = top
+            }
+            if let visible = masterNav.visibleViewController as? MasterViewController {
+                master = visible
+            }
+            if let master = master {
                 let selection = master.tableView.indexPathForSelectedRow
                 master.tableView.reloadData()
                 master.tableView.selectRow(at: selection, animated: false, scrollPosition: .none)
