@@ -26,7 +26,10 @@ Dark mode:
     - https://developer.apple.com/documentation/uikit/appearance_customization/supporting_dark_mode_in_your_interface
     - "If you make appearance-sensitive changes outside of these methods, your app may not draw its content correctly for the current environment. The solution is to move your code into these methods."
     - mada sad ne mogu ni da proverim jer bi mi trebao novi uređaj (što nemam) ili novi emulator (što takođe nemam)
-    - izgleda da može XCode 11, treba probati
+    - izgleda da može XCode 11; na emulatoru za iOS 13, ime stripa ne nestane ali donji deo je beo
+    - ne radi kao popravka: https://developer.apple.com/forums/thread/119413
+    - ako sklonim constraint, onda nestane
+    - layout guide uopšte ne postoji za master scene; kako dodati?
 
 Zoom-in? ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
     - probao ali je malo messy

@@ -320,7 +320,8 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
                 if self.offerDeleteDownloaded {
                     self.showDeleteDownload()
                 } else {
-                    self.navigationItem.rightBarButtonItem = nil
+                    self.showAppstore()
+                    //self.navigationItem.rightBarButtonItem = nil
                 }
             }
         } else {
@@ -382,9 +383,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
 
     @objc func cancelDownload() {
-        AppDelegate.episodeDownloader.cancelDownload(forEpisode: episodeId)
-        navigationItem.rightBarButtonItem = nil
         postInitDownloadButton(at: .now() + .seconds(3))
+        navigationItem.rightBarButtonItem = nil
+        AppDelegate.episodeDownloader.cancelDownload(forEpisode: episodeId)
     }
 
     @objc func deleteDownload() {
@@ -393,12 +394,12 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
             // TODO: Log.wtf()
             return
         }
+        postInitDownloadButton(at: .now() + .seconds(3))
+        navigationItem.rightBarButtonItem = nil
         EpisodeDownloader.removeDownload(forEpisode: episodeId)
         clearCache(exceptFor: nil)
         downloaded.remove(at: index)
         UserDefaults.standard.set(downloaded, forKey: "downloadedEpisodes")
-        navigationItem.rightBarButtonItem = nil
-        postInitDownloadButton(at: .now() + .seconds(3))
     }
 
     // "square.and.arrow.down" iz "SF Symbols" za download
@@ -406,7 +407,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     // "rectangle.and.pencil.and.ellipsis" ili prosto "square.and.pencil" za Appstore (jer može da se piše autoru ili da se napiše review)
     func showDownload() {
         if #available(iOS 13.0, *) {
-            //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownload))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(startDownloading))
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(startDownloading))
         }
@@ -417,17 +418,38 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     
     func showCancelDownload() {
         if #available(iOS 13.0, *) {
-            //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "x.square"), style: .plain, target: self, action: #selector(cancelDownload))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "x.square"), style: .plain, target: self, action: #selector(cancelDownload))
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Otkaži", style: .plain, target: self, action: #selector(cancelDownload))
         }
     }
 
-    func showDeleteDownload() {
+    func showAppstore() {
         if #available(iOS 13.0, *) {
-            //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(startDownload))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(openAppstore))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Appstore", style: .plain, target: self, action: #selector(openAppstore))
+        }
+    }
+
+    func showDeleteDownload() {
+        if #available(iOS 14.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(deleteDownload))
+        } else if #available(iOS 13.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bin.xmark"), style: .plain, target: self, action: #selector(deleteDownload))
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Obriši", style: .plain, target: self, action: #selector(deleteDownload))
+        }
+    }
+
+    @objc func openAppstore() {
+        guard let url = URL(string: "itms-apps://apple.com/app/id1287427661") else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
         }
     }
 

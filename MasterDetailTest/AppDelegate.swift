@@ -101,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         var visited = DetailViewController.loadStoredArray("visitedEpisodes")
         let downloaded = DetailViewController.downloadedEpisodes()
         let paused = AppDelegate.canceledEpisodes
+        // TODO: dodati i failed, to jest da ne briše prebzo kad download ne uspe
         
         var vnd: [Int] = [] // visited, not downloaded/downloading
         for v in visited {
