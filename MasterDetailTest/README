@@ -8,6 +8,8 @@ View magic/weirdness:
     - Zašto se DetailViewController učitava dvaput?  Na primer u landscape na iPad, viewDidLoad se zove dvaput
     - Ako otvorim novu epizodu bez interneta, prve dve strane spinner stoji, a na ostalima se vrti, pa kad odem malo napred pa se vratim, onda se i na prvim stranama vrti.  Zašto prestane da se vrti prilikom otvaranja novog stripa?
     - nekad je master/detail u topViewController a nekad u visibleViewController
+    - layout guide uopšte ne postoji za master scene; kako dodati?
+    - tableView uporno do vrha/dna, čak i ako uključim Safe Area i minimum na 9.0, i ako probam gomilu drugih stvari; odustajem
 
 Retry kad se slika ne učita iz prvog?
 hiddenAssets za iOS i takođe za Android
@@ -17,19 +19,6 @@ Da koristi numbers[episodeId] umesto episodeId direktno, da bi podržao ubacivan
 Cloud updates:
     - slike bez margina
     - CBR & HR
-
-Ako je navigationBar OK mesto da stavljam još funkcija (jer i inače će ljudi da ga sklone pa se ne vidi stalno), onda:
-    - Ako ima interneta i već je download-ovan, onda dugme da ode na Appstore
-
-Dark mode:
-    - trenutno ne radi, na primer ime stripa nestane kad postavim Dark Mode; ovo ne radi ni kad ugasim pa startujem aplikaciju ponovo
-    - https://developer.apple.com/documentation/uikit/appearance_customization/supporting_dark_mode_in_your_interface
-    - "If you make appearance-sensitive changes outside of these methods, your app may not draw its content correctly for the current environment. The solution is to move your code into these methods."
-    - mada sad ne mogu ni da proverim jer bi mi trebao novi uređaj (što nemam) ili novi emulator (što takođe nemam)
-    - izgleda da može XCode 11; na emulatoru za iOS 13, ime stripa ne nestane ali donji deo je beo
-    - ne radi kao popravka: https://developer.apple.com/forums/thread/119413
-    - ako sklonim constraint, onda nestane
-    - layout guide uopšte ne postoji za master scene; kako dodati?
 
 Zoom-in? ali da ne ugrozi postojeći stretch, jer trenutno se slika razvuče automatski i ne-proporcionalno (scaleToFill)
     - probao ali je malo messy
