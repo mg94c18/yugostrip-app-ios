@@ -443,7 +443,7 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
 
     @objc func openAppstore() {
-        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id1643061216") else {
+        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(Assets.appId)") else {
             return
         }
         if #available(iOS 10.0, *) {

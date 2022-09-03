@@ -58,4 +58,6 @@ class Assets {
         }
         return "jpg"
     }
+    
+    static let appId = 1643061216
 }
