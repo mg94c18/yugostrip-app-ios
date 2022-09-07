@@ -443,7 +443,9 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
 
     @objc func openAppstore() {
-        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(Assets.appId)") else {
+        // Zapravo ne mogu da koristim Appstore
+        //guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(Assets.appId)") else {
+        guard let url = URL(string: "mailto:yckopo@gmail.com") else {
             return
         }
         if #available(iOS 10.0, *) {

@@ -32,3 +32,10 @@ Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na
 Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
 Potencijalno da izbacim viewController cache
 preferredPrimaryColumnWidthFraction? ne radi
+
+Publishing:
+Product/Archive za sve varijante
+Distribute/Ad-Hoc za sve varijante; ne koristim app thinning
+Sačuvam distribution output kao martiMisterija, alanFord, itd.
+for f in $(cat flavors.txt); do scp $f/manifest.plist mg94c18@tesla.rcub.bg.ac.rs:web-docs/$f/$f.plist; scp $f/$f.ipa mg94c18@tesla.rcub.bg.ac.rs:web-docs/$f/$f.ipa; done
+for f in $(cat flavors.txt); for d in 57 512; do /Applications/Inkscape.app/Contents/MacOS/inkscape -o ./Icon$d.png -w $d -h $d /Users/sstevano/Documents/my/src/Workspace/ViewPagerTest/app/src/$f/Icon.svg; scp Icon$d.png mg94c18@tesla.rcub.bg.ac.rs:web-docs/$f/$f-$d.png; done
