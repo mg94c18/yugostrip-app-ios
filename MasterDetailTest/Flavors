@@ -1,8 +1,11 @@
 Dupliram MasterDetailTest target.  App Icon assets se preuzimaju iz MasterDetailTest (možda tu ima neko dupliranje)
 Preimenujem .plist fajl
+Dodam novi App Icon set u Master, startujem update-icons i postavim icons kako već treba za XY
 Promenim Bundle Idenifier i App Icons Source, Display Name na YugoStrip
 Dodam AssetsXY.swift i popunim šta već treba
-Dodam novi App Icon set u Master, startujem update-icons i postavim icons kako već treba za XY
 Dodam novu grupu u project, prebacim AssetsXY.swift i .plist tu (jedan se kopira na disku a drugi ne)
 U Manage Schemes lupim enter i preimenujem
 I to je to, trebalo bi da radi na uređaju i na emulatoru
+
+Za nove flavors, treba pregledati skenirane stranice (tipa par strana na početku i kraju) i pravopisne greške u naslovima
+
