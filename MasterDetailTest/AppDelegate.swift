@@ -62,6 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
     static var inBackground = false
+    static var unseenCrashes = 0
+    static var unseenCrashesKey = "unseenCrashes"
     static var episodeDownloader = EpisodeDownloader()
     static var canceledEpisodes: [Int] = []
 
@@ -72,6 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
         AppDelegate.episodeDownloader.delegate = self
+ 
+        AppDelegate.unseenCrashes = UserDefaults.standard.integer(forKey: AppDelegate.unseenCrashesKey)
+        UserDefaults.standard.set(2, forKey: AppDelegate.unseenCrashesKey)
+
         return true
     }
 
@@ -95,6 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         DispatchQueue.global(qos: .utility).async {
             AppDelegate.cleanupStorage()
         }
+        
+        UserDefaults.standard.set(0, forKey: AppDelegate.unseenCrashesKey)
     }
     
     static func cleanupStorage() {

@@ -425,6 +425,13 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
 
     func showAppstore() {
+        let appstoreCount = UserDefaults.standard.integer(forKey: "appstoreCount")
+        if appstoreCount >= 3 && AppDelegate.unseenCrashes == 0 {
+            return
+        }
+        if AppDelegate.unseenCrashes > 0 {
+           AppDelegate.unseenCrashes -= 1
+        }
         if #available(iOS 13.0, *) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(openAppstore))
         } else {
@@ -443,6 +450,10 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
 
     @objc func openAppstore() {
+        var appstoreCount = UserDefaults.standard.integer(forKey: "appstoreCount")
+        appstoreCount += 1
+        UserDefaults.standard.set(appstoreCount, forKey: "appstoreCount")
+
         // Zapravo ne mogu da koristim Appstore
         //guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(Assets.appId)") else {
         guard let url = URL(string: "mailto:yckopo@gmail.com") else {
