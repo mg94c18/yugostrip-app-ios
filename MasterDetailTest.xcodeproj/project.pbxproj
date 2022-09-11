@@ -53,7 +53,7 @@
 		7C23B8ED21F831C000CABDD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C23B8EF21F831C000CABDD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C2FE71428C9538600E24C1F /* misterNo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = misterNo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C2FE71528C9538600E24C1F /* misterNo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = misterNo.plist; path = /Users/sstevano/Documents/my/src/Workspace/XCode/MasterDetailTest/misterNo.plist; sourceTree = "<absolute>"; };
+		7C2FE71528C9538600E24C1F /* misterNo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = misterNo.plist; sourceTree = SOURCE_ROOT; };
 		7C2FE71728C958C100E24C1F /* AssetsMN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsMN.swift; sourceTree = "<group>"; };
 		7C484A132898B54400C0C126 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		7C9DA5C8288C849F0019D7DD /* OnePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePageController.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		7CB86834288F528A00FB799D /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		7CC1D0C128A22A5E0035107F /* EpisodeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDownloader.swift; sourceTree = "<group>"; };
 		E210F09A28B6DBAD009A0958 /* martiMisterija.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = martiMisterija.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E210F09B28B6DBAD009A0958 /* martiMisterija.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = martiMisterija.plist; path = /Users/korisnik/Documents/MasterDetailTest/martiMisterija.plist; sourceTree = "<absolute>"; };
+		E210F09B28B6DBAD009A0958 /* martiMisterija.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = martiMisterija.plist; sourceTree = SOURCE_ROOT; };
 		E210F09C28B6DCE9009A0958 /* AssetsMM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsMM.swift; sourceTree = "<group>"; };
 		E210F09E28B6E43D009A0958 /* Flavors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Flavors; sourceTree = "<group>"; };
 /* End PBXFileReference section */
