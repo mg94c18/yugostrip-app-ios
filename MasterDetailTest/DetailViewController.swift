@@ -233,6 +233,11 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
 
         let pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
         pages = Assets.pages(forEpisode: Assets.numbers[episodeId])
+        let shouldShowCover = UserDefaults.standard.bool(forKey: "shouldShowCover")
+        if !shouldShowCover {
+            pages.removeFirst()
+        }
+
         pageViewController.dataSource = self
         pageViewController.delegate = self
         

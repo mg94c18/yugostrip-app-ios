@@ -23,23 +23,18 @@ class Assets {
     static func firstPage(forEpisode episode: String) -> Int {
         switch episode {
         case "01": return 4
-        case "02"..."015": return 3
-        case "16": return 1
+        case "02"..."15": return 3
+        case "16": return 2
         case "17": return 3
-        case "18"..."20": return 1
+        case "18"..."20": return 2
         default: return 0
         }
     }
 
     static func pages(forEpisode episode: String) -> [String] {
-        let raw = rawPages(forEpisode: episode)
-        return Array(raw[firstPage(forEpisode: episode)...])
-    }
-
-    static func rawPages(forEpisode episode: String) -> [String] {
         let commonExtension = commonPageExtension(forEpisode: episode)
         return ["https://yugostripdruzinaodvjesala.fra1.digitaloceanspaces.com/\(episode)/\(episode)_000.\(coverPageExtension(forEpisode: episode))"]
-        + (1..<pageCount[episode]!).map{"https://yugostripdruzinaodvjesala.fra1.digitaloceanspaces.com/\(episode)/\(episode)_\(String(format: "%03d", $0)).\(commonExtension)"}
+        + (firstPage(forEpisode: episode)..<pageCount[episode]!).map{"https://yugostripdruzinaodvjesala.fra1.digitaloceanspaces.com/\(episode)/\(episode)_\(String(format: "%03d", $0)).\(commonExtension)"}
     }
     
     static var averageEpisodeSizeMB = 67

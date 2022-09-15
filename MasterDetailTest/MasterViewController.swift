@@ -29,6 +29,14 @@ class MasterViewController: UITableViewController {
                 episodeMatches.removeAll()
                 return
             }
+            if searchText == "strana1" {
+                UserDefaults.standard.set(true, forKey: "shouldShowCover")
+                DispatchQueue.main.async {
+                    self.searchBar.text = ""
+                }
+                searchText = ""
+                return
+            }
             findEpisodeMatches()
         }
     }

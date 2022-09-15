@@ -28,14 +28,9 @@ class Assets {
     }
 
     static func pages(forEpisode episode: String) -> [String] {
-        let raw = rawPages(forEpisode: episode)
-        return Array(raw[firstPage(forEpisode: episode)...])
-    }
-
-    static func rawPages(forEpisode episode: String) -> [String] {
         let commonExtension = commonPageExtension(forEpisode: episode)
         return ["https://yugostripalanford.fra1.digitaloceanspaces.com/\(episode)/\(episode)_000.\(coverPageExtension(forEpisode: episode))"]
-        + (1..<pageCount[episode]!).map{"https://yugostripalanford.fra1.digitaloceanspaces.com/\(episode)/\(episode)_\(String(format: "%03d", $0)).\(commonExtension)"}
+        + (firstPage(forEpisode: episode)..<pageCount[episode]!).map{"https://yugostripalanford.fra1.digitaloceanspaces.com/\(episode)/\(episode)_\(String(format: "%03d", $0)).\(commonExtension)"}
     }
     
     static var averageEpisodeSizeMB = 67
