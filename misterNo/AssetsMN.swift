@@ -40,4 +40,6 @@ class Assets {
     static func commonPageExtension(forEpisode: String) -> String {
         return "jpg"
     }
+    
+    static let appId = 1234
 }

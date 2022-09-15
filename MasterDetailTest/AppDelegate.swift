@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         AppDelegate.episodeDownloader.delegate = self
  
         AppDelegate.unseenCrashes = UserDefaults.standard.integer(forKey: AppDelegate.unseenCrashesKey)
-        UserDefaults.standard.set(2, forKey: AppDelegate.unseenCrashesKey)
+        UserDefaults.standard.set(3, forKey: AppDelegate.unseenCrashesKey)
 
         return true
     }

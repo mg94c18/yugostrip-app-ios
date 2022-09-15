@@ -459,15 +459,19 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
         appstoreCount += 1
         UserDefaults.standard.set(appstoreCount, forKey: "appstoreCount")
 
-        // Zapravo ne mogu da koristim Appstore
-        //guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(Assets.appId)") else {
-        guard let url = URL(string: "mailto:yckopo@gmail.com") else {
-            return
-        }
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url)
+        let url: URL?
+        if AppDelegate.unseenCrashes > 0 {
+            url = URL(string: "mailto:yckopo@gmail.com")
         } else {
-            UIApplication.shared.openURL(url)
+            url = URL(string: "itms-apps://itunes.apple.com/app/id\(Assets.appId)")
+        }
+
+        if let url = url {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
         }
     }
 
