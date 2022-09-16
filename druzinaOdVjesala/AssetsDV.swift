@@ -47,5 +47,5 @@ class Assets {
         return "jpg"
     }
     
-    static let appId = 1234
+    static let appId = 1645465825
 }
