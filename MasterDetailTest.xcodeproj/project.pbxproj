@@ -113,7 +113,7 @@
 				7CCDDDBC28D1547E00277E38 /* druzinaOdVjesala */,
 				7C2FE71628C955A200E24C1F /* misterNo */,
 				E210F0A028B6E47A009A0958 /* martiMisterija */,
-				7C23B8E021F831C000CABDD6 /* MasterDetailTest */,
+				7C23B8E021F831C000CABDD6 /* alanFord */,
 				7C23B8DF21F831C000CABDD6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,7 +129,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7C23B8E021F831C000CABDD6 /* MasterDetailTest */ = {
+		7C23B8E021F831C000CABDD6 /* alanFord */ = {
 			isa = PBXGroup;
 			children = (
 				7CCDDDA728D1152500277E38 /* README */,
@@ -146,7 +146,7 @@
 				7CC1D0C128A22A5E0035107F /* EpisodeDownloader.swift */,
 				7C9DCF4C28A4BAEA00EC6F9D /* ImageDownloader.swift */,
 			);
-			path = MasterDetailTest;
+			path = alanFord;
 			sourceTree = "<group>";
 		};
 		7C2FE71628C955A200E24C1F /* misterNo */ = {

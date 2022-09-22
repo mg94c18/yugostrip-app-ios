@@ -1,3 +1,7 @@
+Dvostrano, ugas, okret, upal -> dvostrano uspravno !@#$
+
+Nekad se izgubi sidebar pozicija, pa ne znam koji je sledeći strip.  Možda da broj stripa bude sa imenom?
+
 Imao crash u downloader-u, tasks[episode]! ja naišao na nil
     - verovatno kad nije bilo interneta
     - potencijalno async tasks treba da imaju weak pointer
@@ -30,7 +34,7 @@ Zvuk za okretanje strana (jedan zvuk za početak, drugi za kraj)?  Mada onda mi 
 Na emulatoru se Safari "javi" kad ugasim aplikaciju: zašto?
 Debug-ovanje na iPad-u bi pomoglo
 Download unapred: ako su svi viewControllers zadovoljeni a korisnik i dalje čita, prosto download-ovati sledeće strane unapred i sačuvati na disk
-Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno)
+Kada je dvostrano čitanje, može da ima nešto zanimljivije od prazne strane na kraju (ako je neparno) možda da ide na sledeći?
 Upozorenje za UITableViewAlertForLayoutOutsideViewHierarchy?  Javlja se i bez da učitavam strip automatski
 Potencijalno da izbacim viewController cache
 preferredPrimaryColumnWidthFraction? ne radi
