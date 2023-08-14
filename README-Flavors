@@ -9,3 +9,19 @@ I to je to, trebalo bi da radi na uređaju i na emulatoru
 
 Za nove flavors, treba pregledati skenirane stranice (tipa par strana na početku i kraju) i pravopisne greške u naslovima
 
+Za update-ovanje html strane:
+Na primer misterNo ide od 001 do 379:
+seq -f "%03g" 1 379 > seq
+cat app/src/misterNo/assets/numbers  | gunzip > brojevi
+diff brojevi seq | grep \> | sed -e 's/> //' | tr '\n' ','
+59 brojeva fali; brojevi ima 321 broja, a ukupno ima 379; hm...
+diff brojevi seq | grep \< pokazuje da 019 se javlja na oba mesta; zbog toga kako radi diff
+Dakle misterNo fali 002,003,016,019,032,041,044,045,052,054,064,071,075,083,090,104,111,122,126,135,142,151,160,166,173,176,180,184,190,196,199,201,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,282,283,284,285,286,287,288,289,290,291,362,363
+Skinem prvih i poslednjih 5 strana od svakog broja za proveru:
+for b in $(cat brojevi); do s3cmd ls s3://yugostripmisterno/$b/ | head -n 5 | grep yugostrip | awk '{print $4}' | xargs -n 1 s3cmd get; s3cmd ls s3://yugostripmisterno/$b/ | tail -n 5 | grep yugostrip | awk '{print $4}' | xargs -n 1 s3cmd get; done
+Ručno proverim strane, stavim sufiks x ako strana nije dobra (brisanje nije dobro jer onda poremeti raspored)
+for p in $(ls *.jpg | grep x.jpg | tr -d 'x'); do export b=$(echo $p | sed -e 's/_.*//'); s3cmd put blank.jpg s3://yugostripmisterno/$b/$p; s3cmd setacl --acl-public s3://yugostripmisterno/$b/$p; done
+sačuvao spisak u ViewPagerTest/blank.MN
+Za stavljanje u Assets.MN, zgodno je da su uklonjene strane na početku ili na kraju, ne u sredini.
+Jedina situacija koja nije na početku ili kraju je 353, gde su 353_001, 353_002, 353_003 su OK, 353_004 treba izbaciti, a ostali su OK.
+Za ovo, iskopiram 353_003 na 353_004, 353_002 na 353_003, 353_001 na 353_002, a stavim blank.jpg na 353_001.  U sledećoj verziji preskočim 001.
