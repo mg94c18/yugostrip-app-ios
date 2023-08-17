@@ -51,6 +51,10 @@ class Assets {
         + (firstPage(forEpisode: episode)..<nposPage[episode]!).map{"https://yugostripmisterno.fra1.digitaloceanspaces.com/\(episode)/\(episode)_\(String(format: "%03d", $0)).\(commonExtension)"}
     }
     
+    static func pages(forEpisode episode: Int) -> [String] {
+        return pages(forEpisode: numbers[episode])
+    }
+
     static var averageEpisodeSizeMB = 54
     
     static func coverPageExtension(forEpisode: String) -> String {

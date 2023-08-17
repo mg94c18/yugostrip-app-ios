@@ -46,6 +46,8 @@ class MasterViewController: UITableViewController {
         ("c", "č"),
         ("z", "ž"),
         ("dj", "đ"),
+        ("č", "ć"),
+        ("ć", "č"),
         ("e", "je"),
         ("e", "ije"),
         ("je", "e"),
@@ -135,7 +137,7 @@ class MasterViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 if searchText.isEmpty {
-                    controller.episodeId = indexPath.row
+                    controller.episodeId = episodeIndex(indexPath)
                 } else {
                     controller.episodeId = episodeMatches[indexPath.row]
                 }
@@ -168,15 +170,27 @@ class MasterViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if searchText.isEmpty {
+            return Assets.sectionInfo.count
+        } else {
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchText.isEmpty {
-            return Assets.titles.count
+            return Assets.sectionInfo[section].1
         } else {
             return episodeMatches.count
         }
+    }
+    
+    private func episodeIndex(_ indexPath: IndexPath) -> Int {
+        var previousRows: Int = 0
+        for i in 0..<indexPath.section {
+            previousRows += Assets.sectionInfo[i].1
+        }
+        return previousRows + indexPath.row
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -184,7 +198,7 @@ class MasterViewController: UITableViewController {
         
         let episodeId: Int
         if searchText.isEmpty {
-            episodeId = indexPath.row
+            episodeId = episodeIndex(indexPath)
         } else {
             episodeId = episodeMatches[indexPath.row]
         }

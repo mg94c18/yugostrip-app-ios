@@ -97,46 +97,85 @@ class Assets {
     private static let dates_misterNo: [String] = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
     private static let nposPage_misterNo: [String:Int] = ["001":93,"004":94,"005":93,"006":93,"007":83,"008":95,"009":93,"010":93,"011":95,"012":95,"013":94,"014":95,"015":94,"017":95,"019":93,"018":93,"020":91,"021":95,"022":81,"023":94,"024":90,"025":90,"026":81,"027":95,"028":95,"029":85,"030":65,"031":63,"033":45,"034":95,"035":95,"036":89,"037":68,"038":92,"039":89,"040":92,"042":48,"043":89,"046":61,"047":94,"048":95,"049":79,"050":87,"051":50,"053":46,"055":83,"056":69,"057":95,"058":95,"059":91,"060":95,"061":94,"062":95,"063":93,"065":93,"066":92,"067":59,"068":91,"069":75,"070":91,"072":91,"073":82,"074":46,"076":93,"077":92,"078":90,"079":93,"080":62,"081":93,"082":94,"084":91,"085":92,"086":62,"087":91,"088":89,"089":92,"091":94,"092":97,"093":98,"094":98,"095":98,"096":98,"097":98,"098":100,"099":99,"100":95,"101":95,"102":85,"103":92,"105":88,"106":85,"107":48,"108":93,"109":94,"110":92,"112":75,"113":91,"114":92,"115":92,"116":43,"117":97,"118":97,"119":100,"120":90,"121":76,"123":46,"124":95,"125":95,"127":65,"128":94,"129":94,"130":75,"131":91,"132":94,"133":73,"134":90,"136":94,"137":93,"138":93,"139":46,"140":92,"141":93,"143":95,"144":93,"145":93,"146":94,"147":93,"148":65,"149":94,"150":94,"152":92,"153":94,"154":37,"155":94,"156":94,"157":94,"158":94,"159":42,"161":51,"162":94,"163":94,"164":70,"165":94,"167":94,"168":94,"169":79,"170":93,"171":93,"172":81,"174":95,"175":94,"177":94,"178":94,"179":53,"181":94,"182":94,"183":94,"185":94,"186":52,"187":55,"188":94,"189":94,"191":95,"192":94,"193":44,"194":93,"195":94,"197":61,"198":60,"200":112,"202":95,"203":95,"204":95,"205":95,"206":95,"207":95,"208":87,"209":95,"210":95,"211":95,"212":95,"213":95,"214":95,"215":95,"216":95,"217":95,"218":95,"219":95,"220":95,"221":95,"222":95,"223":95,"224":95,"225":95,"226":95,"227":95,"228":95,"229":95,"230":95,"231":95,"232":95,"233":95,"234":95,"235":95,"236":95,"237":95,"238":95,"239":95,"240":95,"241":95,"242":95,"243":95,"244":95,"245":95,"246":95,"247":95,"248":95,"249":95,"250":95,"251":95,"252":95,"253":95,"254":95,"255":95,"256":95,"257":95,"258":95,"259":95,"275":95,"276":95,"277":95,"278":95,"279":95,"280":95,"281":95,"292":95,"293":95,"294":95,"295":95,"296":95,"297":95,"298":95,"299":95,"300":95,"301":95,"302":95,"303":95,"304":95,"305":95,"306":95,"307":95,"308":93,"309":95,"310":95,"311":95,"312":95,"313":95,"314":95,"315":95,"316":95,"317":95,"318":95,"319":95,"320":95,"321":95,"322":95,"323":95,"324":95,"325":95,"326":95,"327":95,"328":95,"329":95,"330":95,"331":95,"332":95,"333":95,"334":95,"335":95,"336":95,"337":95,"338":95,"339":95,"340":96,"341":97,"342":98,"343":96,"345":99,"346":100,"347":99,"348":100,"349":100,"350":100,"351":100,"352":99,"353":99,"354":98,"355":98,"356":99,"357":98,"358":98,"359":99,"360":96,"361":95,"364":95,"365":95,"366":97,"367":97,"368":97,"369":97,"370":97,"371":96,"372":96,"373":100,"374":96,"375":96,"376":96,"377":96,"378":96,"379":96]
  
-    static func firstPage(forEpisode episode: String) -> Int {
-        return 1
+    private static func firstPage(forEpisode episode: Int) -> Int {
+        let index = flavorIndex(forEpisode: episode)
+        if (index.0 == 0) {
+            return 1
+        } else {
+            // TODO: others
+            return 1
+        }
+    }
+    
+    private static func flavorIndex(forEpisode episode: Int) -> (Int, Int) {
+        var index = episode
+        for i in 0..<sectionInfo.count {
+            if index < sectionInfo[i].1 {
+                return (i, index)
+            }
+            index -= sectionInfo[i].1
+        }
+        // TODO: Log.wtf
+        assert(false)
+        return (0, 0)
     }
 
-    static func pages(forEpisode episode: String) -> [String] {
+    static func pages(forEpisode episode: Int) -> [String] {
         let commonExtension = commonPageExtension(forEpisode: episode)
-        return ["https://yugostripalanford.fra1.digitaloceanspaces.com/\(episode)/\(episode)_000.\(coverPageExtension(forEpisode: episode))"]
-        + (firstPage(forEpisode: episode)..<nposPage[episode]!).map{"https://yugostripalanford.fra1.digitaloceanspaces.com/\(episode)/\(episode)_\(String(format: "%03d", $0)).\(commonExtension)"}
+        let index = flavorIndex(forEpisode: episode)
+        let number = numbers[episode]
+        let bucketSuffix = sectionInfo[index.0].2
+        return ["https://yugostrip\(bucketSuffix).fra1.digitaloceanspaces.com/\(index.1)/\(index.1)_000.\(coverPageExtension(forEpisode: episode))"]
+        + (firstPage(forEpisode: episode)..<nposPage[index.0][numbers[episode]]!).map{"https://yugostrip\(bucketSuffix).fra1.digitaloceanspaces.com/\(number)/\(number)_\(String(format: "%03d", $0)).\(commonExtension)"}
     }
     
     static var averageEpisodeSizeMB = 67
     
-    static func coverPageExtension(forEpisode: String) -> String {
-        if forEpisode.count != 2 {
+    private static func coverPageExtension(forEpisode: Int) -> String {
+        let flavorIndex = flavorIndex(forEpisode: forEpisode)
+        if flavorIndex.0 == 0 {
+            switch forEpisode {
+            case 52...60: return "png"
+            default: return "jpg"
+            }
+        } else {
+            // TODO: others
             return "jpg"
-        }
-        switch forEpisode {
-        case "52"..."60": return "png"
-        default: return "jpg"
         }
     }
 
-    static func commonPageExtension(forEpisode: String) -> String {
-        if forEpisode.count == 2 {
+    private static func commonPageExtension(forEpisode: Int) -> String {
+        let flavorIndex = flavorIndex(forEpisode: forEpisode)
+        if flavorIndex.0 == 0 {
             switch forEpisode {
-            case "26"..."60": return "png"
-            case "97"..."99": return "png"
+            case 26...60: return "png"
+            case 97...100: return "png"
+            case 469...472: return "png"
             default: return "jpg"
             }
+        } else {
+            // TODO: add others
+            return "jpg"
         }
-        else if forEpisode.count == 3 {
-            switch forEpisode {
-            case "100": return "png"
-            case "469"..."472": return "png"
-            default: return "jpg"
-            }
-        }
-        return "jpg"
     }
-    
+
+    static let sectionInfo: [(String, Int, String)] = [
+        ("", titles_alanFord.count, "alanford"),
+        ("MN_", titles_misterNo.count, "misterno"),
+        ("Z_", titles_zagor.count, "zagor"),
+        ("B_", titles_blek.count, "blek"),
+        ("DD_", titles_dylanDog.count, "dylandog"),
+        ("TW_", titles_texWiller.count, "texwiller"),
+        ("NN_", titles_nathanNever.count, "nathannever"),
+        ("KM_", titles_komandantMark.count, "komandantmark"),
+        ("N_", titles_ninja.count, "ninja"),
+        ("s82_", titles_strip82.count, "strip82"),
+        ("TT_", titles_talicniTom.count, "talicnitom"),
+        ("aO_", titles_asterix.count, "asterix"),
+        ("OS_", titles_otkriceSveta.count, "otkricesveta"),
+        ("DV_", titles_druzinaOdVjesala.count, "druzinaodvjesala"),
+    ]
+
     static let titles: [String] =
         titles_alanFord +
         titles_misterNo +
@@ -184,6 +223,22 @@ class Assets {
         dates_asterix +
         dates_otkriceSveta +
         dates_druzinaOdVjesala
+
+    private static let nposPage: [[String:Int]] = [
+        nposPage_alanFord,
+        nposPage_misterNo,
+        nposPage_zagor,
+        nposPage_blek,
+        nposPage_dylanDog,
+        nposPage_texWiller,
+        nposPage_nathanNever,
+        nposPage_komandantMark,
+        nposPage_ninja,
+        nposPage_strip82,
+        nposPage_talicniTom,
+        nposPage_asterix,
+        nposPage_otkriceSveta,
+        nposPage_druzinaOdVjesala]
 
     static let appId = 1643426345
 }

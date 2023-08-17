@@ -124,7 +124,7 @@ class EpisodeDownloader {
             }
         }
         UIApplication.shared.isIdleTimerDisabled = true
-        let pages = Assets.pages(forEpisode: Assets.numbers[episode])
+        let pages = Assets.pages(forEpisode: episode)
         guard let cacheDir = EpisodeDownloader.getOrCreateDownloadDir(episode: episode) else {
             return false
         }
@@ -202,7 +202,7 @@ class EpisodeDownloader {
     }
     
     static func removeDownload(forEpisode episode: Int) {
-        let pages = Assets.pages(forEpisode: Assets.numbers[episode])
+        let pages = Assets.pages(forEpisode: episode)
         guard let cacheDir = EpisodeDownloader.getOrCreateDownloadDir(episode: episode) else {
             return
         }
