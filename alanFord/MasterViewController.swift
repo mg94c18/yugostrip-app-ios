@@ -99,10 +99,10 @@ class MasterViewController: UITableViewController {
         if DetailViewController.lastLoadedEpisode == -1 {
             let episodeId = UserDefaults.standard.integer(forKey: "lastEpisodeId")
             initialPageIndex = UserDefaults.standard.integer(forKey: "lastPageIndex")
-            tableView.selectRow(at: IndexPath(indexes: [0, episodeId]), animated: false, scrollPosition: .middle)
+            tableView.selectRow(at: Assets.indexPath(forEpisode: episodeId), animated: false, scrollPosition: .middle)
             performSegue(withIdentifier: "showDetail", sender: navigationController)
         } else {
-            tableView.selectRow(at: IndexPath(indexes: [0, DetailViewController.lastLoadedEpisode]), animated: false, scrollPosition: .middle)
+            tableView.selectRow(at: Assets.indexPath(forEpisode: DetailViewController.lastLoadedEpisode), animated: false, scrollPosition: .middle)
             if let split = splitViewController {
                 split.toggleMasterView()
             }
@@ -204,7 +204,7 @@ class MasterViewController: UITableViewController {
         }
         // string->int->string ne radi jer neke epizode imaju a/b sufiks
         // valjda neće svaki put da kreira taj regex, a ako to uradi, valjda je dovoljno brzo jer su brojevi mali
-        let number = Assets.numbers[episodeId].replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+        let number = Assets.numbers[episodeId] == "000" ? "0" : Assets.numbers[episodeId].replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
         var title = "\(number). \(Assets.titles[episodeId])"
         let progress = AppDelegate.episodeDownloader.progress(forEpisode: episodeId)
         if progress != -1 {
@@ -236,11 +236,11 @@ extension MasterViewController: UISearchBarDelegate {
         }
         let selectedId = DetailViewController.lastLoadedEpisode
         if searchText == "" {
-            tableView.selectRow(at: IndexPath(indexes: [0, selectedId]), animated: true, scrollPosition: position)
+            tableView.selectRow(at: Assets.indexPath(forEpisode: selectedId), animated: true, scrollPosition: position)
         } else {
             for i in 0..<episodeMatches.count {
                 if episodeMatches[i] == selectedId {
-                    tableView.selectRow(at: IndexPath(indexes: [0, i]), animated: true, scrollPosition: position)
+                    tableView.selectRow(at: Assets.indexPath(forEpisode: i), animated: true, scrollPosition: position)
                 }
             }
         }

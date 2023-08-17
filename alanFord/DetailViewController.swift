@@ -515,4 +515,3 @@ class DetailViewController: UIViewController, UIPageViewControllerDataSource, UI
     }
 
 }
-

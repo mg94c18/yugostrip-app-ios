@@ -106,7 +106,12 @@ class Assets {
             return 1
         }
     }
-    
+
+    static func indexPath(forEpisode episode: Int) -> IndexPath {
+        let index = flavorIndex(forEpisode: episode)
+        return IndexPath(indexes: [index.0, index.1])
+    }
+
     private static func flavorIndex(forEpisode episode: Int) -> (Int, Int) {
         var index = episode
         for i in 0..<sectionInfo.count {
@@ -125,7 +130,7 @@ class Assets {
         let index = flavorIndex(forEpisode: episode)
         let number = numbers[episode]
         let bucketSuffix = sectionInfo[index.0].2
-        return ["https://yugostrip\(bucketSuffix).fra1.digitaloceanspaces.com/\(index.1)/\(index.1)_000.\(coverPageExtension(forEpisode: episode))"]
+        return ["https://yugostrip\(bucketSuffix).fra1.digitaloceanspaces.com/\(number)/\(number)_000.\(coverPageExtension(forEpisode: episode))"]
         + (firstPage(forEpisode: episode)..<nposPage[index.0][numbers[episode]]!).map{"https://yugostrip\(bucketSuffix).fra1.digitaloceanspaces.com/\(number)/\(number)_\(String(format: "%03d", $0)).\(commonExtension)"}
     }
     
@@ -161,19 +166,19 @@ class Assets {
 
     static let sectionInfo: [(String, Int, String)] = [
         ("", titles_alanFord.count, "alanford"),
-        ("MN_", titles_misterNo.count, "misterno"),
-        ("Z_", titles_zagor.count, "zagor"),
-        ("B_", titles_blek.count, "blek"),
-        ("DD_", titles_dylanDog.count, "dylandog"),
-        ("TW_", titles_texWiller.count, "texwiller"),
-        ("NN_", titles_nathanNever.count, "nathannever"),
-        ("KM_", titles_komandantMark.count, "komandantmark"),
-        ("N_", titles_ninja.count, "ninja"),
-        ("s82_", titles_strip82.count, "strip82"),
-        ("TT_", titles_talicniTom.count, "talicnitom"),
-        ("aO_", titles_asterix.count, "asterix"),
-        ("OS_", titles_otkriceSveta.count, "otkricesveta"),
-        ("DV_", titles_druzinaOdVjesala.count, "druzinaodvjesala"),
+        ("No", titles_misterNo.count, "misterno"),
+        ("Zg", titles_zagor.count, "zagor"),
+        ("Bl", titles_blek.count, "blek"),
+        ("DD", titles_dylanDog.count, "dylandog"),
+        ("TW", titles_texWiller.count, "texwiller"),
+        ("NN", titles_nathanNever.count, "nathannever"),
+        ("KM", titles_komandantMark.count, "komandantmark"),
+        ("Nj", titles_ninja.count, "ninja"),
+        ("s8", titles_strip82.count, "strip82"),
+        ("TT", titles_talicniTom.count, "talicnitom"),
+        ("aO", titles_asterix.count, "asterix"),
+        ("OS", titles_otkriceSveta.count, "otkricesveta"),
+        ("dv", titles_druzinaOdVjesala.count, "druzinaodvjesala"),
     ]
 
     static let titles: [String] =

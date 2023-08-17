@@ -96,7 +96,8 @@ class EpisodeDownloader {
         guard let cacheDir = EpisodeDownloader.cacheDir else {
             return nil
         }
-        let myDir = cacheDir.appendingPathComponent(Assets.numbers[episode], isDirectory: true)
+        let prefix = Assets.sectionInfo[Assets.indexPath(forEpisode: episode).section].0
+        let myDir = cacheDir.appendingPathComponent(prefix + Assets.numbers[episode], isDirectory: true)
         if !FileManager.default.fileExists(atPath: myDir.path) {
             guard let _ = try? FileManager.default.createDirectory(at: myDir, withIntermediateDirectories: true) else {
                 return nil
