@@ -100,3 +100,6 @@ for f in $(cat flavors | grep -vE "martiMisterija|misterNo|druzinaOdVjesala|alan
 
 Ili pak bez prefiksa a i sa private (možda bez space oko zagrada)
 for f in $(cat flavors | grep -vE "martiMisterija|misterNo|druzinaOdVjesala|alanFord"); do echo // =====$f===== ; echo -n "private static let numbers_$f: [String] = ["; cat fale/new/numbers.$f | sed -r 's/$/"/' | sed -r 's/^/"/' | tr -d '\r' | tr '\n' ','; echo "]"; echo -n "private static let titles_$f: [String] = ["; cat fale/new/titles.$f | tr '"' "'" | sed -r 's/$/"/' | sed -r 's/^/"/' | tr -d '\r' | tr '\n' ','; echo "]"; echo -n "private static let dates_$f: [String] = ["; cat fale/new/dates.$f| sed -r 's/$/"/' | sed -r 's/^/"/' | tr -d '\r' | tr '\n' ','; echo "]"; echo -n "static let nposPage_$f: [String:Int] = [ "; for a in $(cat fale/new/numbers.$f); do echo -n \"${a}\":; cat app/src/$f/assets/$a | gunzip - | wc -l; done | tr '\n' ','; echo "]"; done
+
+Update-ujem na S3 sve reklamne strane, koristeći first_last folder:
+for e in jpg png; do for f in $(ls); do echo $f; cd $f; export b=$(echo $f | tr '[:upper:]' '[:lower:]'); for p in $(find . -name \*.$e | sed -e 's|.*/||' | grep x\. | tr -d 'x'); do export n=$(echo $p | sed -e 's/_.*//'); s3cmd put ~/blank.$e s3://yugostrip${b}/$n/$p; s3cmd setacl --acl-public s3://yugostrip${b}/$n/$p; done; cd -; done; done

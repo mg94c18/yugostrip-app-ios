@@ -24,7 +24,7 @@ class Assets {
     private static let nposPage_alanFord: [String:Int] = ["1":121,"2":121,"3":121,"4":121,"5":121,"6":121,"7":121,"8":121,"9":121,"10":121,"11":121,"12":121,"13":121,"14":121,"15":121,"16":121,"17":121,"18":121,"19":121,"20":121,"21":121,"22":121,"23":121,"24":121,"25":121,"26":121,"27":121,"28":121,"29":121,"30":121,"31":121,"32":121,"33":121,"34":121,"35":121,"36":121,"37":121,"38":121,"39":121,"40":121,"41":121,"42":121,"43":121,"44":121,"45":121,"46":121,"47":121,"48":121,"49":121,"50":121,"51":121,"52":121,"53":121,"54":121,"55":121,"56":121,"57":121,"58":121,"59":121,"60":121,"61":121,"62":121,"63":121,"64":121,"65":121,"66":120,"67":121,"68":121,"69":121,"70":121,"71":121,"72":121,"73":121,"74":121,"75":121,"76":121,"77":121,"78":121,"79":121,"80":121,"81":121,"82":121,"83":121,"84":121,"85":121,"86":121,"87":121,"88":121,"89":121,"90":121,"91":121,"92":121,"93":121,"94":121,"95":121,"96":121,"97":121,"98":121,"99":121,"100":121,"101":121,"102":121,"103":121,"104":121,"105":121,"106":121,"107":121,"108":121,"109":121,"110":121,"111":121,"112":121,"113":121,"114":121,"115":121,"116":121,"117":121,"118":121,"119":121,"120":121,"121":121,"122":121,"123":121,"124":121,"125":121,"126":121,"127":121,"128":121,"129":121,"130":121,"131":121,"132":121,"133":121,"134":121,"135":121,"136":121,"137":121,"138":121,"139":121,"140":121,"141":121,"142":121,"143":121,"144":121,"145":121,"146":121,"147":121,"148":121,"149":121,"150":117,"151":121,"152":121,"153":121,"154":121,"155":121,"156":121,"157":121,"158":121,"159":121,"160":121,"161":121,"162":121,"163":121,"164":121,"165":121,"166":121,"167":121,"168":121,"169":121,"170":121,"171":121,"172":121,"173":121,"174":121,"175":121,"176":121,"177":121,"178":121,"179":121,"180":121,"181":121,"182":121,"183":121,"184":121,"185":121,"186":121,"187":121,"188":121,"189":121,"190":121,"191":121,"192":121,"193":121,"194":121,"195":121,"196":121,"197":121,"198":121,"199":121,"200":123,"201":121,"202":121,"203":121,"204":121,"205":121,"206":121,"207":121,"208":121,"209":121,"210":121,"211":121,"212":121,"213":121,"214":121,"215":121,"216":121,"217":121,"218":121,"219":121,"220":121,"221":121,"222":121,"223":121,"224":121,"225":121,"226":121,"227":121,"228":121,"229":121,"230":121,"231":121,"232":121,"233":121,"234":121,"235":121,"236":121,"237":121,"238":121,"239":121,"240":121,"241":121,"242":121,"243":121,"244":121,"245":121,"246":121,"247":121,"248":121,"249":121,"250":125,"251":121,"252":121,"253":121,"254":121,"255":121,"256":121,"257":121,"258":121,"259":121,"260":121,"261":121,"262":121,"263":121,"264":121,"265":121,"266":121,"267":121,"268":121,"269":121,"270":121,"271":121,"272":121,"273":121,"274":121,"275":121,"276":121,"277":121,"278":121,"279":121,"280":121,"281":121,"282":121,"283":121,"284":121,"285":121,"286":121,"287":121,"288":121,"289":121,"290":121,"291":121,"292":121,"293":121,"294":121,"295":121,"296":121,"297":121,"298":121,"299":121,"300":121,"301":121,"302":121,"303":121,"304":121,"305":121,"306":121,"307":121,"308":121,"309":121,"310":121,"311":121,"312":121,"313":121,"314":121,"315":121,"316":121,"317":121,"318":121,"319":121,"320":121,"321":121,"322":121,"323":121,"324":121,"325":121,"326":121,"327":121,"328":121,"329":121,"330":121,"331":121,"332":121,"333":121,"334":121,"335":121,"336":121,"337":121,"338":121,"339":121,"340":121,"341":121,"342":121,"343":121,"344":121,"345":121,"346":121,"347":121,"348":121,"349":121,"350":121,"351":121,"352":121,"353":121,"354":121,"355":121,"356":121,"357":121,"358":121,"359":121,"360":121,"361":121,"362a":121,"362b":121,"363":121,"364":121,"365":121,"366":121,"367":121,"368":120,"369":121,"370":121,"371":121,"372":121,"373a":121,"373b":121,"374a":121,"374b":121,"375":121,"376":121,"377":121,"378":121,"379":121,"380":121,"381":121,"382":121,"383":121,"384":121,"385":121,"386a":121,"386b":121,"387a":121,"387b":121,"388":121,"389":121,"390":121,"391":121,"392":121,"393":121,"394":121,"395":121,"396":121,"397":121,"398":121,"399":121,"400":121,"401":121,"402":121,"403":121,"404":121,"405":121,"406":121,"407":121,"408":121,"409":121,"410":121,"411":121,"412":121,"413":121,"414":121,"415":121,"416":121,"417":121,"418":121,"419":121,"420":121,"421":121,"422":121,"423":121,"424":121,"425":121,"426":121,"427":121,"428":121,"429":121,"430":121,"431":121,"432":121,"433":121,"434":121,"435":121,"436":121,"437":121,"438":121,"439":123,"440":121,"441":121,"442":121,"443":121,"444":121,"445":121,"446":121,"447":121,"448":121,"449":121,"450":121,"451":126,"452":121,"453":121,"454":121,"455":121,"456":121,"457":121,"458":121,"459":121,"460":121,"461":121,"462":121,"463":121,"464":121,"465":121,"466":121,"467":121,"468":121,"469":121,"470":121,"471":121,"472":121,"473":121,"474":121,"475":121,"476":121,"477":123,"478":121,"479":121,"480":121,"481":121,"482":125,"483":121,"484":121,"485":127,"486":121,"487":121,"488":121,"489":121,"490":121,"491":121,"492":121,"493":121,"494":121,"495":121,"496":121,"497":121,"498":121,"499":121,"500":255,"501":121,"502":121,"503":121,"504":121,"505":121,"506":123,"507":121,"508":121,"509":121,"510":128,"511":121,"512":121,"513":121,"514":121,"515":121,"516":121,"517":48,"518a":59,"518b":50,"519":121,"520":121,"521":121,"522":121,"523":121,"524":121,"525":121,"526":121,"527":121,"528":121,"529":121,"530":121,"S01":17,"S02":121,"S03":121,"S04":116,"S05":121,"S06":121,"S07":121,"S08":121,"S09":121,"S10":121,"S11":121,"S12":122,"S13":122,"S14":122,"S15":122]
     
     // cat app/src/alanFord/assets/numbers | gunzip - | sed -r 's/$/"/' | sed -r 's/^/"/' | tr -d '\r' | tr '\n' ','
-    static let numbers_druzinaOdVjesala: [String] = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20"]
+    private static let numbers_druzinaOdVjesala: [String] = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20"]
 
     // cat app/src/alanFord/assets/titles | gunzip - | tr '"' "'" | sed -r 's/$/"/' | sed -r 's/^/"/' | tr -d '\r' | tr '\n' ','
     private static let titles_druzinaOdVjesala: [String] = ["Obješenjaci","Kastelan Kobac","Otmica Analize","Kraljevstvo od Ljepovida","Turnir turnira","Povratak Leoparda","Sedmorica mudroglavih","Morska mačka","Crnorižac","Emir od Suharka","Kraljevski slastičar","Prokleta plovidba","Robovi Punisa","Leteći sag","Doktor Nadir","Ruža nesloge","Sijamski duhovi","Plamena ljepotica","Početak kraja","Završni račun"]
@@ -56,7 +56,7 @@ class Assets {
     private static let nposPage_nathanNever: [String:Int] = [ "000":16,"001":95,"002":95,"003":95,"004":95,"005":95,"006":95,"007":95,"008":95,"009":95,"010":95,"011":93,"012":95,"013":103,"014":95,"015":95,"016":95,"017":95,"018":95,"019":95,"020":95,"021":96,"022":95,"023":95,"024":95,"025":95,"026":103,"027":95,"028":95,"029":95,"030":95,"032":95,"033":95,"034":95,"035":95,"036":95,"037":95,"038":103,"039":95,"040":95,"041":95,"042":95,"043":111,"044":95,"045":95,"046":95,"047":94,"048":95,"049":95,"050":135,"051":94,"052":95,"053":95,"054":95,"055":95,"056":95,"057":95,"058":95,"059":95,"060":95,"061":95,"062":95,"063":103,"064":95,"065":95,"066":95,"067":95,"068":95,"069":95,"070":95,"071":96,"072":100,"073":95,"074":103,"075":96,"076":95,"077":95,"078":95,"079":95,"080":95,"081":95,"082":95,"083":95,"084":95,"085":95,"086":103,"087":95,"088":95,"089":95,"090":95,"091":95,"092":95,"093":95,"094":95,"095":96,"096":96,"097":96,"098":97,"099":96,"100":95,"101":95,"102":95,"103":95,"104":95,"105":95,"106":95,"107":95,"108":95,"109":95,"110":95,"111":95,"112":95,"113":95,"114":95,"116":96,"117":95,"118":95,"119":96,"120":95,"121":95,"122":96,"123":95,"124":95,"125":96,"126":95,"127":95,"128":95,"129":95,"130":95,"131":95,"132":96,"133":96,"134":96,"135":97,"136":97,"137":97,"138":96,"139":96,"140":96,"141":98,"142":98,"143":98,"144":100,"145":100,"146":100,"147":100,"148":100,"149":100,"150":100,"151":100,"152":100,"153":99,"154":99,"155":99,"156":99,"157":99,"158":99,"159":99,"160":99,"161":99,"162":99,"163":99,"164":99,]
     // =====komandantMark=====
     private static let numbers_komandantMark: [String] = ["001","002","003","004","005","006","007","008","009","010","011","012","013","014","015","016","017","018","019","020","021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","038","039","041","042","043","044","045","046","047","048","049","050","051","052","053","054","055","056","057","058","059","060","061","062","063","064","065","066","067","068","069","070","071","072","073","074","075","076","077","078","079","080","081","082","083","084","085","086","087","088","089","090","091","092","093","094","095","096","097","098","099","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281",]
-    private static let titles_komandantMark: [String] = ["Komandant Mark","Vukovi sa Ontarija","Zaliv gromova","Blago mrtvog gusara","Klopka na brodu","Herojska predstraža","Dragoceni tovar","Streljanje u zoru","Vobak napada","Otmica Žalosne Sove","Izazov smrti","Neko je izdajnik","Plamena grobnica","Tajanstvena senka","Avetinjski brod","Čovek bez lica","Spas u reci","Most iznenađenja","Dvaput mrtav","Nestanak svetog štita","Crni lav","Pobedonosni marš","Prijatelj otrovnica","Zloglasni general","Nečista savest","Fakir Sudraka","Opsednuti grad","Prošlost optužuje","Lovac na glave","Napušteni logor","Veliki medved","Tigar sa Martinika","Zmija u nedrima","Dvojica skalpiranih","Dželati ne kasne","Glenov testament","Kožni nos","Izgubljena opklada","Skriveni maglom","Mrtva usta","Moć, vatrene vode","Agonija u reci","El Kajmanovi lešinari","Ploveća lomača","Krvavi trougao","Blago vikinga","Ostrvo prokletih","Poverljiva poruka","Dug pohlepi","Crna smrt","Nestali konvoj","Tri časa isčekivanja","Novi saveznici","Orao u kavezu","Ratna mašina","Neme puške","Prašak zaborava","Pomorska bitka","Čovek od slame","Pleme crne lisice","Izazov reci","Pesnice od mermera","Gospodar močvare","Homerova bista","Pošteni Džekob","Kurir Veldon","Put osvete","Četiri saučesnika","Dvostruko dno","Radžini ambasadori","Noć iznenađenja","Tajna Fervila","Zaslepljen zlatom","Kočije sa blagom","Četvrta žrtva","Dvoboj u zoru","Dijadema od perja","Podzemni hodnik","Karipski car&nbsp;","Zagonetni sat","Markov dvojnik","Gnev Kajuga","Tajna belih lisica","Zloglasna jama","Očeva sablja","Zaseda na moru","Lažni grob","Mark na lomači ","Naručeni izdajnik","Crna udovica","Smelo bekstvo","U mreži","Zamka na Antilima","Šeikova robinja","Oaza Kirmah","Krilati vesnik","Priča o komandantu Marku","Esmeraldin krik","Taoci","Maskirani profesor","Mark protiv mumije","Moćna Nemeris","Gnev Imotepa","Povratak u Ontario","Sakem plemena","Mark i Spartak","Srebrni tanjir","Čarobna knjiga","Fred kukumavka","Zarobljenicа Konsuela","Astorovo proleće","Vumbuli statua","Vatrena kula","Rodoljub Trevor","Mržnja Montrozovih","Svadbeni ručak","Nasledstvo Kanubah","Neobični lord","Ljudi Urijerla","Biksbi grozni","El Maskarenova tvrđava","Mazga Tilikus","Hijena iz Storka","Brodolomnik","Magija Žalosne Sove","U Kandžama varalice","Robovi močvare","Tajna jednorukog","Avet ponora","Markova šala","Opsada Ontarija","Na ivici smrti","Blago Si-gala","Očajnički korak","Izdaja mrtvaca","Vojnik smrti","Potraga za Blafom","Neumoljivi","Stena strave","Leteći mesec","Podvig Žalosne Sove","U kandžama golijata","Pobuna Urona","Lažni glasnik","Markova zaštitnica","Klopka za Marka","Topovnjača nad Ontarijem","Misteriozna carica","Zlosutni dan","Dragoceni mamac","Hromi gavran","Veliki Meteorus","Atentat na Marka","Brod očajnika","Sinovi Bahmoka","Žalosna Sova u plamenu","Tajni kovčeg","Dvostruko izdajstvo","Kuća strave","Lađa u plamenu","Nepokolebljiva vernost","Gospodar zla","Džin Efraim","Čovek s ožiljkom","Brilijantska naušnica","Zlatni kovčeg","Zlatokosa","Porodica Lafore","Lažni Vukovi","U zamci gusara","Osvetnička braća","Nepoznati razbojnik","Sramna ucena","Hijena Šenki","Kraljičina garda","Gulikoža","Čarobna Suska-jaga","Dobrotvor","Crvenokosa skvo","Tigar među vukovima","Čarobnjak Gundura","Niblosov jedrenjak","Nevina zatočenica","Flokova izdaja","Neznanac s lukom","Mesečarka","Isčezli garnizon","Noć osuđenih","Kanonada","Šifra B.F.","Na život i smrt","Živ u plamenu","Ficrojeva banda","Dolina skeleta","Pljačkaši","Zmija otrovnica","Žeđ","Rat špijuna","Bez milosti","Monstrumi sa reke","Kraljica zmija","Odmetnici","Osveta veštice","Guanaboko","'Biser' Atlantika","Prokleta planina","Markovo venčanje","Kradljivci zlata","Poslednja želja","Senke prošlosti","Osujećena zavera","Kroz dimnu zavesu","Leglo otrovnica","Artemisovo blago","Na zemlji Arikara","Savršeni dvojnik","Koreni Kenebeka","Žeđ za zlatom","Mamac za ubicu","Donovanovi strelci","Ponoćna poseta","Tvrda koža","Šakal Nezbi","Po cenu života","Bunkerova taktika","Tajni pratilac","Omča za nevinog","Jozafatove hijene","Gorka istina","Zavera na Jamajki","Okrutni Kid","Svedok optužbe","Poslednji juriš","Tajanstvena tvrđava","Velika prevara","Mučenje","Kajankasi","Lov na špijune","Otmica","Na silu skvo","Otrov","Trgovac smrću","Bura","Osvetnica","Počasni vrač","Kraftonovi plaćenici","Radžin nakit","Opasnost nad Ontarijem","Pećina Maja","Otkupnina","Šifra 'Crni zrak'","Kći Sunca","Poternica","Izdaja","Ledeni ambis","Dva pukovnika","U vučjem prolazu","Grob Vikinga","Ratovanje na Mohavku","Tajanstveni saveznik","Izgubljeni talisman","Senka vešala","Kobna zaseda","Ratnici crne močvare","Zvezda sa juga","Indijanska princeza","Neraščišćeni računi","Agent Darsi","Okršaj na Barbadosu","Povratak u Itaku","Kralj lopova","Gospodar bitaka","Vojni sud","Besmrtnici","Most na Tuskali","Velika trka","Konačna pobeda",]
+    private static let titles_komandantMark: [String] = ["Komandant Mark","Vukovi sa Ontarija","Zaliv gromova","Blago mrtvog gusara","Klopka na brodu","Herojska predstraža","Dragoceni tovar","Streljanje u zoru","Vobak napada","Otmica Žalosne Sove","Izazov smrti","Neko je izdajnik","Plamena grobnica","Tajanstvena senka","Avetinjski brod","Čovek bez lica","Spas u reci","Most iznenađenja","Dvaput mrtav","Nestanak svetog štita","Crni lav","Pobedonosni marš","Prijatelj otrovnica","Zloglasni general","Nečista savest","Fakir Sudraka","Opsednuti grad","Prošlost optužuje","Lovac na glave","Napušteni logor","Veliki medved","Tigar sa Martinika","Zmija u nedrima","Dvojica skalpiranih","Dželati ne kasne","Glenov testament","Kožni nos","Izgubljena opklada","Skriveni maglom","Mrtva usta","Moć, vatrene vode","Agonija u reci","El Kajmanovi lešinari","Ploveća lomača","Krvavi trougao","Blago vikinga","Ostrvo prokletih","Poverljiva poruka","Dug pohlepi","Crna smrt","Nestali konvoj","Tri časa isčekivanja","Novi saveznici","Orao u kavezu","Ratna mašina","Neme puške","Prašak zaborava","Pomorska bitka","Čovek od slame","Pleme crne lisice","Izazov reci","Pesnice od mermera","Gospodar močvare","Homerova bista","Pošteni Džekob","Kurir Veldon","Put osvete","Četiri saučesnika","Dvostruko dno","Radžini ambasadori","Noć iznenađenja","Tajna Fervila","Zaslepljen zlatom","Kočije sa blagom","Četvrta žrtva","Dvoboj u zoru","Dijadema od perja","Podzemni hodnik","Karipski car","Zagonetni sat","Markov dvojnik","Gnev Kajuga","Tajna belih lisica","Zloglasna jama","Očeva sablja","Zaseda na moru","Lažni grob","Mark na lomači ","Naručeni izdajnik","Crna udovica","Smelo bekstvo","U mreži","Zamka na Antilima","Šeikova robinja","Oaza Kirmah","Krilati vesnik","Priča o komandantu Marku","Esmeraldin krik","Taoci","Maskirani profesor","Mark protiv mumije","Moćna Nemeris","Gnev Imotepa","Povratak u Ontario","Sakem plemena","Mark i Spartak","Srebrni tanjir","Čarobna knjiga","Fred kukumavka","Zarobljenicа Konsuela","Astorovo proleće","Vumbuli statua","Vatrena kula","Rodoljub Trevor","Mržnja Montrozovih","Svadbeni ručak","Nasledstvo Kanubah","Neobični lord","Ljudi Urijerla","Biksbi grozni","El Maskarenova tvrđava","Mazga Tilikus","Hijena iz Storka","Brodolomnik","Magija Žalosne Sove","U Kandžama varalice","Robovi močvare","Tajna jednorukog","Avet ponora","Markova šala","Opsada Ontarija","Na ivici smrti","Blago Si-gala","Očajnički korak","Izdaja mrtvaca","Vojnik smrti","Potraga za Blafom","Neumoljivi","Stena strave","Leteći mesec","Podvig Žalosne Sove","U kandžama golijata","Pobuna Urona","Lažni glasnik","Markova zaštitnica","Klopka za Marka","Topovnjača nad Ontarijem","Misteriozna carica","Zlosutni dan","Dragoceni mamac","Hromi gavran","Veliki Meteorus","Atentat na Marka","Brod očajnika","Sinovi Bahmoka","Žalosna Sova u plamenu","Tajni kovčeg","Dvostruko izdajstvo","Kuća strave","Lađa u plamenu","Nepokolebljiva vernost","Gospodar zla","Džin Efraim","Čovek s ožiljkom","Brilijantska naušnica","Zlatni kovčeg","Zlatokosa","Porodica Lafore","Lažni Vukovi","U zamci gusara","Osvetnička braća","Nepoznati razbojnik","Sramna ucena","Hijena Šenki","Kraljičina garda","Gulikoža","Čarobna Suska-jaga","Dobrotvor","Crvenokosa skvo","Tigar među vukovima","Čarobnjak Gundura","Niblosov jedrenjak","Nevina zatočenica","Flokova izdaja","Neznanac s lukom","Mesečarka","Isčezli garnizon","Noć osuđenih","Kanonada","Šifra B.F.","Na život i smrt","Živ u plamenu","Ficrojeva banda","Dolina skeleta","Pljačkaši","Zmija otrovnica","Žeđ","Rat špijuna","Bez milosti","Monstrumi sa reke","Kraljica zmija","Odmetnici","Osveta veštice","Guanaboko","'Biser' Atlantika","Prokleta planina","Markovo venčanje","Kradljivci zlata","Poslednja želja","Senke prošlosti","Osujećena zavera","Kroz dimnu zavesu","Leglo otrovnica","Artemisovo blago","Na zemlji Arikara","Savršeni dvojnik","Koreni Kenebeka","Žeđ za zlatom","Mamac za ubicu","Donovanovi strelci","Ponoćna poseta","Tvrda koža","Šakal Nezbi","Po cenu života","Bunkerova taktika","Tajni pratilac","Omča za nevinog","Jozafatove hijene","Gorka istina","Zavera na Jamajki","Okrutni Kid","Svedok optužbe","Poslednji juriš","Tajanstvena tvrđava","Velika prevara","Mučenje","Kajankasi","Lov na špijune","Otmica","Na silu skvo","Otrov","Trgovac smrću","Bura","Osvetnica","Počasni vrač","Kraftonovi plaćenici","Radžin nakit","Opasnost nad Ontarijem","Pećina Maja","Otkupnina","Šifra 'Crni zrak'","Kći Sunca","Poternica","Izdaja","Ledeni ambis","Dva pukovnika","U vučjem prolazu","Grob Vikinga","Ratovanje na Mohavku","Tajanstveni saveznik","Izgubljeni talisman","Senka vešala","Kobna zaseda","Ratnici crne močvare","Zvezda sa juga","Indijanska princeza","Neraščišćeni računi","Agent Darsi","Okršaj na Barbadosu","Povratak u Itaku","Kralj lopova","Gospodar bitaka","Vojni sud","Besmrtnici","Most na Tuskali","Velika trka","Konačna pobeda",]
     private static let dates_komandantMark: [String] = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",]
     private static let nposPage_komandantMark: [String:Int] = [ "001":65,"002":65,"003":65,"004":65,"005":65,"006":65,"007":66,"008":66,"009":65,"010":65,"011":65,"012":65,"013":66,"014":65,"015":65,"016":66,"017":65,"018":65,"019":65,"020":65,"021":65,"022":65,"023":65,"024":66,"025":65,"026":66,"027":66,"028":66,"029":65,"030":65,"031":66,"032":66,"033":65,"034":65,"035":66,"038":65,"039":65,"041":66,"042":65,"043":65,"044":66,"045":65,"046":65,"047":65,"048":65,"049":66,"050":65,"051":65,"052":65,"053":65,"054":65,"055":66,"056":66,"057":65,"058":65,"059":66,"060":65,"061":66,"062":66,"063":65,"064":65,"065":65,"066":65,"067":66,"068":66,"069":66,"070":66,"071":65,"072":66,"073":65,"074":65,"075":65,"076":65,"077":65,"078":65,"079":65,"080":66,"081":66,"082":65,"083":66,"084":65,"085":66,"086":65,"087":66,"088":65,"089":65,"090":66,"091":65,"092":66,"093":65,"094":65,"095":65,"096":65,"097":65,"098":65,"099":65,"100":97,"101":66,"102":65,"103":66,"104":65,"105":64,"106":65,"107":65,"108":66,"109":65,"110":65,"111":65,"112":65,"113":65,"114":66,"115":65,"116":66,"117":65,"118":65,"119":65,"120":65,"121":66,"122":66,"123":65,"124":65,"125":65,"126":65,"127":65,"128":65,"129":65,"130":65,"131":65,"132":66,"133":65,"134":66,"135":65,"136":65,"137":66,"138":66,"139":65,"140":66,"141":66,"142":66,"143":65,"144":65,"145":65,"146":66,"147":65,"148":65,"149":66,"150":66,"151":66,"152":65,"153":65,"154":65,"155":65,"156":65,"157":65,"158":65,"159":65,"160":65,"161":65,"162":65,"163":65,"164":65,"165":65,"166":65,"167":65,"168":65,"169":65,"170":65,"171":65,"172":65,"173":65,"174":65,"175":65,"176":65,"177":64,"178":65,"179":65,"180":64,"181":65,"182":65,"183":65,"184":65,"185":65,"186":65,"187":65,"188":65,"189":65,"190":65,"191":65,"192":65,"193":65,"194":65,"195":65,"196":65,"197":65,"198":65,"199":65,"200":64,"201":65,"202":65,"203":65,"204":65,"205":65,"206":65,"207":65,"208":65,"209":65,"210":65,"211":65,"212":65,"213":65,"214":65,"215":65,"216":65,"217":65,"218":64,"219":65,"220":65,"221":65,"222":65,"223":63,"224":65,"225":65,"226":65,"227":65,"228":65,"229":65,"230":65,"231":64,"232":65,"233":65,"234":65,"235":65,"236":65,"237":50,"238":65,"239":65,"240":65,"241":65,"242":65,"243":65,"245":65,"246":65,"247":65,"248":65,"249":65,"250":65,"251":65,"252":65,"253":65,"254":65,"255":65,"256":65,"257":49,"258":65,"259":65,"260":65,"261":65,"262":65,"263":65,"264":65,"265":65,"266":65,"267":65,"268":65,"269":65,"270":65,"271":65,"272":65,"273":65,"274":65,"275":49,"276":65,"277":65,"278":65,"279":64,"280":65,"281":93,]
     // =====ninja=====
@@ -66,14 +66,14 @@ class Assets {
     private static let nposPage_ninja: [String:Int] = [ "001":81,"002":94,"003":85,"004":92,"005":82,"006":83,"007":95,"008":88,"009":88,"010":91,"011":74,"012":79,"013":79,"014":95,"015":94,"016":94,"017":94,"018":94,"019":92,"020":94,"021":94,"022":93,"023":95,"024":94,"025":95,"026":94,"027":95,"028":93,"029":94,"030":93,"031":93,"032":94,"033":87,"034":94,"035":94,"036":94,"037":94,"038":94,"039":95,"040":92,"041":93,"042":94,"043":93,"044":95,"045":92,"046":94,"047":93,"048":93,"049":92,"050":94,"051":92,"052":86,"053":92,"054":92,"055":94,"056":94,"057":94,"058":93,"059":92,"060":93,"061":93,"062":94,"063":92,"064":92,"065":93,"066":93,"067":95,"068":92,"069":95,"070":94,"071":92,"072":92,"073":92,"074":92,"075":98,"076":95,"077":94,"078":93,"079":94,"080":94,"081":94,"082":93,"083":94,"084":92,"085":92,"086":94,"087":94,"088":95,"089":93,"090":91,"091":93,"092":94,"093":93,"094":91,"095":92,"096":76,"097":91,"098":93,"099":92,"100":95,"101":93,"102":93,"103":93,"104":90,"105":95,"106":92,"107":91,"108":91,"109":75,"110":91,"111":93,"112":93,"113":90,"114":91,"115":92,"116":90,"117":93,"118":90,"119":81,"120":80,"121":94,"122":94,"123":94,"124":93,"125":95,"126":95,"127":95,"128":94,"129":80,"130":93,"131":95,"132":95,"133":94,"134":95,"135":95,"136":93,"137":95,"138":79,"139":94,"140":95,"141":95,"142":95,"143":95,"144":95,"145":95,"146":95,"147":95,"148":95,"149":95,"150":95,"151":95,"152":95,"153":95,"154":95,"155":95,]
     // =====asterix=====
     private static let numbers_asterix: [String] = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34",]
-    private static let titles_asterix: [String] = ["Asteriks galski junak","Asteriks i zlatni srp","Otmica Aspirinksa","Asteriks gladijator","Put oko sveta","Asteriks i Kleopatra","Borba starešina","Asteriks među Britancima","Asteriks i Normani","Asteriks i legionari&nbsp;","Štit iz Overnije ","Asteriks na olimpijadi","Bakarno kazanče","Asteriks u Španiji","Razdvojeno selo","Asteriks u Švajcarskoj","Grad bogova","Cezarov venac (Velika opklada)","Vrač pogađač","Asteriks na Korzici ","Cezarov poklon","Velika plovidba","Preduzeće Obeliks (Sve za umetnost)","Asteriks među Belgijancima","Velika podela","Pustinjska odiseja (Rimski druid)","Asteriks i sin","Asteriks i leteći ćilim","Ruža i mač","Obeliksova galija","Asteriks i Latravijata","Početak školske godine","Asteriks i nebo koje pada","Zavadi pa vladaj ",]
+    private static let titles_asterix: [String] = ["Asteriks galski junak","Asteriks i zlatni srp","Otmica Aspirinksa","Asteriks gladijator","Put oko sveta","Asteriks i Kleopatra","Borba starešina","Asteriks među Britancima","Asteriks i Normani","Asteriks i legionari","Štit iz Overnije ","Asteriks na olimpijadi","Bakarno kazanče","Asteriks u Španiji","Razdvojeno selo","Asteriks u Švajcarskoj","Grad bogova","Cezarov venac (Velika opklada)","Vrač pogađač","Asteriks na Korzici ","Cezarov poklon","Velika plovidba","Preduzeće Obeliks (Sve za umetnost)","Asteriks među Belgijancima","Velika podela","Pustinjska odiseja (Rimski druid)","Asteriks i sin","Asteriks i leteći ćilim","Ruža i mač","Obeliksova galija","Asteriks i Latravijata","Početak školske godine","Asteriks i nebo koje pada","Zavadi pa vladaj ",]
     private static let dates_asterix: [String] = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",]
     private static let nposPage_asterix: [String:Int] = [ "01":45,"02":43,"03":44,"04":90,"05":45,"06":45,"07":45,"08":45,"09":45,"10":45,"11":45,"12":45,"13":45,"14":45,"15":45,"16":45,"17":45,"18":45,"19":45,"20":45,"21":45,"22":44,"23":45,"24":45,"25":45,"26":45,"27":45,"28":45,"29":44,"30":45,"31":45,"32":33,"33":45,"34":45,]
     // =====dylanDog=====
     private static let numbers_dylanDog: [String] = ["001","002","003","004","005","006","007","008","009","010","011","012","013","014","015","016","017","018","019","020","021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","036","037","038","039","040","041","042","043","044","045","046","047","048","049","050","051","052","053","054","055","056","057","058","059","060","061","062","063","064","065","066","067","068","069","070","071","072","073","074","075","076","077","078","079","080","081","082","083","084","085","086","087","088","089","090","091","092","093","094","095","096","097","098","099","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","335","340","345","346","347","348","349","350",]
     private static let titles_dylanDog: [String] = ["Zora živih mrtvaca","Džek trbosek","Noći punog meseca","Priviđenje Ane Never","Ubice","Demonska lepota","Zona sumraka","Oči zla","Alfa i omega","Iza ogledala","Veliki Dijabolo","Emet","Među nama","Između života i smrti","Kanal 666","Dvorac straha","Dama u crnom","Njujork, Njujork","Uspomene nevidljivog","Motel Bejts","Prokleti dan","Tunel strave","Metamorfoze","Ružičasti zečevi ubijaju","Morgana","Posle ponoći","Video sam kako umireš","Oštrica brijača","Dok grad spava","Šesto čulo","Zavesa pada","Opsesija","Džekil","Tama","Senke prošlosti","Strava letnje noći","Džungla na asvaltu","Glas iz magle","Gospodar tišine","Dogodiće se sutra","Golkonda","Hijena","Priča ni o kome","Odblesci smrti","Goblin","Dva lica istine","Zapisano krvlju","Direktni prenos","Sto godina kasnije","Granice vremena","Zlo","Presuda","Kraljica noći","Delirijum","Buđenje mumije","Senke","Povratak u zonu sumraka","Kamena klepsidra","Safara","Frankenstein","Užas beskonačnosti","Vampiri","Maelstrom!","Tajne Ramblina","Zver iz pećine","Partija sa smrću","Čovjek sa dva života","Sablast u noći","Lov na veštice","Šuma ubojica","Bogomoljkini zločini","Poslednji uštap","Armagedon","Dugački pozdrav","Koljač","Crna magija","Poslednji čovek na Zemlji","Ubice dolaze iz mraka","Vila zla","Kileksov mozak","Džoni nakaza","Daleko od svetlosti","Doktor teror","Zed","Utvare","Priča jednog sirotog đavola","Krvavi praznici","S druge strane smrti","Konjanici vremena","Titanik","Preobražaj","Mozaik horora","Prikazanja","Žena koja ubija prošlost","Dani more","Sukob","Iza zavjese","Sotonin pogled","Simfonija smrti","Priča o Dylanu Dogu","Vrata pakla","Braća iz drugog vremena","Demoni","Beskrajna noć","Stravična invazija","Pobuna automobila","Zemlja obojenih sjena","Čuvar uspomena","Nojev let","Arakne","Proročanstvo","Bliski susreti","Mračna polovica","Tamnica od papira","Zvjerski brlog","Dadilja","Peto godišnje doba","Igra sudbine","Mačje oko","Ponor","Sve dok vas smrt ne rastavi","Granica","Phoenix","Vještičji vrh","Tri puta nula","Crvena smrt","Johnnyjevo srce","Zov šume","Killexov povratak","Prizivač duhova","Dok padaju zvijezde","Prodavač vremena","Ananga","Jaguarov krik","Skener","Netko nas zove odozgo","Izgubljeni grad","Loše misli","Nesmiljeni Hook","Prema dalekome svijetu","Crna duša","Apokalipsa","Da umreš od ljepote","Pakleni pas","Hotel duhova","Zvjezdana prašina","Ponori ludila","Svemirac","Poljubac zmije","Jezero na nebu","Dostava smrti","Cesta za nigdje","Otkucaji vremena","Nova vrsta","Div","San razuma","Rođen za ubijanje","Superosjetilni opažaji","Druid","Osmijeh mračne dame","Bog u tamnici","Savršeni svijet","Urlatorica","Pasji otok","Preživjeti u raju","Meduza","Rijeka zaborava","Zrcalo duše","Mala smrt","Obuzeta sotonom","Uspomene iz podzemlja","Za šaku novca","Nesretni zgoditak","Sjeme ludila","Projekt","Učenik","Pisma iz pakla","Treća strana medalje","Noćni lov","Znak vampira","Safara","Rekvijem za čudovište","Misterij Venecije","Fobija","Crni čovjek","Izgubljene ljubavi","Cijena smrti","Tajna Mordecaija","Šarada","Sunčeve pjege","Vječna iluzija","Vještica iz Brentforda","Čudnovati klijent","Tko je ubio Djeda Božićnjaka","Četiri elementa","Zakon džungle","Homo homini lupus","Broj dvjesto","Daisy &amp; Queen","Sedmi krug","Obitelj Milford","Uskrsnuće","Školski drug","Magla","Hram drugoga života","Nepoznati svijet","Zvijer","Čarobni frulaš","Kuća duhova","Nekropolis","Ubica veštica","Manila","Bunar prevara","Prokleta knjiga","Veliki san","Naslikani košmar","Deseta žrtva","Nelojalna konkurencija","Đavolov dodir","Mudrost mrtvih","Dva života Drim","Na talasima sećanja","Nesanica","Ne umreti za 24 časa","Ubilački instinkt","Preko praga","Nebo može da čeka","Misteriozni sused","Nightmare tour","Utvara iz Skotland Jarda","Nepoželjni gost","Poslednja karta","Demonska sonata","Predodređene žrtve","U senci vulkana","Naslednici zone sumraka","Veliko đubre","Ukronija","U ime oca","Ubica je među nama","Marti","Groblje nakaza","Krčma na kraju sveta","Sve Saline ljubavi","Duša od čelika","Sahranjena sećanja","Lift za pakao","Čuvar svetionika","Poltergajst!","Salivanova čudovišta","Prokockani životi","Soba broj 63","Okrutni Takur","Čuvar","Upirov bes","Iz daleke galaksije","Kasperov usud","Pozdrav iz Munlajta","Palikuća","Breg zečeva","Lijam lažov","Reinkarnacije","Zmajeve kandže","Stvari s drugog sveta","Formular A38","Profesionalci","Gospodar muva","Maleni đavo","Pokolj Grejemovih","Živi sahranjeni","Beg od prošlosti","Trinaesti čovek","Neznanac na putu","Dan Likantropa","Silazak u ponor","Vrt iluzija","Mater Morbi","Životni put","Opasne veze","Progonitelj","U znaku bola","Kradljivac umova","Program rehabilitacije","Novi varvari","Prinudni rad","Put zagonetki","Mračni naslednik","Nema trika, nema prevare","Zarobljene duše","Poslednji besmrtnici","Padaju žabe","Muž i Žena","Druga šansa","Vradžbina","U glavi ubice","Verna klijentela","Obiteljski portret","Balsamator","Savršeni zločin","Proždirač kostiju","Strava na visini","Muzej zločina","Kovčeg s blagom","Ubojica iz susjedstva","Božica majka","Obdukcija","Ja, čudovište","Ocjena Gavrana","Tuđinska epidemija","Krah","Znakovi kraja","Legija kostura","Blacky","Prevarant","Urbane legende","Povratnici","Bjegunica","Mladi vampiri","Plač vile narikače","Balorovo oko","Mržnja nikad ne umire","Novi život","Na koži","Mjesečari","Treš ajland","...i budi lijep leš","Predivno stvorenje","Kalvarija","Dobro došli u Vikedford","Duhovi čuvari","...i u prah ćeš se vratiti","Napušteni","Pogrešna ruka","Smrt ne zaboravlja","Suze iz kamena",]
     private static let dates_dylanDog: [String] = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",]
-    private static let nposPage_dylanDog: [String:Int] = [ "001":97,"002":95,"003":95,"004":96,"005":95,"006":95,"007":95,"008":95,"009":95,"010":95,"011":95,"012":95,"013":95,"014":95,"015":95,"016":95,"017":95,"018":95,"019":95,"020":95,"021":95,"022":95,"023":95,"024":95,"025":95,"026":95,"027":95,"028":95,"029":95,"030":95,"031":95,"032":95,"033":95,"034":95,"035":95,"036":95,"037":95,"038":95,"039":95,"040":95,"041":95,"042":95,"043":95,"044":93,"045":93,"046":95,"047":95,"048":95,"049":95,"050":105,"051":95,"052":95,"053":95,"054":95,"055":95,"056":95,"057":95,"058":95,"059":95,"060":95,"061":95,"062":95,"063":95,"064":95,"065":96,"066":95,"067":95,"068":95,"069":95,"070":95,"071":95,"072":95,"073":95,"074":95,"075":95,"076":96,"077":111,"078":95,"079":95,"080":95,"081":95,"082":95,"083":95,"084":95,"085":95,"086":95,"087":95,"088":95,"089":95,"090":95,"091":95,"092":95,"093":95,"094":95,"095":95,"096":95,"097":95,"098":95,"099":95,"100":95,"101":95,"102":95,"103":95,"104":95,"105":95,"106":95,"107":95,"108":95,"109":95,"110":95,"111":95,"112":95,"113":95,"114":95,"115":95,"116":95,"117":95,"118":95,"119":95,"120":95,"121":111,"122":95,"123":95,"124":94,"125":95,"126":95,"127":95,"128":95,"129":95,"130":95,"131":95,"132":95,"133":95,"134":95,"135":95,"136":95,"137":95,"138":95,"139":95,"140":95,"142":95,"143":95,"144":95,"145":95,"146":95,"147":95,"148":95,"149":95,"150":95,"151":95,"152":95,"153":95,"154":95,"155":95,"156":95,"157":95,"158":95,"159":95,"160":95,"161":95,"162":95,"163":95,"164":95,"165":95,"166":95,"167":95,"168":95,"169":95,"170":95,"171":95,"172":95,"173":95,"174":95,"175":95,"176":95,"177":95,"178":95,"179":95,"180":95,"181":94,"182":95,"183":95,"184":95,"185":95,"186":95,"187":95,"189":95,"190":95,"191":95,"192":95,"193":95,"194":95,"195":95,"196":95,"197":95,"198":95,"199":95,"200":95,"201":95,"202":95,"203":95,"204":95,"205":95,"206":95,"207":95,"208":95,"209":96,"210":95,"211":95,"212":95,"213":95,"214":95,"215":95,"216":95,"217":95,"218":95,"219":95,"220":95,"221":95,"222":95,"223":95,"224":95,"225":95,"226":95,"227":95,"228":95,"229":97,"230":95,"231":95,"232":95,"233":95,"234":95,"235":95,"236":95,"237":95,"238":95,"239":95,"240":95,"242":95,"243":95,"244":95,"245":95,"246":95,"247":95,"248":95,"249":95,"250":95,"251":95,"252":95,"253":95,"254":95,"255":95,"256":95,"257":95,"258":95,"259":95,"260":95,"261":95,"262":95,"263":95,"264":95,"265":95,"266":95,"267":95,"268":95,"269":95,"270":95,"271":95,"272":95,"273":95,"274":95,"275":95,"276":95,"277":96,"278":95,"279":95,"280":95,"281":95,"282":95,"283":95,"284":95,"285":95,"286":95,"287":95,"288":96,"289":96,"290":95,"291":96,"292":95,"293":96,"294":96,"295":96,"296":96,"297":96,"298":95,"299":95,"300":95,"301":95,"302":95,"303":96,"304":96,"305":96,"306":95,"307":95,"308":96,"309":95,"310":95,"311":95,"312":96,"313":96,"314":96,"315":96,"316":96,"317":97,"318":97,"319":96,"320":98,"321":97,"322":97,"323":97,"324":98,"325":97,"326":97,"327":97,"328":100,"329":99,"330":100,"335":101,"340":101,"345":101,"346":101,"347":101,"348":101,"349":101,"350":109,]
+    private static let nposPage_dylanDog: [String:Int] = [ "001":97,"002":95,"003":95,"004":96,"005":95,"006":95,"007":95,"008":95,"009":95,"010":95,"011":95,"012":95,"013":95,"014":95,"015":95,"016":95,"017":95,"018":95,"019":95,"020":95,"021":95,"022":95,"023":95,"024":95,"025":95,"026":95,"027":95,"028":95,"029":95,"030":95,"031":95,"032":95,"033":95,"034":95,"035":95,"036":95,"037":95,"038":95,"039":95,"040":95,"041":95,"042":95,"043":95,"044":93,"045":93,"046":95,"047":95,"048":95,"049":95,"050":105,"051":95,"052":95,"053":95,"054":95,"055":95,"056":95,"057":95,"058":95,"059":95,"060":95,"061":95,"062":95,"063":95,"064":95,"065":96,"066":95,"067":95,"068":95,"069":95,"070":95,"071":95,"072":95,"073":95,"074":95,"075":95,"076":96,"077":111,"078":95,"079":95,"080":95,"081":95,"082":95,"083":95,"084":95,"085":95,"086":95,"087":95,"088":95,"089":95,"090":95,"091":95,"092":95,"093":95,"094":95,"095":95,"096":95,"097":95,"098":95,"099":95,"100":95,"101":95,"102":95,"103":95,"104":95,"105":95,"106":95,"107":95,"108":95,"109":95,"110":95,"111":95,"112":95,"113":95,"114":95,"115":95,"116":95,"117":95,"118":95,"119":95,"120":95,"121":111,"122":95,"123":95,"124":94,"125":95,"126":95,"127":95,"128":95,"129":95,"130":95,"131":95,"132":95,"133":95,"134":95,"135":95,"136":95,"137":95,"138":95,"139":95,"140":95,"142":95,"143":95,"144":95,"145":95,"146":95,"147":95,"148":95,"149":95,"150":95,"151":95,"152":95,"153":95,"154":95,"155":95,"156":95,"157":95,"158":95,"159":95,"160":95,"161":95,"162":95,"163":95,"164":95,"165":95,"166":95,"167":95,"168":95,"169":95,"170":95,"171":95,"172":95,"173":95,"174":95,"175":95,"176":95,"177":95,"178":95,"179":95,"180":95,"181":94,"182":95,"183":95,"184":95,"185":95,"186":95,"187":95,"189":95,"190":95,"191":95,"192":95,"193":95,"194":95,"195":95,"196":95,"197":95,"198":95,"199":95,"200":95,"201":95,"202":95,"203":95,"204":95,"205":95,"206":95,"207":95,"208":95,"209":96,"210":95,"211":95,"212":95,"213":95,"214":95,"215":95,"216":95,"217":95,"218":95,"219":95,"220":95,"221":95,"222":95,"223":95,"224":95,"225":95,"226":95,"227":95,"228":95,"229":97,"230":95,"231":95,"232":95,"233":95,"234":95,"235":95,"236":95,"237":95,"238":95,"239":95,"240":95,"242":95,"243":95,"244":95,"245":95,"246":95,"247":95,"248":95,"249":95,"250":95,"251":95,"252":95,"253":95,"254":95,"255":95,"256":95,"257":95,"258":95,"259":95,"260":95,"261":95,"262":95,"263":95,"264":95,"265":95,"266":95,"267":95,"268":95,"269":95,"270":95,"271":95,"272":95,"273":95,"274":95,"275":95,"276":95,"277":96,"278":95,"279":95,"280":95,"281":95,"282":95,"283":95,"284":95,"285":95,"286":95,"287":95,"288":96,"289":96,"290":95,"291":96,"292":95,"293":96,"294":96,"295":96,"296":96,"297":96,"298":95,"299":95,"300":95,"301":95,"302":95,"303":96,"304":96,"305":96,"306":95,"307":95,"308":96,"309":95,"310":95,"311":95,"312":96,"313":96,"314":96,"315":96,"316":96,"317":97,"318":97,"319":96,"320":98,"321":97,"322":97,"323":97,"324":98,"325":97,"326":97,"327":97,"328":99,"329":98,"330":99,"335":100,"340":100,"345":100,"346":100,"347":100,"348":100,"349":100,"350":108,]
     // =====texWiller=====
     private static let numbers_texWiller: [String] = ["001","002","003","004","005","006","007","008","009","010","011","012","013","014","015","016","017","018","019","020","021","022","023","024","026","027","028","029","030","031","032","033","034","035","036","037","038","040","041","042","043","044","045","046","047","048","049","050","051","052","053","054","055","056","057","058","059","060","061","062","063","064","065","066","067","068","069","070","071","072","073","074","075","076","077","078","079","080","081","082","083","084","085","086","087","088","089","090","091","092","093","094","095","096","097","098","099","101","102","103","104","105","106","107","108","109","110","111","112","113","114","116","117","118","119","120","121","122","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","143","144","145","146","147","148","149","150","151","152","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","412","413","414","415","416","417","418","419","420","421","422","423","425","427","428","429","430","431","432","433","434","435","436","437","438","439","440","441","442","443","444","445","446","447","448","449","452","453","454","455","456","457","458","459","460","461","462","463","464","465","466","467","468","469","470","471","472","473","474","475","476","477","478","479","480","481","482","483","484","486","487","488","489","490","491","492","493","494","496","497","498","499","500","501","502","503","504","505","507","508","509","510","511","512","513","514","515","516","517","518","519","520","521","522","523","524","525","526","527","528","529","530","531","532","533","534","535","536","537","538","539","540","541","542","543","544","545","546","547","548","549","550","551","552","553","554","555","556","557","558","559","560","561","562","569","570","571","572","573","574","575","576","577","578","579","580","581","582","583","584","585","586","587","588","589","590","591","592","593","594","595","596","597","598","599","600","601","602","603","604",]
     private static let titles_texWiller: [String] = ["Zaseda u kanjonu","Jedan protiv dvadeset","Smrt u senci","Brži od zvečarke","Satanijino čudovište","Tajna doline aveti","Zakon odmazde","Na krvavom tragu","Avantura na Rio Grande","Očekujući nož","Živa lavina","Sin Noćnog Orla","Šaka mrtvaca","Panteri ubice","Na brdu lešinara","Ranč u pepelu","Pustinjska pravda","Lov na lisice","Između dve vatre","Vatre u noći","Orlov vrh","Džampa Flet","Ruke Noćnog orla","Veliki Gavran","Zavere u senci","Rajakurina osveta","Dugoruki Landers","Crni kojot","Noćni jahači","Zeleni mesec","Čovek bez prsta","Bokser Pat","Pat sređuje račune","Vindeksove pume","Hajka za nevidljivim","Talasi Pekosa","Cveće za Miltona","Mefistov krah","Istraživači zlata","Bodljikava žica","Mudra Raskar","Crna straža","Neubedljiv dokaz","U znaku zmaja","Strela Mah-shai","Dimne poruke","Zmija s perjem","Grad buktinja","Samoubilački eskadron","Karsonova odluka","Trojica maskiranih","Bubnjevi Mohikanaca","Dramatičan lov","Karson nema sreće","Zlokobna noć","Trka u Las Vegasu","Podmukli osvetnik","Teror na Rio Sonori","Noćna poruka","Zakon linča","Spasonosni revolver","Pobesnelo krdo","Pohlepni Romero","Trapez smrti","Drama u cirkusu","Ortegin bič","Noćni napad","Pruka Ta-hu-naha","Ruševine Bonita","Zendino sklonište","Zlatno zvono","Dugo koplje","Bela pustinja","Pero Komanča","Dolina jaguara","Ozloglašeni El Plateado","Bela noć","Banda vukova","Jazbina žigosanih","U rukama Čejena","Zlokobno koplje","Šampion rodea","Šakali Šangaj Kelija","Proteusov žig","Nemilosrdni","Krug smrti","Teksova pravda","Konjanici smrti","Kazna za oholog pukovnika","Noćni prepad","Beli vrač","Crni baron","Klopka za Vendija","Kameni totem","Ruke uvis","Kobna greška","Indijanski zavet","Tajna mumije","El Morisko","Stižu Ruralesi","Zakletva","Gnevni Teks","Sablasni brod","Crno oko","Pakao u Rober-sitiju","Poslednji metak","Chinatown","As u rukavu","Omča se steže","Između dvije zastave","Čovek iz Kentakija","Anubijev pečat","Izazov smrti","Zakon Roja Bina","Afera Spenser","Zakon Kolta","Odrešene ruke","Zarobljenik Žutog Gavrana","Mefistov sin","Četiri talismana","Crna magija","Ukleti jedrenjak","Kanjon izgubljenih","Velika ucena","Strela Komanča","Vatrena barijera","Durangov karavan","Izvor života","Vrač Dijablero","Cvet smrti","Poslednja noć","Tragična opsada","Udružena potera","Tragovi mokasina","Teks u tamnici","Osvetnici","Opasan svedok","Karavan nade","Korak do smrti","Kento ne oprašta","Obećana zemlja","Zaseda u salunu","Ruke u plamenu","Meskalerosi","Veliki lov","Gusar Drejk","Uragan","Tiranin na ostrvu","Na granici Kolorada","Čovek na žeravici","Usijani meteor","Krater strave","Yamin povratak","U kraljevstvu Maya","Ples vatre","Apache Kid","Kraj Komančerosa","Noć ubojica","Smaragdni idol","Juriš Navaja","Na tragu Toma Fostera","Bijeli indijanac","Crna uzica","Vrijeme nasilja","Pandža je udarila!","Lovci na skalpove","Mrtvi grad","Sablast u pustinji","Konjanici osvete","Pljačka vlaka","Peti čovjek","Teksas Bil","Zmijski otrov","Lov na čovjeka","Pobunjenik Mingo","Sudac Maddox/Privedite Texa Willera","Čovjek sa stotinu lica/Little Rock","Tajna rudnika","Staza Broncosa","Visoravan kostura","El Muerto","Boot hill","Viktorijevo blago","Traperi!","Neustrašivi ljudi","Utrka strijele","Dakote","Razbojnici s Rio Grandea","U razbojničkoj jazbini","Istočno od Nogalesa","Kristalni idol","Zlato Kolorada","Veliki kanjon","Bezimeni kauboj","Kanadski pobunjenici","Crna litica","Mučenje","Orao i munja","Zmijsko gnezdo","Kuća na rijeci","Linč","Takson","Trgovci oružjem","Vruće olovo","Dva suparnika","Santa Cruz","Trojica ubojica","Ruka sudbine","Rat na pašnjacima","Rekvijem za hulju","Zavjera","Šuma totema","Čovjek i zvijer","Sasquatch","Samoubilački zadatak","Ubiti ili umrijeti","Čovjek vrijedan 2000 dolara","Put Apaša","Tajanstvena piramida","Strašna čarolija","Kubanski klan","Otok mrtvih","Željezna maska","Šah - Mat","Junaci Đavoljeg prolaza","Vatre u noći","U krugu smrti","Sam protiv svih","Trgovci smrću","Otvorene karte","Sjene prošlosti","Sati očaja","Četiri bjegunca","Cruzadov znak","Lovci i lovina","Put bez povratka","Chociseov sin","Okršaj u kanjonu","Sotonin znak","Paklenski bijes","Operacija 'Panama'","Okrutna džungla","Izdajnik","Pandže u tami","Otok užasa","Užarena dolina","Agencija za indijanska pitanja","Nebeski put, Banda Dubrinovih","Skok u ponor","Žeđ za osvetom","Dimni signali","Slomljena strijela","Zloduh Plavih brda","Vruće zemlje","Opasna istraga","Mefistova sjena","Vještica","Tex protiv Yame","Sinovi Sunca","Tajna Sierre Madre","Aztečka grobnica","Razbojnici","Okamenjeni lavirint","Divlji pohod","Na ivici ponora","Lepa Zelda","Četiri pauka","Izgubljeni svet","Legenda o Gundarima","Veliki Džeronimo","Dolina dabrova","Zločin na zaleđenom jezeru","Čovek iza kulisa","Čejen Apanoza","Čejen klub","Argument kalibra 45","Pukovnik Vatson","Prljava prevara","Daglasovi kao taoci","Miltonov testament","Poslednja prevara","Mesec Komanča","Ratni požar","Bekstvo iz Andervila","Lik izdajnika","Vatreno koplje","Iščezli leš","Zakovana vrata","Čovek kostur","Zaštita Noćnog Orla","Ubistvo u Korpus Kristiju","Zaverenici","Atentatori","Zločin u 'Jutarnjoj zvezdi'","Tajna crvene ruke","Četiri smrtne presude","Ranč izgubljenih","U rukama Čejena","Davitelji","Žrtvovanje Kali","Lažno svedočenje","Legenda o belom bizonu","Noć divljih zveri","Kainova loza","Dolina vukova","Zabranjen pristup","El Lobova banda","Skriveno selo","Korumpirani grad","Atentat u Vašingtonu","Šangaj strit","Priznanje","Braća Border","'Misuri i sloboda'","Tiha smrt","Pustinjski duhovi","Močvare Luizijane","Veliki aligator","Smrt dolazi rekom","Desperadosi","Legenda o staroj Misiji","Rudnik straha","Poslednji dan u Benditu","Mali Vuk","Jampa Fork","Put bez povratka","Neočekivani saveznik","Indijanska policija","Srećni susret","Transkanadijana","Plamena barijera","Snegovi dalekog severa","Zenda","Gavranova stena","Ambis","Linč","U senci omče","Nadinina ispovest","Herojska predstraža","Pod nadzorom","Alkatraz!","Zatočenik s 'Albatrosa'","Čovjek s bičem","Sastanak sa smrću","Klopka u rudniku","Bljeskovi nad Meksikom","Chihuahua!","Kradljivci stoke","Uhoda","Thonga tiranin","Lažna uzbuna","Skriveni pištolj","Preko granice","Pozlaćeni ranč","Konjanici","Pravda za Navahose","Ratnik Apača","Zakon oružja","Kraljevstvo tišine","Crni tigar","Malajska tvrđava","Paklenski prolaz","Pakleni indijanac","Kazna","Vrijeme za ubijanje","Moriscova tajna","Ljudi jaguari","Astečki bog","Selo prokletih","Ljudska žrtva","Spletka u Santa Feu","Atentat","Svjedok","Zločinački sporazum","Oštrica u mraku","Topeka!","Spaljeno pismo","Glas u oluji","Zlato Klaatua","Krv u snijegu","Suparničke bande","Sjeme mržnje","Poruka","Okrutni ljudi","Carsonova prošlost","Razbojnici iz Montane","Posljednji okršaj u Bannocku","Strah","Neprijatelj bez lica","Divljina","Zatočenica svjetionika","Buđenje vulkana","Zločin u luci","Krijumčari","Čitači tragova","Smrt na rijeci","Na stazi osvete","Tisuću dolara za smrt","Prijetnja u pustinji","Strava u Silver bellu","Čovjek bez prošlosti","Tajna pergamenta","Žrtveni bunar","Vukovi Kolorada","Smrt prijatelja","Ubojice","Pokolj u Red Hillu","Policijska konjica","Dva revolvera za Jasona","Napad na utvrdu","Cijena pobjede","Wild west show","Kineske sjene","Nepobjedivi","Careva tajna","Okršaj u Sierri","Springfield kalibar 58","Rendžer u opasnosti","Povratak crnog tigra","Mrtva laguna","Noć zombija","Oluja na stjenovitim brdima","Oružana pratnja","Lov na dijamante","Ljudi koji su ubili Lincolna","Moriscov povratak","Zdenci Agua Prieta","Buđenje mumije","Navajska osveta","Iznad zakona","Lanac ubojstava","Na putu za utvrdu Apache","Mescalerosi!","Do zadnje kapi krvi","Dragulj Akbara","Rijeka straha","Sedmorica ubojica","Helltown","Neumoljivi Jack Thunder","Golden pass","Bezimeni grad","Pucnji u noći","Granica","Vrag sa Sierre","Brijeg smrti","Svjedoci optužbe","Dugo putovanje","Šerif u nevolji","Predznak","Čovjek koji je došao s rijeke","Divlji izazov","Sablasni rudnik","Prokleta brda","Brežuljci Siouxa","Vjetar mržnje","Bijeli oblak","Hladnokrvno ubojstvo","Krivci","Bodljikava žica","Anđeo osvete","Matador","Srdžba Montoya","Urota protiv Custera","Velike prerije","Little Bighorn","Crna smrt","Maska užasa","Bubnjevi u šumi","Velika invazija","Rat na granici","Junaci Teksasa","Ljudi u bekstvu","Mefisto!","Zamka za Karsona","Moć tame","Jazbina zla","Rat u pustinji","Rendžer je izdajnik!","Francuski trgovac","Snejk Bil","U neprijateljskom logoru","Povratak u Kalver siti","Grad straha","Šume Oregona","Šenonove puške","Dug put","Kripta","Pernata zmija","Kiša","Madi krik","Zaseda u ponoć","Kajove","Lovci na bizone","Crveni vukovi","Dvojica neprijatelja","Pravda na granici","Braća Domegan","Obeležje moći","Indijanska dijadema","Sveto mesto","Jezero Atabska","Rečni pljačkaši","Golden Erou","Mesto Blokade","Dolina mržnje","Udarac za udarac","Neumoljivi Tumak","Anasazi","Kolorado Bel","Banditi iz grada duhova","Đavolja vrata","Blago iz rudnika","Beli brat","Sramna ucena","Nameštaljka u Klondajku","Potera po velikom severu","Poslednja diližansa","Napušteni put","Dokazivanje optužnice","Vojni sud","Voz za Redvil","Blokirani put","Selo pod opsadom","Pucanj u metu","Tročlana banda","Tajanstveni ubica","Smrt u magli","Ubijte Kita Vilera!","Bekstvo","Odbrojani minuti","Moktezuma!","Prljavi novac","Peščani zdenac","Buffalo soldiers","Deseta konjanička","Opsada Uta","Begunac","Prokleta zemlja","Tornado","Staza uspomena","Ubojstvo u ulici Burbon","Ponoćni starac","Alkemičareva kuća","Montalesova osveta","Zvona San Rafaela","Indijanski šerif","Ljudska lovina","Missouri","Dva gerilca","Velika žeđ","Igre moći","Tigrova pandža","Crni zamak","Pobuna Cheyennea","Tri duga dana","Čovjek iz Baltimorea","Isprepletene sudbine","Mrtvačeva ruka","Podnevni vlak","Deadwood","S onu stranu rijeke","Kameni most","Vatreno krštenje","Odmetnuti rendžer","Demoni sjevera","Osvetnici iz Veagasa","Obračun kod korala","Ćovjek bez lica","Napad na diližansu",]
@@ -98,11 +98,592 @@ class Assets {
     private static let nposPage_misterNo: [String:Int] = ["001":93,"004":94,"005":93,"006":93,"007":83,"008":95,"009":93,"010":93,"011":95,"012":95,"013":94,"014":95,"015":94,"017":95,"019":93,"018":93,"020":91,"021":95,"022":81,"023":94,"024":90,"025":90,"026":81,"027":95,"028":95,"029":85,"030":65,"031":63,"033":45,"034":95,"035":95,"036":89,"037":68,"038":92,"039":89,"040":92,"042":48,"043":89,"046":61,"047":94,"048":95,"049":79,"050":87,"051":50,"053":46,"055":83,"056":69,"057":95,"058":95,"059":91,"060":95,"061":94,"062":95,"063":93,"065":93,"066":92,"067":59,"068":91,"069":75,"070":91,"072":91,"073":82,"074":46,"076":93,"077":92,"078":90,"079":93,"080":62,"081":93,"082":94,"084":91,"085":92,"086":62,"087":91,"088":89,"089":92,"091":94,"092":97,"093":98,"094":98,"095":98,"096":98,"097":98,"098":100,"099":99,"100":95,"101":95,"102":85,"103":92,"105":88,"106":85,"107":48,"108":93,"109":94,"110":92,"112":75,"113":91,"114":92,"115":92,"116":43,"117":97,"118":97,"119":100,"120":90,"121":76,"123":46,"124":95,"125":95,"127":65,"128":94,"129":94,"130":75,"131":91,"132":94,"133":73,"134":90,"136":94,"137":93,"138":93,"139":46,"140":92,"141":93,"143":95,"144":93,"145":93,"146":94,"147":93,"148":65,"149":94,"150":94,"152":92,"153":94,"154":37,"155":94,"156":94,"157":94,"158":94,"159":42,"161":51,"162":94,"163":94,"164":70,"165":94,"167":94,"168":94,"169":79,"170":93,"171":93,"172":81,"174":95,"175":94,"177":94,"178":94,"179":53,"181":94,"182":94,"183":94,"185":94,"186":52,"187":55,"188":94,"189":94,"191":95,"192":94,"193":44,"194":93,"195":94,"197":61,"198":60,"200":112,"202":95,"203":95,"204":95,"205":95,"206":95,"207":95,"208":87,"209":95,"210":95,"211":95,"212":95,"213":95,"214":95,"215":95,"216":95,"217":95,"218":95,"219":95,"220":95,"221":95,"222":95,"223":95,"224":95,"225":95,"226":95,"227":95,"228":95,"229":95,"230":95,"231":95,"232":95,"233":95,"234":95,"235":95,"236":95,"237":95,"238":95,"239":95,"240":95,"241":95,"242":95,"243":95,"244":95,"245":95,"246":95,"247":95,"248":95,"249":95,"250":95,"251":95,"252":95,"253":95,"254":95,"255":95,"256":95,"257":95,"258":95,"259":95,"275":95,"276":95,"277":95,"278":95,"279":95,"280":95,"281":95,"292":95,"293":95,"294":95,"295":95,"296":95,"297":95,"298":95,"299":95,"300":95,"301":95,"302":95,"303":95,"304":95,"305":95,"306":95,"307":95,"308":93,"309":95,"310":95,"311":95,"312":95,"313":95,"314":95,"315":95,"316":95,"317":95,"318":95,"319":95,"320":95,"321":95,"322":95,"323":95,"324":95,"325":95,"326":95,"327":95,"328":95,"329":95,"330":95,"331":95,"332":95,"333":95,"334":95,"335":95,"336":95,"337":95,"338":95,"339":95,"340":96,"341":97,"342":98,"343":96,"345":99,"346":100,"347":99,"348":100,"349":100,"350":100,"351":100,"352":99,"353":99,"354":98,"355":98,"356":99,"357":98,"358":98,"359":99,"360":96,"361":95,"364":95,"365":95,"366":97,"367":97,"368":97,"369":97,"370":97,"371":96,"372":96,"373":100,"374":96,"375":96,"376":96,"377":96,"378":96,"379":96]
  
     private static func firstPage(forEpisode episode: Int) -> Int {
+        // Za prve strane, od svakog stripa koji ima x strane uzmem poslednju i onda +1
+        // for f in $(ls); do echo $f; find $f -name \*x.\* | sort | sed -e 's|.*/||' | sed -e 's/_.*//' | sort -u > $f/numbers; for n in $(cat $f/numbers); do find $f -name \*x.\* | sort | grep -vE "(_1|_0[1-9])" | grep ${n}_ | sort | tail -n 1 | sed -e 's|.*/||' | sed -r 's/([0-9]+)_00([1-5])x.(jpg|png)/case "\1": return \2+1/'; done; done
+
+        // Za npos strane, od svakog stripa koji ima x strane oko kraja, uzmem prvu:
+        // for f in $(ls); do echo $f; find $f -name \*x.\* | sort | sed -e 's|.*/||' | sed -e 's/_.*//' | sort -u > $f/numbers; for n in $(cat $f/numbers); do find $f -name \*x.\* | grep -E "(_1|_0[1-9])" | grep $n_ | sort | head -n 1 | sed -e 's|.*/||' | sed -r 's/([0-9]+)_([0-9]+)x.(jpg|png)/"\1":\2,/'; done; done
         let index = flavorIndex(forEpisode: episode)
-        if (index.0 == 0) {
+        switch sectionInfo[index.0].2 {
+        case "alanford":
             return 1
-        } else {
-            // TODO: others
+        case "misterno":
+            switch numbers[episode] {
+            case "119": return 2
+            case "200": return 2
+            case "340": return 2
+            case "341": return 3
+            case "342": return 3
+            case "343": return 2
+            case "345": return 3
+            case "346": return 4
+            case "347": return 3
+            case "348": return 3
+            case "349": return 3
+            case "350": return 3
+            case "351": return 3
+            case "352": return 2
+            case "353": return 2
+            case "356": return 2
+            case "359": return 2
+            case "360": return 2
+            default: return 1
+            }
+        case "zagor":
+            switch numbers[episode] {
+            case "001": return 1+1
+            case "002": return 2+1
+            case "003": return 1+1
+            case "004": return 1+1
+            case "005": return 4+1
+            case "006": return 2+1
+            case "007": return 2+1
+            case "008": return 1+1
+            case "009": return 1+1
+            case "010": return 1+1
+            case "011": return 1+1
+            case "012": return 2+1
+            case "013": return 2+1
+            case "014": return 2+1
+            case "015": return 2+1
+            case "016": return 2+1
+            case "017": return 1+1
+            case "018": return 2+1
+            case "019": return 1+1
+            case "020": return 1+1
+            case "021": return 1+1
+            case "022": return 2+1
+            case "023": return 1+1
+            case "024": return 4+1
+            case "025": return 1+1
+            case "026": return 1+1
+            case "027": return 1+1
+            case "028": return 1+1
+            case "029": return 1+1
+            case "030": return 1+1
+            case "031": return 1+1
+            case "032": return 1+1
+            case "033": return 1+1
+            case "040": return 1+1
+            case "041": return 1+1
+            case "042": return 1+1
+            case "049": return 1+1
+            case "050": return 2+1
+            case "081": return 1+1
+            case "129": return 1+1
+            case "178": return 2+1
+            case "179": return 1+1
+            case "188": return 1+1
+            case "211": return 1+1
+            case "261": return 5+1
+            case "276": return 1+1
+            case "321": return 1+1
+            case "322": return 1+1
+            case "323": return 1+1
+            case "324": return 2+1
+            case "325": return 2+1
+            case "326": return 2+1
+            case "327": return 2+1
+            case "375": return 2+1
+            case "390": return 1+1
+            case "478": return 1+1
+            case "519": return 2+1
+            case "543": return 1+1
+            case "547": return 1+1
+            case "548": return 1+1
+            case "549": return 1+1
+            case "550": return 1+1
+            case "551": return 1+1
+            case "552": return 1+1
+            case "553": return 1+1
+            case "554": return 1+1
+            case "555": return 1+1
+            case "556": return 1+1
+            case "557": return 2+1
+            case "558": return 4+1
+            case "559": return 4+1
+            case "560": return 3+1
+            case "561": return 3+1
+            case "562": return 2+1
+            case "563": return 3+1
+            case "564": return 2+1
+            case "565": return 2+1
+            case "566": return 3+1
+            case "567": return 2+1
+            case "568": return 2+1
+            case "569": return 2+1
+            case "570": return 2+1
+            case "571": return 2+1
+            case "572": return 2+1
+            case "573": return 2+1
+            case "574": return 2+1
+            case "575": return 3+1
+            case "576": return 2+1
+            case "577": return 2+1
+            case "578": return 2+1
+            case "579": return 1+1
+            case "580": return 2+1
+            case "581": return 1+1
+            case "582": return 1+1
+            case "583": return 1+1
+            case "584": return 1+1
+            case "585": return 1+1
+            case "586": return 1+1
+            case "589": return 1+1
+            case "590": return 1+1
+            case "591": return 1+1
+            case "592": return 1+1
+            case "593": return 1+1
+            case "595": return 1+1
+            case "596": return 1+1
+            case "597": return 1+1
+            case "598": return 1+1
+            case "599": return 1+1
+            case "600": return 1+1
+            case "601": return 1+1
+            case "602": return 1+1
+            case "603": return 1+1
+            case "604": return 1+1
+            case "605": return 1+1
+            case "606": return 1+1
+            case "607": return 1+1
+            case "608": return 1+1
+            case "609": return 1+1
+            case "610": return 1+1
+            case "611": return 1+1
+            case "612": return 1+1
+            case "613": return 1+1
+            case "614": return 1+1
+            case "615": return 1+1
+            case "616": return 1+1
+            case "617": return 1+1
+            case "618": return 1+1
+            case "619": return 1+1
+            case "620": return 1+1
+            case "621": return 1+1
+            case "622": return 1+1
+            case "623": return 1+1
+            case "624": return 1+1
+            case "625": return 1+1
+            case "626": return 1+1
+            case "627": return 1+1
+            case "628": return 1+1
+            case "629": return 1+1
+            case "630": return 1+1
+            case "631": return 1+1
+            case "632": return 1+1
+            case "633": return 1+1
+            case "634": return 1+1
+            case "635": return 1+1
+            case "636": return 1+1
+            case "637": return 1+1
+            default: return 1
+            }
+        case "blek":
+            switch numbers[episode] {
+            default: return 1
+            }
+        case "dylandog":
+            switch numbers[episode] {
+            case "209": return 1+1
+            case "229": return 2+1
+            case "277": return 1+1
+            case "288": return 1+1
+            case "289": return 1+1
+            case "291": return 1+1
+            case "293": return 1+1
+            case "294": return 1+1
+            case "295": return 1+1
+            case "296": return 1+1
+            case "297": return 1+1
+            case "303": return 1+1
+            case "304": return 1+1
+            case "305": return 1+1
+            case "308": return 1+1
+            case "312": return 1+1
+            case "313": return 1+1
+            case "314": return 1+1
+            case "315": return 1+1
+            case "316": return 1+1
+            case "317": return 2+1
+            case "318": return 2+1
+            case "319": return 1+1
+            case "320": return 2+1
+            case "321": return 1+1
+            case "322": return 1+1
+            case "323": return 1+1
+            case "324": return 1+1
+            case "325": return 1+1
+            case "326": return 1+1
+            case "327": return 1+1
+            case "328": return 1+1
+            case "329": return 1+1
+            case "330": return 3+1
+            case "335": return 2+1
+            case "340": return 1+1
+            case "345": return 1+1
+            case "346": return 1+1
+            case "347": return 1+1
+            case "348": return 1+1
+            case "349": return 1+1
+            case "350": return 1+1
+            default: return 1
+            }
+        case "texwiller":
+            switch numbers[episode] {
+            case "209": return 1+1
+            case "219": return 1+1
+            case "248": return 1+1
+            case "249": return 1+1
+            case "250": return 1+1
+            case "251": return 1+1
+            case "252": return 1+1
+            case "253": return 1+1
+            case "254": return 1+1
+            case "255": return 1+1
+            case "256": return 1+1
+            case "257": return 1+1
+            case "258": return 1+1
+            case "259": return 1+1
+            case "260": return 1+1
+            case "261": return 1+1
+            case "262": return 1+1
+            case "263": return 1+1
+            case "264": return 1+1
+            case "265": return 1+1
+            case "266": return 1+1
+            case "267": return 1+1
+            case "268": return 1+1
+            case "269": return 1+1
+            case "270": return 1+1
+            case "271": return 1+1
+            case "354": return 1+1
+            case "376": return 1+1
+            case "382": return 1+1
+            case "383": return 1+1
+            case "384": return 1+1
+            case "385": return 1+1
+            case "386": return 1+1
+            case "387": return 1+1
+            case "388": return 1+1
+            case "389": return 1+1
+            case "390": return 1+1
+            case "391": return 1+1
+            case "392": return 1+1
+            case "393": return 1+1
+            case "394": return 1+1
+            case "397": return 1+1
+            case "398": return 1+1
+            case "399": return 1+1
+            case "400": return 1+1
+            case "403": return 1+1
+            case "406": return 2+1
+            case "407": return 2+1
+            case "408": return 2+1
+            case "409": return 2+1
+            case "410": return 1+1
+            case "411": return 2+1
+            case "412": return 2+1
+            case "413": return 1+1
+            case "414": return 2+1
+            case "415": return 2+1
+            case "416": return 2+1
+            case "417": return 2+1
+            case "418": return 2+1
+            case "419": return 1+1
+            case "420": return 2+1
+            case "429": return 1+1
+            case "430": return 1+1
+            case "432": return 1+1
+            case "436": return 1+1
+            case "437": return 1+1
+            case "440": return 1+1
+            case "441": return 1+1
+            case "445": return 1+1
+            case "447": return 1+1
+            case "448": return 1+1
+            case "449": return 1+1
+            case "452": return 1+1
+            case "453": return 1+1
+            case "454": return 1+1
+            case "455": return 2+1
+            case "456": return 2+1
+            case "457": return 1+1
+            case "458": return 1+1
+            case "459": return 1+1
+            case "460": return 1+1
+            case "461": return 2+1
+            case "462": return 1+1
+            case "463": return 1+1
+            case "464": return 1+1
+            case "465": return 2+1
+            case "466": return 2+1
+            case "467": return 2+1
+            case "468": return 1+1
+            case "469": return 2+1
+            case "470": return 2+1
+            case "471": return 2+1
+            case "472": return 2+1
+            case "473": return 2+1
+            case "474": return 2+1
+            case "475": return 2+1
+            case "476": return 1+1
+            case "477": return 2+1
+            case "478": return 2+1
+            case "479": return 1+1
+            case "480": return 1+1
+            case "481": return 2+1
+            case "482": return 1+1
+            case "483": return 2+1
+            case "484": return 2+1
+            case "486": return 3+1
+            case "487": return 3+1
+            case "488": return 2+1
+            case "489": return 1+1
+            case "490": return 1+1
+            case "491": return 3+1
+            case "492": return 2+1
+            case "494": return 1+1
+            case "496": return 2+1
+            case "497": return 2+1
+            case "498": return 2+1
+            case "499": return 2+1
+            case "500": return 1+1
+            case "501": return 1+1
+            case "502": return 1+1
+            case "503": return 1+1
+            case "504": return 1+1
+            case "505": return 1+1
+            case "507": return 1+1
+            case "510": return 1+1
+            case "511": return 1+1
+            case "512": return 1+1
+            case "513": return 1+1
+            case "518": return 1+1
+            case "520": return 1+1
+            case "522": return 1+1
+            case "523": return 1+1
+            case "524": return 1+1
+            case "525": return 1+1
+            case "526": return 1+1
+            case "527": return 1+1
+            case "528": return 1+1
+            case "529": return 1+1
+            case "530": return 1+1
+            case "531": return 1+1
+            case "533": return 1+1
+            case "534": return 1+1
+            case "535": return 1+1
+            case "536": return 1+1
+            case "537": return 1+1
+            case "538": return 2+1
+            case "539": return 2+1
+            case "540": return 1+1
+            case "541": return 2+1
+            case "542": return 3+1
+            case "543": return 1+1
+            case "544": return 1+1
+            case "545": return 1+1
+            case "546": return 2+1
+            case "547": return 2+1
+            case "548": return 2+1
+            case "549": return 1+1
+            case "550": return 1+1
+            case "551": return 2+1
+            case "552": return 3+1
+            case "553": return 1+1
+            case "554": return 1+1
+            case "555": return 1+1
+            case "556": return 2+1
+            case "557": return 2+1
+            case "558": return 1+1
+            case "559": return 1+1
+            case "560": return 1+1
+            case "561": return 1+1
+            case "562": return 1+1
+            case "569": return 1+1
+            case "571": return 1+1
+            case "572": return 1+1
+            case "573": return 1+1
+            case "574": return 1+1
+            case "575": return 1+1
+            case "576": return 1+1
+            case "577": return 1+1
+            case "578": return 1+1
+            case "579": return 1+1
+            case "580": return 1+1
+            case "581": return 1+1
+            case "582": return 1+1
+            case "583": return 1+1
+            case "584": return 1+1
+            case "587": return 1+1
+            case "588": return 1+1
+            case "589": return 1+1
+            case "590": return 1+1
+            case "591": return 1+1
+            case "592": return 1+1
+            case "593": return 1+1
+            case "594": return 1+1
+            case "595": return 1+1
+            case "596": return 1+1
+            case "597": return 1+1
+            case "598": return 1+1
+            case "599": return 1+1
+            case "600": return 1+1
+            case "601": return 1+1
+            case "602": return 1+1
+            case "603": return 1+1
+            case "604": return 1+1
+            default: return 1
+            }
+        case "nathannever":
+            switch numbers[episode] {
+            case "095": return 1+1
+            case "096": return 1+1
+            case "097": return 1+1
+            case "098": return 1+1
+            case "099": return 1+1
+            case "116": return 1+1
+            case "119": return 1+1
+            case "122": return 1+1
+            case "125": return 1+1
+            case "132": return 1+1
+            case "133": return 1+1
+            case "134": return 1+1
+            case "135": return 1+1
+            case "136": return 1+1
+            case "137": return 1+1
+            case "138": return 1+1
+            case "139": return 1+1
+            case "140": return 1+1
+            case "141": return 3+1
+            case "142": return 3+1
+            case "143": return 3+1
+            case "144": return 2+1
+            case "145": return 2+1
+            case "146": return 2+1
+            case "147": return 2+1
+            case "148": return 2+1
+            case "149": return 2+1
+            case "150": return 2+1
+            case "151": return 2+1
+            case "152": return 2+1
+            case "153": return 2+1
+            case "154": return 2+1
+            case "155": return 2+1
+            case "156": return 1+1
+            case "157": return 1+1
+            case "158": return 1+1
+            case "159": return 1+1
+            case "160": return 1+1
+            case "161": return 1+1
+            case "162": return 1+1
+            case "163": return 1+1
+            case "164": return 1+1
+            default: return 1
+            }
+        case "komandantmark":
+            switch numbers[episode] {
+            case "007": return 1+1
+            case "008": return 1+1
+            case "013": return 1+1
+            case "016": return 1+1
+            case "024": return 1+1
+            case "026": return 1+1
+            case "027": return 1+1
+            case "028": return 1+1
+            case "032": return 1+1
+            case "035": return 1+1
+            case "041": return 1+1
+            case "044": return 1+1
+            case "049": return 1+1
+            case "055": return 1+1
+            case "056": return 1+1
+            case "059": return 1+1
+            case "061": return 1+1
+            case "062": return 1+1
+            case "067": return 1+1
+            case "068": return 1+1
+            case "069": return 1+1
+            case "070": return 1+1
+            case "072": return 1+1
+            case "080": return 1+1
+            case "081": return 1+1
+            case "083": return 1+1
+            case "085": return 1+1
+            case "087": return 1+1
+            case "090": return 1+1
+            case "092": return 1+1
+            case "101": return 1+1
+            case "103": return 1+1
+            case "104": return 1+1
+            case "108": return 1+1
+            case "114": return 1+1
+            case "116": return 1+1
+            case "121": return 1+1
+            case "122": return 1+1
+            case "132": return 1+1
+            case "134": return 1+1
+            case "137": return 1+1
+            case "138": return 1+1
+            case "140": return 1+1
+            case "141": return 1+1
+            case "142": return 1+1
+            case "146": return 1+1
+            case "149": return 1+1
+            case "150": return 1+1
+            case "151": return 1+1
+            default: return 1
+            }
+        case "ninja":
+            switch numbers[episode] {
+            default: return 1
+            }
+        case "strip82":
+            switch numbers[episode] {
+            default: return 1
+            }
+        case "talicnitom":
+            switch numbers[episode] {
+            default: return 1
+            }
+        case "asterix":
+            switch numbers[episode] {
+            default: return 1
+            }
+        case "otkricesveta":
+            switch numbers[episode] {
+            case "001": return 1+1
+            case "002": return 2+1
+            case "003": return 1+1
+            case "004": return 1+1
+            case "005": return 1+1
+            case "006": return 1+1
+            case "007": return 1+1
+            case "008": return 1+1
+            case "009": return 1+1
+            case "010": return 1+1
+            case "011": return 1+1
+            case "012": return 2+1
+            case "013": return 2+1
+            case "014": return 1+1
+            case "015": return 1+1
+            case "016": return 1+1
+            case "017": return 1+1
+            case "018": return 1+1
+            case "019": return 1+1
+            case "020": return 1+1
+            default: return 1
+            }
+        case "druzinaodvjesala":
+            switch numbers[episode] {
+            case "01": return 4
+            case "02"..."15": return 3
+            case "18"..."20": return 2
+            default: return 1
+            }
+        default:
+            assert(false)
             return 1
         }
     }
@@ -137,30 +718,41 @@ class Assets {
     static var averageEpisodeSizeMB = 67
     
     private static func coverPageExtension(forEpisode: Int) -> String {
-        let flavorIndex = flavorIndex(forEpisode: forEpisode)
-        if flavorIndex.0 == 0 {
-            switch forEpisode {
-            case 52...60: return "png"
+        let index = flavorIndex(forEpisode: forEpisode)
+        let number = numbers[forEpisode]
+        switch sectionInfo[index.0].2 {
+        case "alanford":
+            switch number {
+            case "52"..."60": return "png"
             default: return "jpg"
             }
-        } else {
-            // TODO: others
-            return "jpg"
+        case "asterix":
+            switch number {
+            case "29"..."33": return "png"
+            default: return "jpg"
+            }
+        default: return "jpg"
         }
     }
 
     private static func commonPageExtension(forEpisode: Int) -> String {
-        let flavorIndex = flavorIndex(forEpisode: forEpisode)
-        if flavorIndex.0 == 0 {
-            switch forEpisode {
-            case 26...60: return "png"
-            case 97...100: return "png"
-            case 469...472: return "png"
+        let index = flavorIndex(forEpisode: forEpisode)
+        let number = numbers[forEpisode]
+        switch sectionInfo[index.0].2 {
+        case "alanford":
+            switch number {
+            case "26"..."60": return "png"
+            case "97"..."99": return "png"
+            case "100": return "png"
+            case "469"..."472": return "png"
             default: return "jpg"
             }
-        } else {
-            // TODO: add others
-            return "jpg"
+        case "asterix":
+            switch number {
+            case "29"..."33": return "png"
+            default: return "jpg"
+            }
+        default: return "jpg"
         }
     }
 
