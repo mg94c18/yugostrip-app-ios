@@ -53,7 +53,8 @@ class MasterViewController: UITableViewController {
         ("je", "e"),
         ("ije", "e")]
     var episodeMatches: [Int] = []
-    
+    static var titlesLowercased: [String] = []
+
     func searchedForDownloadedOnes() -> Bool {
         return searchText == "%"
     }
@@ -65,13 +66,27 @@ class MasterViewController: UITableViewController {
             episodeMatches = DetailViewController.downloadedEpisodes().sorted()
         }
 
-        var searchFor = [searchText.lowercased()]
+        let searchTextLowercased = searchText.lowercased()
+        var searchFor = [searchTextLowercased]
         for r in MasterViewController.searchReplacements {
-            searchFor.append(searchFor[0].replacingOccurrences(of: r.0, with: r.1))
+            let candidate = searchTextLowercased.replacingOccurrences(of: r.0, with: r.1)
+            if candidate != searchTextLowercased {
+                searchFor.append(candidate)
+            }
         }
-        for i in 0..<Assets.titles.count {
+        if MasterViewController.titlesLowercased.isEmpty {
+            MasterViewController.titlesLowercased.reserveCapacity(Assets.titles.count)
+            for i in 0..<Assets.titles.count {
+                MasterViewController.titlesLowercased.append(Assets.titles[i].lowercased())
+            }
+        }
+
+        // TODO: dodati ovde da ako je nova reč ista kao stara samo se menja (oduzima ili dodaje) jedno slovo, onda da iskoristi prethodni search.  Ako se dodaje, onda treba tražiti samo kroz prethodni search.  Ako se oduzima, onda prosto se ide nazad na prethodni search koji je već izračunat.
+        // TODO: kad se obriše search, treba da se obrišu i te optimizacije (ako je nešto sačuvano)
+        // TODO: mada, onda treba paziti na primer ako neko traži d a posle doda j, onda postane đ i može da ima nove rezultate...
+        for i in 0..<MasterViewController.titlesLowercased.count {
             for j in searchFor {
-                if Assets.titles[i].lowercased().contains(j) || Assets.numbers[i].contains(j) || Assets.dates[i].contains(j) {
+                if MasterViewController.titlesLowercased[i].contains(j) || Assets.numbers[i].contains(j) || Assets.dates[i].contains(j) {
                     episodeMatches.append(i)
                     break
                 }
