@@ -64,6 +64,7 @@ class MasterViewController: UITableViewController {
 
         if searchedForDownloadedOnes() {
             episodeMatches = DetailViewController.downloadedEpisodes().sorted()
+            return
         }
 
         let searchTextLowercased = searchText.lowercased()

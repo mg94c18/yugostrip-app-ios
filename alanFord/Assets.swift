@@ -722,9 +722,13 @@ class Assets {
         let number = numbers[forEpisode]
         switch sectionInfo[index.0].2 {
         case "alanford":
-            switch number {
-            case "52"..."60": return "png"
-            default: return "jpg"
+            if number.count == 2 {
+                switch number {
+                case "52"..."60": return "png"
+                default: return "jpg"
+                }
+            } else {
+                return "jpg"
             }
         case "asterix":
             switch number {
@@ -740,12 +744,20 @@ class Assets {
         let number = numbers[forEpisode]
         switch sectionInfo[index.0].2 {
         case "alanford":
-            switch number {
-            case "26"..."60": return "png"
-            case "97"..."99": return "png"
-            case "100": return "png"
-            case "469"..."472": return "png"
-            default: return "jpg"
+            if number.count == 2 {
+                switch number {
+                case "26"..."60": return "png"
+                case "97"..."99": return "png"
+                default: return "jpg"
+                }
+            } else if number.count == 3 {
+                switch number {
+                case "100": return "png"
+                case "469"..."472": return "png"
+                default: return "jpg"
+                }
+            } else {
+                return "jpg"
             }
         case "asterix":
             switch number {
