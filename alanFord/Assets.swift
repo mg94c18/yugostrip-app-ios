@@ -768,6 +768,32 @@ class Assets {
         }
     }
 
+    static func writeToFile(filename : String, content : [String]) {
+        // Use folder for episode 0 to avoid conflict with same named folders for actual downloads on an iOS device
+        var url = EpisodeDownloader.getOrCreateDownloadDir(episode: 0)?.appendingPathComponent(filename)
+
+        try? (content.joined(separator: "\n") + "\n").write(to: url!, atomically: true, encoding: .utf8)
+    }
+
+    // cp -r ~/Library/Developer/CoreSimulator/Devices/234A52A6-C723-4A53-BEE8-615439E5D3C8/data/Containers/Data/Application/2A58F4E3-6DC3-4C12-9688-6BA29840B9FE/Documents/1 ~/Documents/my/src/Workspace/ViewPagerTest/
+    // for n in $(cat 1/numbers | head -n 551); do cat app/src/alanFord/assets/$n | gunzip - > X && diff X 1/$n; done
+    // for n in $(cat 1/numbers | tail -n +552); do cat 1/$n | gzip > app/src/alanFord/assets/$n; done
+    // for a in titles numbers dates; do cat app/src/alanFord/assets/$a | gunzip - | tr -d '\r' > X.$a && cat 1/$a | head -n 551 > Y.$a && diff X.$a Y.$a; done
+    // for a in titles numbers dates; do cat 1/$a | gzip - > app/src/alanFord/assets/$a; done
+    static func exportAssetsToAndroid() {
+        writeToFile(filename: "titles", content: titles)
+        writeToFile(filename: "dates", content: dates)
+        var numbersWithIds: [String] = []
+        for i in 0..<numbers.count {
+            let id = sectionInfo[indexPath(forEpisode: i).section].0
+            numbersWithIds.append(id + numbers[i])
+
+            let pages = pages(forEpisode: i)
+            writeToFile(filename: numbersWithIds[i], content: pages)
+        }
+        writeToFile(filename: "numbers", content: numbersWithIds)
+    }
+
     static let sectionInfo: [(String, Int, String)] = [
         ("", titles_alanFord.count, "alanford"),
         ("No", titles_misterNo.count, "misterno"),

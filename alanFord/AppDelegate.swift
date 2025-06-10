@@ -78,6 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         AppDelegate.unseenCrashes = UserDefaults.standard.integer(forKey: AppDelegate.unseenCrashesKey)
         UserDefaults.standard.set(3, forKey: AppDelegate.unseenCrashesKey)
 
+        // Assets.exportAssetsToAndroid()
+
         return true
     }
 
