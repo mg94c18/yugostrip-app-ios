@@ -29,6 +29,28 @@ class Assets {
         }
     }
 
+    static func indexPath(forEpisode episode: Int) -> IndexPath {
+        let index = flavorIndex(forEpisode: episode)
+        return IndexPath(indexes: [index.0, index.1])
+    }
+
+    static let sectionInfo: [(String, Int, String)] = [
+        ("", titles.count, "druzinaodvjesala")
+    ]
+
+    private static func flavorIndex(forEpisode episode: Int) -> (Int, Int) {
+        var index = episode
+        for i in 0..<sectionInfo.count {
+            if index < sectionInfo[i].1 {
+                return (i, index)
+            }
+            index -= sectionInfo[i].1
+        }
+        // TODO: Log.wtf
+        assert(false)
+        return (0, 0)
+    }
+
     static func pages(forEpisode episode: String) -> [String] {
         let commonExtension = commonPageExtension(forEpisode: episode)
         return ["https://yugostripdruzinaodvjesala.fra1.digitaloceanspaces.com/\(episode)/\(episode)_000.\(coverPageExtension(forEpisode: episode))"]
