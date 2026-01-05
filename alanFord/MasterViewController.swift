@@ -157,7 +157,9 @@ class MasterViewController: UITableViewController {
                 } else {
                     controller.episodeId = episodeMatches[indexPath.row]
                 }
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                if UIDevice.current.userInterfaceIdiom != .phone {
+                    controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                }
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 if searchedForDownloadedOnes() {
                     controller.offerDeleteDownloaded = true
